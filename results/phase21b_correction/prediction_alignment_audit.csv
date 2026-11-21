@@ -1,0 +1,2 @@
+model,check,status,detail
+M4/M8,all_alignment_checks,PASS,"6311 eligible IDs; canonical order ['Accepted', 'Other', 'Rejected']"

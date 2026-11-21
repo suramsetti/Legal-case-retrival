@@ -1,0 +1,4 @@
+partition,total_documents,accepted,rejected,groups
+train,24849,11722,13127,24262
+val,5320,2432,2888,5199
+test,5351,2530,2821,5200

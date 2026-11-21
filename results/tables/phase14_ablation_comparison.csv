@@ -1,0 +1,6 @@
+Configuration,P@1,P@5,P@10,MRR,nDCG@5,nDCG@10,Recall@10,Promoted_R1,Demoted_R1,Net_R1_Gain
+Config A (Phase 11 Baseline),0.7966,0.4847,0.3297,0.8556,0.6654,0.6434,0.5874,0,0,0
+Config B (Phase 11 + Legal Feature Extraction),0.8051,0.4797,0.3297,0.858,0.661,0.6418,0.5864,2,1,1
+Config C (Phase 11 + Confidence-Gated Features),0.8136,0.4847,0.3297,0.864,0.6679,0.6456,0.5874,2,0,2
+Config D (Phase 11 + Gemini Query Understanding),0.8136,0.4864,0.3297,0.8626,0.6683,0.6451,0.5874,2,0,2
+Config E (Best Validated Hybrid),0.8136,0.4847,0.3297,0.864,0.6679,0.6456,0.5874,2,0,2

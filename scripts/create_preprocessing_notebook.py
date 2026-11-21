@@ -1,0 +1,236 @@
+import json
+from pathlib import Path
+
+def create_notebook():
+    nb = {
+        "cells": [
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "# Phase 2: Legal Document Preprocessing and Sentence-Aware Chunking\n",
+                    "\n",
+                    "**Project**: Enhanced Legal Document Similarity and Case Retrieval Using Hybrid BERT, Legal Knowledge, and Ensemble Learning  \n",
+                    "**Dataset**: `Exploration-Lab/IL-TUR` (Prior Case Retrieval - PCR)  \n",
+                    "\n",
+                    "This notebook demonstrates the reproducible preprocessing pipeline designed for Indian legal jurisprudence:\n",
+                    "1. **Text Normalization**: Unicode NFKC, whitespace standardization, control character removal while strictly preserving citations, case numbers, and statutory sections.\n",
+                    "2. **Document Reconstruction**: Safe assembly of sentence lists into cohesive judgments without inventing missing text.\n",
+                    "3. **Sentence-Aware Chunking**: Token-bounded transformer chunking with configurable overlap, preserving sentence boundaries and metadata.\n",
+                    "4. **Retrieval Integrity**: Partition isolation, query-candidate alignment, and zero-relevant candidate tracking."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "import sys\n",
+                    "from pathlib import Path\n",
+                    "import json\n",
+                    "import pandas as pd\n",
+                    "import pyarrow.parquet as pq\n",
+                    "import matplotlib.pyplot as plt\n",
+                    "\n",
+                    "# Ensure project root is in sys.path\n",
+                    "project_root = Path(\"..\").resolve()\n",
+                    "if str(project_root) not in sys.path:\n",
+                    "    sys.path.insert(0, str(project_root))\n",
+                    "\n",
+                    "from src.preprocessing.text_cleaner import LegalTextCleaner\n",
+                    "from src.preprocessing.document_reconstructor import DocumentReconstructor\n",
+                    "from src.preprocessing.chunker import SentenceAwareChunker\n",
+                    "\n",
+                    "print(\"Modules successfully loaded!\")"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 1. Text Normalization and Citation Preservation\n",
+                    "\n",
+                    "Legal text contains domain-specific entities (e.g., `Section 302 IPC`, `AIR 1965 SC 123`, `(2008) 4 SCC 594`) that must remain pristine during cleaning."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "cleaner = LegalTextCleaner()\n",
+                    "\n",
+                    "sample_raw = (\n",
+                    "    \"The\\u00a0appellant was convicted under\\u200b Section 302 read with Section 34 of the Indian Penal Code, 1860.\\r\\n\"\n",
+                    "    \"Reliance was placed on AIR 1965 SC 123 and (2008) 4 SCC 594.\\x00\\x08   The appeal is dismissed.\"\n",
+                    ")\n",
+                    "\n",
+                    "cleaned = cleaner.clean(sample_raw)\n",
+                    "print(\"--- RAW INPUT ---\")\n",
+                    "print(repr(sample_raw))\n",
+                    "print(\"\\n--- CLEANED OUTPUT ---\")\n",
+                    "print(cleaned)"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 2. Document Reconstruction\n",
+                    "\n",
+                    "Reconstructs full text from sentence arrays while filtering nulls and empty entries."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "reconstructor = DocumentReconstructor(cleaner=cleaner)\n",
+                    "\n",
+                    "raw_sentences = [\n",
+                    "    \"This criminal appeal arises out of the judgment passed by the High Court.\",\n",
+                    "    None,\n",
+                    "    \"   \",\n",
+                    "    \"The prosecution alleged that the accused committed offenses punishable under Section 498-A IPC.\",\n",
+                    "    \"The trial court acquitted the respondent due to lack of corroborating evidence.\"\n",
+                    "]\n",
+                    "\n",
+                    "result = reconstructor.reconstruct(raw_sentences)\n",
+                    "print(\"Sentence Count:\", result[\"sentence_count\"])\n",
+                    "print(\"Empty Sentences Removed:\", result[\"empty_sentences_count\"])\n",
+                    "print(\"Word Count:\", result[\"word_count\"])\n",
+                    "print(\"\\nReconstructed Full Text:\")\n",
+                    "print(result[\"full_text\"])"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 3. Sentence-Aware Chunking for Transformers\n",
+                    "\n",
+                    "Chunks documents into token-bounded spans (default max 512 tokens with 64 token overlap) without cutting sentences in half."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "chunker = SentenceAwareChunker(\n",
+                    "    tokenizer=project_root / \"models\" / \"bert\" / \"tokenizer.json\",\n",
+                    "    max_tokens=512,\n",
+                    "    overlap_tokens=64\n",
+                    ")\n",
+                    "\n",
+                    "# Load a sample case from raw external dataset\n",
+                    "sample_parquet = project_root / \"data\" / \"external\" / \"IL-TUR-PCR\" / \"dev_queries\" / \"dev_queries.parquet\"\n",
+                    "df_sample = pq.read_table(sample_parquet).to_pandas()\n",
+                    "sample_row = df_sample.iloc[0]\n",
+                    "\n",
+                    "recon_sample = reconstructor.reconstruct(sample_row[\"text\"])\n",
+                    "chunks = chunker.chunk_document(doc_id=str(sample_row[\"id\"]), sentences=recon_sample[\"clean_sentences\"])\n",
+                    "\n",
+                    "print(f\"Document ID: {sample_row['id']}\")\n",
+                    "print(f\"Total Clean Sentences: {recon_sample['sentence_count']}\")\n",
+                    "print(f\"Total Generated Chunks: {len(chunks)}\")\n",
+                    "print(\"\\nSample First Chunk:\")\n",
+                    "for k, v in chunks[0].items():\n",
+                    "    if k == 'text':\n",
+                    "        print(f\"  {k}: {v[:120]}...\")\n",
+                    "    else:\n",
+                    "        print(f\"  {k}: {v}\")"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 4. Preprocessing Dataset Inspection\n",
+                    "\n",
+                    "Inspect the generated documents and chunks across `data/processed/IL-TUR-PCR/`."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "processed_dir = project_root / \"data\" / \"processed\" / \"IL-TUR-PCR\"\n",
+                    "splits = [\"train_queries\", \"train_candidates\", \"dev_queries\", \"dev_candidates\", \"test_queries\", \"test_candidates\"]\n",
+                    "\n",
+                    "records = []\n",
+                    "for s in splits:\n",
+                    "    doc_p = processed_dir / s / \"documents.parquet\"\n",
+                    "    chk_p = processed_dir / s / \"chunks.parquet\"\n",
+                    "    if doc_p.exists() and chk_p.exists():\n",
+                    "        d_table = pq.read_table(doc_p, columns=[\"id\", \"sentence_count\", \"word_count\"])\n",
+                    "        c_table = pq.read_table(chk_p, columns=[\"chunk_id\", \"token_count\"])\n",
+                    "        records.append({\n",
+                    "            \"Split\": s,\n",
+                    "            \"Documents\": len(d_table),\n",
+                    "            \"Total Chunks\": len(c_table),\n",
+                    "            \"Avg Chunks/Doc\": round(len(c_table) / len(d_table), 1),\n",
+                    "            \"Avg Words/Doc\": round(float(pd.Series(d_table[\"word_count\"]).mean()), 1)\n",
+                    "        })\n",
+                    "\n",
+                    "df_overview = pd.DataFrame(records)\n",
+                    "display(df_overview) if 'display' in globals() else print(df_overview)"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 5. Summary Statistics and Distribution Visualizations"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "stats_json = project_root / \"results\" / \"tables\" / \"preprocessing_summary.json\"\n",
+                    "if stats_json.exists():\n",
+                    "    with open(stats_json, \"r\", encoding=\"utf-8\") as f:\n",
+                    "        summary_data = json.load(f)\n",
+                    "    print(\"Chunk Token Distribution:\")\n",
+                    "    print(json.dumps(summary_data[\"chunk_token_distribution\"], indent=2))\n",
+                    "\n",
+                    "fig_path = project_root / \"results\" / \"figures\" / \"chunking_distributions.png\"\n",
+                    "if fig_path.exists():\n",
+                    "    from IPython.display import Image, display\n",
+                    "    display(Image(filename=str(fig_path)))"
+                ]
+            }
+        ],
+        "metadata": {
+            "kernelspec": {
+                "display_name": "Python 3",
+                "language": "python",
+                "name": "python3"
+            },
+            "language_info": {
+                "name": "python",
+                "version": "3.13.3"
+            }
+        },
+        "nbformat": 4,
+        "nbformat_minor": 4
+    }
+
+    nb_path = Path("notebooks/02_text_preprocessing.ipynb")
+    with open(nb_path, "w", encoding="utf-8") as f:
+        json.dump(nb, f, indent=2)
+    print(f"Created notebook at {nb_path}")
+
+if __name__ == "__main__":
+    create_notebook()
+

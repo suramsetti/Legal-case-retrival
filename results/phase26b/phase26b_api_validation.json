@@ -1,0 +1,75 @@
+{
+  "base_url": "http://127.0.0.1:5000",
+  "routes": {
+    "GET /api/health": {
+      "status": 200,
+      "verified": true,
+      "description": "System health, frozen weights manifest, and candidate pool status"
+    },
+    "GET /api/datasets": {
+      "status": 200,
+      "verified": true,
+      "description": "Dataset metadata, counts (6,311 Jud-IPL test cases, 1,727 IL-TUR candidate cases), and task definitions"
+    },
+    "GET /api/judipl/metrics": {
+      "status": 200,
+      "verified": true,
+      "description": "Historical corrected Phase 21B-C test evaluation metrics for M4 and M8"
+    },
+    "GET /api/iltur/metrics": {
+      "status": 200,
+      "verified": true,
+      "description": "Genuine benchmark evaluation metrics from results/evaluation/final_test_metrics.json (Weighted Linear Fusion, BM25, TF-IDF, InLegalBERT)"
+    },
+    "POST /api/judipl/analyze": {
+      "status": 200,
+      "verified": true,
+      "description": "Live inference using frozen M4 and M8 classifiers on masked judgment text"
+    },
+    "POST /api/search": {
+      "status": 200,
+      "verified": true,
+      "description": "Prior case retrieval ranking across 1,727 candidate pool using Weighted Linear Fusion"
+    },
+    "GET /api/explorer?dataset=jud-ipl": {
+      "status": 200,
+      "verified": true,
+      "description": "Paginated search and browsing of 6,311 Jud-IPL test judgment records"
+    },
+    "GET /api/explorer?dataset=il-tur": {
+      "status": 200,
+      "verified": true,
+      "description": "Paginated search and browsing of 1,727 IL-TUR candidate precedent records"
+    },
+    "GET /api/explorer/document?dataset=jud-ipl": {
+      "status": 200,
+      "verified": true,
+      "description": "Full judgment metadata and section text lookup for Document Inspector modal"
+    },
+    "GET /api/explorer/document?dataset=il-tur": {
+      "status": 200,
+      "verified": true,
+      "description": "Candidate precedent details, court, judges, statutory provisions, and text for Document Inspector modal"
+    }
+  },
+  "negative_cases": {
+    "empty_query": 400,
+    "whitespace_query": 400,
+    "invalid_query_type": 400,
+    "invalid_top_k": 400,
+    "unknown_explorer_dataset": 400,
+    "missing_doc_id": 400,
+    "nonexistent_doc_id": 404
+  },
+  "dataset_counts": {
+    "judipl_eligible_test_size": 6311,
+    "judipl_raw_test_size": 6313,
+    "judipl_excluded_duplicate_count": 2,
+    "judipl_phase18_binary_overlap": 812,
+    "il_tur_candidate_pool_size": 1727,
+    "il_tur_total_queries": 237,
+    "il_tur_eligible_queries": 234
+  },
+  "fabricated_results": false,
+  "zero_cross_contamination": true
+}

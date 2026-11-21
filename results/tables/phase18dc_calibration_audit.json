@@ -1,0 +1,17 @@
+{
+  "flaw_identified": "In-sample validation calibration fitting in Phase 18D-B",
+  "remediation": "Group-aware 5-fold stratified out-of-fold training calibration",
+  "training_cases": 24849,
+  "validation_cases": 5320,
+  "calibrator_a": 1.351072979905492,
+  "calibrator_b": -0.09212118867248718,
+  "val_uncalibrated_accuracy": 0.6932,
+  "val_uncalibrated_macro_f1": 0.6913,
+  "val_uncalibrated_roc_auc": 0.7534,
+  "val_uncalibrated_brier": 0.2039,
+  "val_calibrated_accuracy": 0.6951,
+  "val_calibrated_macro_f1": 0.6911,
+  "val_calibrated_roc_auc": 0.7534,
+  "val_calibrated_brier": 0.2009,
+  "auc_invariance_passed": true
+}

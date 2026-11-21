@@ -1,0 +1,5 @@
+Model,Configuration,Queries_Reranked_Pct,Promoted_to_R1,Demoted_from_R1,Net_R1_Gain,P@1,P@5,P@10,Recall@5,Recall@10,MRR,nDCG@5,nDCG@10,Latency_ms_query
+1. Stage-1 Hybrid Baseline,TF-IDF (0.65) + InLegalBERT (0.25) + Legal (0.10),0.0% (0/234),0,0,0,0.641,0.4393,0.3077,0.4516,0.5563,0.7472,0.6031,0.5858,6.71
+2. Global Stage-2 Reranker,"Pairwise Neural Network (alpha=0.20, universal)",100.0% (234/234),11,32,-21,0.6453,0.4239,0.2957,0.4323,0.5398,0.748,0.5878,0.5704,9.48
+3. Margin-Gated Reranker,"tau=0.07, alpha=0.10, gamma=0.00",58.1% (136/234),9,5,4,0.6667,0.4427,0.3077,0.4524,0.5569,0.7663,0.6109,0.5913,15.01
+4. Query-Adaptive Re-Ranker,"tau=0.07, alpha=0.12, gamma=0.04",56.8% (133/234),10,5,5,0.6624,0.4444,0.3064,0.4555,0.5583,0.766,0.6121,0.5904,24.35

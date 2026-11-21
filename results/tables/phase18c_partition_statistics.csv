@@ -1,0 +1,7 @@
+task,partition,total_documents,accepted,rejected,groups,other
+binary,train,24849,11722,13127,24262,
+binary,val,5320,2432,2888,5199,
+binary,test,5351,2530,2821,5200,
+three_class,train,29395,11669,13188,28683,4538.0
+three_class,val,6297,2555,2775,6146,967.0
+three_class,test,6313,2460,2873,6148,980.0

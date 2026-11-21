@@ -1,0 +1,21 @@
+column_name,data_type,total_count,non_null_count,non_empty_count,completeness_pct,unique_values,sample_value
+id,str,42006,42006,42006,100.0,42006,0074634371
+raw_id,int64,42006,42006,42006,100.0,42006,74634371
+raw_name,str,42006,42006,42006,100.0,42006,74634371.txt
+case_category,str,42006,42006,34658,82.51,3,civil
+case_type,str,42006,42006,41469,98.72,13,writ petition
+label,str,42006,42006,42005,100.0,4,Accepted
+petitioner,str,42006,42006,14452,34.4,11899,
+respondent,str,42006,42006,29882,71.14,20836,"j u d g m e n t r.f. nariman, j. 1.
+nothing is cer"
+date_of_judgment,str,42006,42006,16845,40.1,6319,
+bench,str,42006,42006,17775,42.32,7856,
+citation_meta,str,42006,42006,8779,20.9,8679,
+proof_sentence,str,42006,42006,42005,100.0,27152,"34. we are, therefore, of the view that this appea"
+char_length,int64,42006,42006,42006,100.0,19807,32765
+word_length,int64,42006,42006,42006,100.0,5905,5762
+sentence_count,int64,42006,42006,42006,100.0,1079,254
+statute_count,int64,42006,42006,42006,100.0,13,0
+citation_count,int64,42006,42006,42006,100.0,30,0
+full_text,str,42006,42006,42006,100.0,40978,thus spake benjamin franklin in his letter of nove
+source,str,42006,42006,42006,100.0,1,Jud-IPL

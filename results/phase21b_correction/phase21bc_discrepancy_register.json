@@ -1,0 +1,24 @@
+{
+  "m4_confusion_matrix": {
+    "original_diagonal_correct": 3702,
+    "recalculated_diagonal_correct": 3702,
+    "status": "Confirmed",
+    "note": "The matrix diagonal is 3,702; the old McNemar n11+n10 claim of 3,700 is not reproducible."
+  },
+  "mcnemar": {
+    "original_n11": 3366,
+    "original_n10": 334,
+    "corrected_n11": 3277,
+    "corrected_n10": 425,
+    "status": "Corrected"
+  },
+  "historical_disclosures": {
+    "original_test": 6313,
+    "excluded": 2,
+    "eligible": 6311,
+    "overlap": 812,
+    "unexposed": 5499,
+    "status": "Confirmed"
+  },
+  "policy": "No model, checkpoint, threshold, partition, or frozen prediction was modified."
+}

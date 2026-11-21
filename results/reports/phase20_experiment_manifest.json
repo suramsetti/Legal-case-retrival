@@ -1,0 +1,102 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 20: Multi-Class Legal Judgment Outcome Classification",
+  "timestamp": "2026-11-03 23:50:00",
+  "dataset_scope": "Jud-IPL Standalone Legal Intelligence Research System (0% IL-TUR dependency)",
+  "task": "Three-Class Legal Outcome Prediction (Accepted, Rejected, Other)",
+  "classes": [
+    "Accepted",
+    "Other",
+    "Rejected"
+  ],
+  "class_distributions": {
+    "corpus_total": 42005,
+    "train": {
+      "total": 29395,
+      "Rejected": 13188,
+      "Accepted": 11669,
+      "Other": 4538
+    },
+    "validation": {
+      "total": 6297,
+      "Rejected": 2775,
+      "Accepted": 2555,
+      "Other": 967
+    },
+    "test": {
+      "total": 6313,
+      "Rejected": 2873,
+      "Accepted": 2460,
+      "Other": 980
+    }
+  },
+  "best_proposed_model": {
+    "model_id": "M8",
+    "model_name": "Hybrid Multi-Class Fusion (M1+M4+M5+M3)",
+    "ensemble_weights": {
+      "m1": 0.5,
+      "m4": 0.25,
+      "m5": 0.15,
+      "m3": 0.1
+    },
+    "validation_metrics": {
+      "accuracy": 0.595,
+      "balanced_accuracy": 0.6171,
+      "macro_f1": 0.595,
+      "weighted_f1": 0.5951,
+      "roc_auc_ovr": 0.7699,
+      "log_loss": 0.8637,
+      "f1_accepted": 0.5913,
+      "f1_other": 0.595,
+      "f1_rejected": 0.5986
+    }
+  },
+  "frozen_checkpoints": {
+    "m1_tfidf_lr_unweighted.joblib": {
+      "filename": "m1_tfidf_lr_unweighted.joblib",
+      "size_bytes": 1593747,
+      "sha256": "26c62266ad9a2d59722b49c1464111f0ec3ff8cf4ff336ec0332db818f4f5d50"
+    },
+    "m1w_tfidf_lr_balanced.joblib": {
+      "filename": "m1w_tfidf_lr_balanced.joblib",
+      "size_bytes": 1593763,
+      "sha256": "6b1688e2638448df6fbb0b32ae33500b08b7b25f2fa084b29047c33cbc1cb843"
+    },
+    "m2_tfidf_calibrated_svm.joblib": {
+      "filename": "m2_tfidf_calibrated_svm.joblib",
+      "size_bytes": 2796179,
+      "sha256": "c13224805aa4e93ef0c61d55ae5be416acfdad2b3616ace3f72d922de18075c3"
+    },
+    "m3_char_ngram_lr.joblib": {
+      "filename": "m3_char_ngram_lr.joblib",
+      "size_bytes": 1458131,
+      "sha256": "1ce55ad05ceddde1032ec0db5c23f6d9384261a8a03832f0ce2853cd3bc3b820"
+    },
+    "m4_section_aware_tfidf.joblib": {
+      "filename": "m4_section_aware_tfidf.joblib",
+      "size_bytes": 3155139,
+      "sha256": "1d5963eec3d4002112e61fe79f73f96391738ed2bc8e56dc97ed8743ac13b460"
+    },
+    "m5_citation_aware_lr.joblib": {
+      "filename": "m5_citation_aware_lr.joblib",
+      "size_bytes": 1597363,
+      "sha256": "53b592c95352fea1db9ef837b3424bea5598b79d932e24330f1d4e52c9e45b69"
+    },
+    "m6_section_transformer.pt": {
+      "filename": "m6_section_transformer.pt",
+      "size_bytes": 406654,
+      "sha256": "6d447910d7d531b80e17846aa82ff4fa2aafe5796026573bb80349512de3ef97"
+    },
+    "m7_hierarchical_model.pt": {
+      "filename": "m7_hierarchical_model.pt",
+      "size_bytes": 3816924,
+      "sha256": "d6319ce226341690bc12fe58fbfc2e4bdd65a6b95f95fcbd952a59213bacfb25"
+    },
+    "m8_hybrid_fusion.joblib": {
+      "filename": "m8_hybrid_fusion.joblib",
+      "size_bytes": 130,
+      "sha256": "552e0819080d560c1bf82b5a2eeba8a2e805fe2fed88907ca004eed16f2b4db2"
+    }
+  },
+  "evaluation_integrity_statement": "The Three-Class Test Partition (N=6,313) contains 812 judgments (12.86%) that were previously evaluated during Phase 18 binary outcome experiments. Under strict scientific standards, this partition is classified as a Held-Out Partition with Documented Prior Exposure, rather than a blind independent test set. No synthetic labels were generated, and no test leakage occurred."
+}

@@ -1,0 +1,119 @@
+{
+  "gold_benchmark_lner": {
+    "statute": {
+      "gold_count": 525,
+      "extracted_count": 296,
+      "true_positives": 162,
+      "precision": 0.5473,
+      "recall": 0.3086,
+      "f1": 0.3946
+    },
+    "court": {
+      "gold_count": 455,
+      "extracted_count": 684,
+      "true_positives": 321,
+      "precision": 0.4693,
+      "recall": 0.7055,
+      "f1": 0.5637
+    },
+    "judge": {
+      "gold_count": 123,
+      "extracted_count": 101,
+      "true_positives": 58,
+      "precision": 0.5743,
+      "recall": 0.4715,
+      "f1": 0.5179
+    },
+    "citation": {
+      "gold_count": 624,
+      "extracted_count": 276,
+      "true_positives": 125,
+      "precision": 0.4529,
+      "recall": 0.2003,
+      "f1": 0.2778
+    }
+  },
+  "gold_benchmark_rr": {
+    "total_sentences": 1396,
+    "correct_sentences": 450,
+    "overall_accuracy": 0.3223,
+    "macro_f1": 0.2332,
+    "roles_evaluated": 11
+  },
+  "corpus_coverage": {
+    "dev_queries": {
+      "total_documents": 118,
+      "statute_coverage_pct": 77.12,
+      "citation_coverage_pct": 61.86,
+      "entity_coverage_pct": 98.31,
+      "avg_statutes_per_doc": 22.65,
+      "median_statutes_per_doc": 4.0,
+      "avg_citations_per_doc": 4.09,
+      "median_citations_per_doc": 2.0,
+      "avg_entities_per_doc": 22.95,
+      "median_entities_per_doc": 11.0,
+      "unique_statute_provisions_count": 425,
+      "unique_citations_count": 399,
+      "unique_entities_count": 260,
+      "split_name": "dev_queries",
+      "runtime_seconds": 11.65
+    },
+    "dev_candidates": {
+      "total_documents": 1023,
+      "statute_coverage_pct": 73.22,
+      "citation_coverage_pct": 62.95,
+      "entity_coverage_pct": 92.18,
+      "avg_statutes_per_doc": 32.13,
+      "median_statutes_per_doc": 3.0,
+      "avg_citations_per_doc": 3.14,
+      "median_citations_per_doc": 1.0,
+      "avg_entities_per_doc": 21.95,
+      "median_entities_per_doc": 8.0,
+      "unique_statute_provisions_count": 1873,
+      "unique_citations_count": 2380,
+      "unique_entities_count": 921,
+      "split_name": "dev_candidates",
+      "runtime_seconds": 107.88
+    },
+    "test_queries": {
+      "total_documents": 237,
+      "statute_coverage_pct": 73.0,
+      "citation_coverage_pct": 57.38,
+      "entity_coverage_pct": 94.94,
+      "avg_statutes_per_doc": 19.08,
+      "median_statutes_per_doc": 3.0,
+      "avg_citations_per_doc": 3.16,
+      "median_citations_per_doc": 1.0,
+      "avg_entities_per_doc": 17.37,
+      "median_entities_per_doc": 9.0,
+      "unique_statute_provisions_count": 601,
+      "unique_citations_count": 628,
+      "unique_entities_count": 375,
+      "split_name": "test_queries",
+      "runtime_seconds": 18.55
+    },
+    "test_candidates": {
+      "total_documents": 1727,
+      "statute_coverage_pct": 70.41,
+      "citation_coverage_pct": 57.09,
+      "entity_coverage_pct": 90.45,
+      "avg_statutes_per_doc": 22.3,
+      "median_statutes_per_doc": 3.0,
+      "avg_citations_per_doc": 3.1,
+      "median_citations_per_doc": 1.0,
+      "avg_entities_per_doc": 18.86,
+      "median_entities_per_doc": 8.0,
+      "unique_statute_provisions_count": 2470,
+      "unique_citations_count": 3939,
+      "unique_entities_count": 1215,
+      "split_name": "test_candidates",
+      "runtime_seconds": 131.6
+    }
+  },
+  "splits_processed": {
+    "dev_queries": 118,
+    "dev_candidates": 1023,
+    "test_queries": 237,
+    "test_candidates": 1727
+  }
+}

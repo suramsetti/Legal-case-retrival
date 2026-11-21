@@ -1,0 +1,12 @@
+dimension,stratum,count,error_rate,accuracy
+Outcome,Accepted,500,0.27,0.73
+Outcome,Rejected,500,0.304,0.696
+Document Length,Q1 (Short),250,0.252,0.748
+Document Length,Q2 (Medium-Short),250,0.268,0.732
+Document Length,Q3 (Medium-Long),250,0.284,0.716
+Document Length,Q4 (Long),250,0.344,0.656
+Truncated (>=32k),True,171,0.3626,0.6374
+Truncated (>=32k),False,829,0.2714,0.7286
+Case Category,,155,0.2452,0.7548
+Case Category,civil,666,0.2973,0.7027
+Case Category,criminal,179,0.2849,0.7151

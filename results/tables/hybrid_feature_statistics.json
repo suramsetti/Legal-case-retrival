@@ -1,0 +1,158 @@
+{
+  "dataset_sizes": {
+    "train_pairs": 15232,
+    "train_positives": 5308,
+    "train_negatives": 9924,
+    "dev_pairs": 120596,
+    "dev_positives": 973,
+    "dev_negatives": 119623,
+    "test_pairs": 409062,
+    "test_positives": 1727,
+    "test_negatives": 407335
+  },
+  "feature_normalization": {
+    "statute_shared_count": {
+      "mean": 0.31702860439411795,
+      "std": 0.5647046288198883,
+      "min": 0.0,
+      "max": 4.477336814478207
+    },
+    "citation_shared_count": {
+      "mean": 0.029858873533568163,
+      "std": 0.16337264023666498,
+      "min": 0.0,
+      "max": 2.70805020110221
+    },
+    "entity_shared_count": {
+      "mean": 0.726819311430062,
+      "std": 0.5532356895984057,
+      "min": 0.0,
+      "max": 3.091042453358316
+    },
+    "bm25_rank": {
+      "mean": 0.12064797768055689,
+      "std": 0.12819486849121436,
+      "min": 0.0002314814814814815,
+      "max": 0.5
+    },
+    "tfidf_rank": {
+      "mean": 0.1004449681617252,
+      "std": 0.12778287110304815,
+      "min": 0.0002314814814814815,
+      "max": 1.0
+    },
+    "inlegalbert_rank": {
+      "mean": 0.024383324714748262,
+      "std": 0.07534197319931339,
+      "min": 0.0002314814814814815,
+      "max": 1.0
+    },
+    "bm25_score": {
+      "mean": 4052.9667338142103,
+      "std": 5899.191747434378,
+      "min": 0.0,
+      "max": 87176.52266700564
+    },
+    "tfidf_score": {
+      "mean": 0.2669838539859126,
+      "std": 0.09975887963239877,
+      "min": 0.0,
+      "max": 1.0000000000000004
+    },
+    "inlegalbert_sim": {
+      "mean": 0.9446129453712839,
+      "std": 0.029409781456615595,
+      "min": 0.5699912309646606,
+      "max": 1.0000001192092896
+    },
+    "statute_jaccard": {
+      "mean": 0.053058553163153756,
+      "std": 0.12336329334351426,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "statute_containment_query": {
+      "mean": 0.12403536517967938,
+      "std": 0.24918019661554355,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "citation_jaccard": {
+      "mean": 0.005007860561348468,
+      "std": 0.039864738194554966,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "entity_jaccard": {
+      "mean": 0.12576680383510003,
+      "std": 0.1381601282804891,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "judge_overlap": {
+      "mean": 0.009094965796898483,
+      "std": 0.07467312911079953,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "court_overlap": {
+      "mean": 0.5277784551320528,
+      "std": 0.42790054682808726,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "org_overlap": {
+      "mean": 0.06633988608469578,
+      "std": 0.18846348431890242,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "rhetorical_cosine": {
+      "mean": 0.9660106133473959,
+      "std": 0.049998290170929396,
+      "min": 0.4392191171646118,
+      "max": 1.0
+    },
+    "rhetorical_js_sim": {
+      "mean": 0.839570333819142,
+      "std": 0.07996141289473213,
+      "min": 0.2106934765320415,
+      "max": 1.0
+    },
+    "rhetorical_ratio_diff": {
+      "mean": 0.02881556755458122,
+      "std": 0.027045202843759376,
+      "min": 0.0,
+      "max": 0.24390244483947754
+    },
+    "composite_legal_score": {
+      "mean": 0.13885096489529306,
+      "std": 0.058192765962493204,
+      "min": 0.04452241361141205,
+      "max": 0.9999999940395355
+    }
+  },
+  "missing_value_report": {
+    "statute_shared_count": 0,
+    "citation_shared_count": 0,
+    "entity_shared_count": 0,
+    "bm25_rank": 0,
+    "tfidf_rank": 0,
+    "inlegalbert_rank": 0,
+    "bm25_score": 0,
+    "tfidf_score": 0,
+    "inlegalbert_sim": 0,
+    "statute_jaccard": 0,
+    "statute_containment_query": 0,
+    "citation_jaccard": 0,
+    "entity_jaccard": 0,
+    "judge_overlap": 0,
+    "court_overlap": 0,
+    "org_overlap": 0,
+    "rhetorical_cosine": 0,
+    "rhetorical_js_sim": 0,
+    "rhetorical_ratio_diff": 0,
+    "composite_legal_score": 0
+  },
+  "feature_columns_count": 20
+}

@@ -1,0 +1,17 @@
+Audit Check,Result,Status
+Document ID Overlap (Train vs Val),0,PASS
+Document ID Overlap (Train vs Test),0,PASS
+Document ID Overlap (Val vs Test),0,PASS
+Raw ID Overlap (Train vs Val),0,PASS
+Raw ID Overlap (Train vs Test),0,PASS
+Raw ID Overlap (Val vs Test),0,PASS
+Duplicate Group Overlap (Train vs Val),0,PASS
+Duplicate Group Overlap (Train vs Test),0,PASS
+Duplicate Group Overlap (Val vs Test),0,PASS
+Exact Text Hash Overlap (Train vs Val),1,FAIL
+Exact Text Hash Overlap (Train vs Test),1,FAIL
+Exact Text Hash Overlap (Val vs Test),1,FAIL
+Train Dispositive Phrase Neutralization,82.2% clean,PASS
+Val Dispositive Phrase Neutralization,81.45% clean,PASS
+Test Dispositive Phrase Neutralization,82.23% clean,PASS
+0% IL-TUR Dependency (100% Jud-IPL),100.0% Jud-IPL,PASS

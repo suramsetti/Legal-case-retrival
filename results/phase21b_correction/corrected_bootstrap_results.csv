@@ -1,0 +1,5 @@
+metric,point_estimate_delta_m8_minus_m4,ci_95_lower,ci_95_upper,bootstrap_p_value_pr_delta_le_zero,iterations,seed,method
+Accuracy,0.00538741879258442,-0.003965298684836088,0.014260814450958618,0.13,1000,42,paired document-index resampling; percentile CI
+Balanced Accuracy,0.0022317372078484166,-0.0070049119463128804,0.010827724452568735,0.295,1000,42,paired document-index resampling; percentile CI
+Macro-F1,0.00206940756314411,-0.006815930534664685,0.010640080204431232,0.319,1000,42,paired document-index resampling; percentile CI
+Weighted-F1,0.00584352212767314,-0.0036088567069994413,0.014800962480410176,0.113,1000,42,paired document-index resampling; percentile CI

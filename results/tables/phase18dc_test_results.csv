@@ -1,0 +1,9 @@
+evaluation_scope,configuration,model_type,calibration,threshold,sample_size,accuracy,balanced_accuracy,macro_f1,weighted_f1,precision,recall,roc_auc,pr_auc,brier_score,inference_ms_per_doc,model_size_mb,confusion_matrix
+Full Test Set (N=5,351),TF-IDF + LR Baseline,Linear Baseline,None,0.50,5351,0.6956,0.6950,0.6949,0.6957,0.6948,0.6950,0.7619,0.7259,0.2026,3.85,0.77,"[[1990, 831], [798, 1732]]"
+Full Test Set (N=5,351),TF-IDF + LR with Validation Threshold,Threshold-Adjusted Baseline,None,0.49,5351,0.6980,0.6986,0.6978,0.6982,0.6980,0.6986,0.7619,0.7259,0.2026,3.85,0.77,"[[1941, 880], [736, 1794]]"
+Full Test Set (N=5,351),TF-IDF + LR Calibrated,Calibrated Baseline,OOF Platt,0.50,5351,0.6973,0.6950,0.6953,0.6966,0.6966,0.6950,0.7619,0.7259,0.2004,3.85,0.77,"[[2078, 743], [877, 1653]]"
+Balanced Benchmark (N=1,000),TF-IDF + LR Baseline,Linear Baseline,None,0.50,1000,0.7080,0.7080,0.7080,0.7080,0.7080,0.7080,0.7602,0.7349,0.2026,3.98,0.77,"[[355, 145], [147, 353]]"
+Balanced Benchmark (N=1,000),TF-IDF + LR with Validation Threshold,Threshold-Adjusted Baseline,None,0.49,1000,0.7130,0.7130,0.7129,0.7129,0.7132,0.7130,0.7602,0.7349,0.2026,3.98,0.77,"[[348, 152], [135, 365]]"
+Balanced Benchmark (N=1,000),TF-IDF + LR Calibrated,Calibrated Baseline,OOF Platt,0.50,1000,0.7040,0.7040,0.7040,0.7040,0.7041,0.7040,0.7602,0.7349,0.2004,3.98,0.77,"[[358, 142], [154, 346]]"
+Balanced Benchmark (N=1,000),InLegalBERT Attention Pooling,Transformer,None,0.50,1000,0.5270,0.5270,0.5269,0.5269,0.5270,0.5270,0.5505,0.5324,0.2486,330.90,440.38,"[[258, 242], [231, 269]]"
+Balanced Benchmark (N=1,000),InLegalBERT BiLSTM Attention,Transformer,None,0.50,1000,0.5160,0.5160,0.5140,0.5140,0.5160,0.5160,0.5312,0.5201,0.2514,352.10,453.78,"[[264, 236], [248, 252]]"

@@ -1,0 +1,252 @@
+import json
+from pathlib import Path
+
+def create_notebook():
+    nb = {
+        "cells": [
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "# Phase 6B: Hybrid Retrieval Fusion and Learning-to-Rank\n",
+                    "\n",
+                    "**Project**: Enhanced Legal Document Similarity and Case Retrieval Using Hybrid BERT, Legal Knowledge, and Ensemble Learning  \n",
+                    "**Dataset**: `data/processed/IL-TUR-PCR/` (Indian Legal Prior Case Retrieval - PCR)  \n",
+                    "**Objective**: Combine lexical, dense semantic, and legal knowledge representations using score fusion, rank fusion, and supervised learning-to-rank on the development candidate pool."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "import sys\n",
+                    "from pathlib import Path\n",
+                    "PROJECT_ROOT = Path('.').resolve().parent if Path('.').resolve().name == 'notebooks' else Path('.').resolve()\n",
+                    "if str(PROJECT_ROOT) not in sys.path:\n",
+                    "    sys.path.insert(0, str(PROJECT_ROOT))\n",
+                    "\n",
+                    "import numpy as np\n",
+                    "import pandas as pd\n",
+                    "import matplotlib.pyplot as plt\n",
+                    "import seaborn as sns\n",
+                    "\n",
+                    "from src.evaluation.hybrid_evaluator import HybridEvaluator\n",
+                    "from src.ranking.rrf_fusion import RRFFusion\n",
+                    "from src.ranking.weighted_fusion import WeightedLinearFusion\n",
+                    "from src.ranking.lightgbm_ranker import LightGBMRanker\n",
+                    "from src.ranking.xgboost_ranker import XGBoostRanker\n",
+                    "from src.ranking.logistic_stacking import LeakageSafeLogisticStacking\n",
+                    "\n",
+                    "print('Environment and modules loaded successfully.')"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 1. Load Preprocessed Datasets (Train and Dev)\n",
+                    "\n",
+                    "We inspect the training and development partitions generated in Phase 6A."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "train_path = PROJECT_ROOT / 'data/processed/IL-TUR-PCR/train/hybrid_features.parquet'\n",
+                    "dev_path = PROJECT_ROOT / 'data/processed/IL-TUR-PCR/dev/hybrid_features.parquet'\n",
+                    "\n",
+                    "train_df = pd.read_parquet(train_path).sort_values('query_id')\n",
+                    "dev_df = pd.read_parquet(dev_path).sort_values('query_id')\n",
+                    "\n",
+                    "print(f'Train Pairs: {len(train_df):,}, Queries: {train_df[\"query_id\"].nunique()}, Positives: {train_df[\"label\"].sum()}')\n",
+                    "print(f'Dev Pairs: {len(dev_df):,}, Queries: {dev_df[\"query_id\"].nunique()}, Positives: {dev_df[\"label\"].sum()}')"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 2. Evaluate Individual Retrieval Baselines on Dev\n",
+                    "\n",
+                    "We evaluate standalone BM25, TF-IDF, and InLegalBERT dense retrieval on the unconstrained development pool (1,022 candidates per query)."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "m_bm25 = HybridEvaluator.evaluate_predictions(dev_df, score_col='bm25_score')\n",
+                    "m_tfidf = HybridEvaluator.evaluate_predictions(dev_df, score_col='tfidf_score')\n",
+                    "m_dense = HybridEvaluator.evaluate_predictions(dev_df, score_col='inlegalbert_sim')\n",
+                    "\n",
+                    "baseline_df = pd.DataFrame([\n",
+                    "    {'Model': 'BM25 Baseline', **m_bm25},\n",
+                    "    {'Model': 'TF-IDF Baseline', **m_tfidf},\n",
+                    "    {'Model': 'InLegalBERT Dense', **m_dense},\n",
+                    "])\n",
+                    "baseline_df[['Model', 'P@1', 'P@5', 'P@10', 'MRR', 'nDCG@5', 'nDCG@10']]"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 3. Model A: Reciprocal Rank Fusion (RRF)\n",
+                    "\n",
+                    "RRF combines rank reciprocals: $RRF(d) = \\sum_{m} \\frac{1}{k + \\text{rank}_m(d)}$ across BM25, TF-IDF, and InLegalBERT."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "rrf = RRFFusion(k=60, rank_cols=['bm25_rank', 'tfidf_rank', 'inlegalbert_rank'])\n",
+                    "dev_df['score_rrf_60'] = rrf.compute_scores(dev_df)\n",
+                    "m_rrf_60 = HybridEvaluator.evaluate_predictions(dev_df, score_col='score_rrf_60')\n",
+                    "\n",
+                    "# Sweep k in {20, 60, 100}\n",
+                    "k_sweep = RRFFusion.evaluate_k_grid(dev_df, k_values=[20, 60, 100], rank_cols=['bm25_rank', 'tfidf_rank', 'inlegalbert_rank'])\n",
+                    "rrf_df = pd.DataFrame([{'k': k, **metrics} for k, metrics in k_sweep.items()])\n",
+                    "rrf_df[['k', 'P@1', 'P@5', 'P@10', 'MRR', 'nDCG@5', 'nDCG@10']]"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 4. Model B: Weighted Linear Score Fusion\n",
+                    "\n",
+                    "Query-level min-max normalization followed by vectorized grid search on the development set."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "weighted_fusion = WeightedLinearFusion(\n",
+                    "    feature_cols=['bm25_score', 'tfidf_score', 'inlegalbert_sim', 'composite_legal_score'],\n",
+                    "    use_query_min_max=True,\n",
+                    ")\n",
+                    "grid_res = weighted_fusion.fit_grid_search(dev_df, step=0.05, target_metric='nDCG@10')\n",
+                    "print(f\"Best Weights [BM25, TFIDF, InLegalBERT, LegalComposite]: {grid_res['best_weights']}\")\n",
+                    "pd.DataFrame([{'Model': 'Weighted Linear Fusion', **grid_res['full_metrics']}])[['Model', 'P@1', 'P@5', 'P@10', 'MRR', 'nDCG@5', 'nDCG@10']]"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 5. Model C & D: Tree-Based Learning-to-Rank (LightGBM & XGBoost)\n",
+                    "\n",
+                    "Trained on query-grouped pairwise features with listwise/pairwise objectives."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "# Load pre-evaluated comparison table\n",
+                    "comp_df = pd.read_csv(PROJECT_ROOT / 'results/tables/hybrid_model_comparison.csv')\n",
+                    "comp_df[['Model', 'Type', 'P@1', 'P@5', 'P@10', 'MRR', 'nDCG@5', 'nDCG@10']]"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 6. Model E: Leakage-Safe Logistic Stacking Meta-Learner\n",
+                    "\n",
+                    "5-Fold GroupKFold Out-of-Fold training partitioned by query ID."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "with open(PROJECT_ROOT / 'results/evaluation/hybrid_metrics.json') as f:\n",
+                    "    metrics_json = json.load(f)\n",
+                    "\n",
+                    "stack_meta = metrics_json['model_e_logistic_stacking']['meta_coefficients']\n",
+                    "print('Learned Meta-Learner Coefficients:')\n",
+                    "for k, v in stack_meta.items():\n",
+                    "    print(f'  {k}: {v}')"
+                ]
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 7. Feature Ablation Study (7 Regimes)\n",
+                    "\n",
+                    "We analyze the incremental value of Lexical, Dense, and Legal features."
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "abl_df = pd.read_csv(PROJECT_ROOT / 'results/tables/hybrid_ablation_results.csv')\n",
+                    "abl_df[['Regime', 'Num_Features', 'P@1', 'P@5', 'P@10', 'MRR', 'nDCG@5', 'nDCG@10']]"
+                ]
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "# Visualization of Ablation Results\n",
+                    "plt.figure(figsize=(10, 5))\n",
+                    "sns.barplot(data=abl_df, x='Regime', y='MRR', palette='Blues_r')\n",
+                    "plt.title('Ablation Study: Mean Reciprocal Rank (MRR) across Feature Regimes')\n",
+                    "plt.xticks(rotation=30, ha='right')\n",
+                    "plt.ylabel('MRR')\n",
+                    "plt.grid(axis='y', linestyle='--', alpha=0.7)\n",
+                    "plt.tight_layout()\n",
+                    "plt.show()"
+                ]
+            }
+        ],
+        "metadata": {
+            "kernelspec": {
+                "display_name": "Python 3",
+                "language": "python",
+                "name": "python3"
+            },
+            "language_info": {
+                "codemirror_mode": {"name": "ipython", "version": 3},
+                "file_extension": ".py",
+                "mimetype": "text/x-python",
+                "name": "python",
+                "nbformat": 4,
+                "nbformat_minor": 4
+            }
+        },
+        "nbformat": 4,
+        "nbformat_minor": 4
+    }
+
+    out_path = Path("notebooks/07_hybrid_fusion_and_ranking.ipynb")
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(nb, f, indent=2)
+    print(f"Created notebook at {out_path}")
+
+create_notebook()
+

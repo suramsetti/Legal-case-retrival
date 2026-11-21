@@ -1,0 +1,93 @@
+{
+  "inlegalbert_dev": {
+    "split": "dev",
+    "model_name": "inlegalbert",
+    "hidden_dimension": 768,
+    "total_queries": 118,
+    "valid_queries_count": 118,
+    "zero_relevant_queries_count": 0,
+    "zero_relevant_query_ids": [],
+    "candidate_pool_size": 1023,
+    "models": {
+      "Dense_FullDoc": {
+        "strategy": "Dense_FullDoc",
+        "scope": "doc",
+        "aggregation": "direct",
+        "metrics": {
+          "P@1": 0.3051,
+          "P@5": 0.1763,
+          "P@10": 0.1254,
+          "R@5": 0.1404,
+          "R@10": 0.1989,
+          "MRR": 0.3946,
+          "nDCG@5": 0.2247,
+          "nDCG@10": 0.2177
+        },
+        "eval_runtime_seconds": 0.017
+      }
+    },
+    "total_split_runtime_seconds": 0.57
+  },
+  "inlegalbert_test": {
+    "split": "test",
+    "model_name": "inlegalbert",
+    "hidden_dimension": 768,
+    "total_queries": 237,
+    "valid_queries_count": 234,
+    "zero_relevant_queries_count": 3,
+    "zero_relevant_query_ids": [
+      "0000431954",
+      "0001508893",
+      "0001864396"
+    ],
+    "candidate_pool_size": 1727,
+    "models": {
+      "Dense_FullDoc": {
+        "strategy": "Dense_FullDoc",
+        "scope": "doc",
+        "aggregation": "direct",
+        "metrics": {
+          "P@1": 0.2521,
+          "P@5": 0.1299,
+          "P@10": 0.1051,
+          "R@5": 0.14,
+          "R@10": 0.2062,
+          "MRR": 0.3507,
+          "nDCG@5": 0.1944,
+          "nDCG@10": 0.2029
+        },
+        "eval_runtime_seconds": 0.132
+      }
+    },
+    "total_split_runtime_seconds": 2598.15
+  },
+  "bert_base_dev": {
+    "split": "dev",
+    "model_name": "bert-base-uncased",
+    "hidden_dimension": 768,
+    "total_queries": 118,
+    "valid_queries_count": 118,
+    "zero_relevant_queries_count": 0,
+    "zero_relevant_query_ids": [],
+    "candidate_pool_size": 1023,
+    "models": {
+      "Dense_FullDoc": {
+        "strategy": "Dense_FullDoc",
+        "scope": "doc",
+        "aggregation": "direct",
+        "metrics": {
+          "P@1": 0.2458,
+          "P@5": 0.1407,
+          "P@10": 0.1034,
+          "R@5": 0.1239,
+          "R@10": 0.1827,
+          "MRR": 0.3455,
+          "nDCG@5": 0.1885,
+          "nDCG@10": 0.1913
+        },
+        "eval_runtime_seconds": 0.016
+      }
+    },
+    "total_split_runtime_seconds": 1715.16
+  }
+}

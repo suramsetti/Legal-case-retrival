@@ -1,0 +1,1937 @@
+{
+  "0000012637": [
+    {
+      "query_id": "0000012637",
+      "candidate_id": "0001853481",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.89692,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.21264,
+        "legal_knowledge_contribution": 0.03428,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 72.5,
+        "percentage_dense": 23.7,
+        "percentage_legal": 3.8
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9884
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.85/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000012637",
+      "candidate_id": "0001043522",
+      "rank": 2,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.89507,
+      "score_breakdown": {
+        "tfidf_contribution": 0.60697,
+        "inlegalbert_contribution": 0.25,
+        "legal_knowledge_contribution": 0.03809,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 67.8,
+        "percentage_dense": 27.9,
+        "percentage_legal": 4.3
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9983
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.93/1.00)",
+          "High semantic similarity via InLegalBERT (1.00/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000012637",
+      "candidate_id": "0000450105",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.88115,
+      "score_breakdown": {
+        "tfidf_contribution": 0.64602,
+        "inlegalbert_contribution": 0.21426,
+        "legal_knowledge_contribution": 0.02088,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 73.3,
+        "percentage_dense": 24.3,
+        "percentage_legal": 2.4
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9904
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.99/1.00)",
+          "High semantic similarity via InLegalBERT (0.86/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000012637",
+      "candidate_id": "0000823444",
+      "rank": 4,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.87323,
+      "score_breakdown": {
+        "tfidf_contribution": 0.54271,
+        "inlegalbert_contribution": 0.24194,
+        "legal_knowledge_contribution": 0.08857,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 62.2,
+        "percentage_dense": 27.7,
+        "percentage_legal": 10.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [
+          "KSHAH"
+        ],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9956
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.83/1.00)",
+          "High semantic similarity via InLegalBERT (0.97/1.00)",
+          "Coram overlap (Shared Judges): KSHAH",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000012637",
+      "candidate_id": "0001050499",
+      "rank": 5,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.79058,
+      "score_breakdown": {
+        "tfidf_contribution": 0.51481,
+        "inlegalbert_contribution": 0.24326,
+        "legal_knowledge_contribution": 0.03251,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 65.1,
+        "percentage_dense": 30.8,
+        "percentage_legal": 4.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.999
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.79/1.00)",
+          "High semantic similarity via InLegalBERT (0.97/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    }
+  ],
+  "0000027891": [
+    {
+      "query_id": "0000027891",
+      "candidate_id": "0000766438",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.90833,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.23906,
+        "legal_knowledge_contribution": 0.01928,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 71.6,
+        "percentage_dense": 26.3,
+        "percentage_legal": 2.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9935
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.96/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000027891",
+      "candidate_id": "0000983159",
+      "rank": 2,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.87387,
+      "score_breakdown": {
+        "tfidf_contribution": 0.61094,
+        "inlegalbert_contribution": 0.24419,
+        "legal_knowledge_contribution": 0.01874,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.9,
+        "percentage_dense": 27.9,
+        "percentage_legal": 2.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.999
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.94/1.00)",
+          "High semantic similarity via InLegalBERT (0.98/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000027891",
+      "candidate_id": "0001404351",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.8204,
+      "score_breakdown": {
+        "tfidf_contribution": 0.53967,
+        "inlegalbert_contribution": 0.23457,
+        "legal_knowledge_contribution": 0.04616,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 65.8,
+        "percentage_dense": 28.6,
+        "percentage_legal": 5.6
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_14",
+          "CONST:ART_19"
+        ],
+        "shared_statutory_count": 2,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9997
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.83/1.00)",
+          "High semantic similarity via InLegalBERT (0.94/1.00)",
+          "Shared statutory provisions: CONST:ART_14, CONST:ART_19",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000027891",
+      "candidate_id": "0078882931",
+      "rank": 4,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.77872,
+      "score_breakdown": {
+        "tfidf_contribution": 0.53359,
+        "inlegalbert_contribution": 0.21803,
+        "legal_knowledge_contribution": 0.02711,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 68.5,
+        "percentage_dense": 28.0,
+        "percentage_legal": 3.5
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_14",
+          "CONST:ART_19",
+          "CONST:ART_246"
+        ],
+        "shared_statutory_count": 3,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9738
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.82/1.00)",
+          "High semantic similarity via InLegalBERT (0.87/1.00)",
+          "Shared statutory provisions: CONST:ART_14, CONST:ART_19, CONST:ART_246",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.97)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000027891",
+      "candidate_id": "0000608874",
+      "rank": 5,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.74366,
+      "score_breakdown": {
+        "tfidf_contribution": 0.47396,
+        "inlegalbert_contribution": 0.23656,
+        "legal_knowledge_contribution": 0.03314,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 63.7,
+        "percentage_dense": 31.8,
+        "percentage_legal": 4.5
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_14",
+          "CONST:ART_19",
+          "CONST:ART_246"
+        ],
+        "shared_statutory_count": 3,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.958
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.73/1.00)",
+          "High semantic similarity via InLegalBERT (0.95/1.00)",
+          "Shared statutory provisions: CONST:ART_14, CONST:ART_19, CONST:ART_246",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.96)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    }
+  ],
+  "0000035468": [
+    {
+      "query_id": "0000035468",
+      "candidate_id": "0001114727",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.99963,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.24963,
+        "legal_knowledge_contribution": 0.1,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 65.0,
+        "percentage_dense": 25.0,
+        "percentage_legal": 10.0
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_132",
+          "CONST:ART_75"
+        ],
+        "shared_statutory_count": 2,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [
+          "BANERJI"
+        ],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9949
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (1.00/1.00)",
+          "Shared statutory provisions: CONST:ART_132, CONST:ART_75",
+          "Coram overlap (Shared Judges): BANERJI",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000035468",
+      "candidate_id": "0001520872",
+      "rank": 2,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.72313,
+      "score_breakdown": {
+        "tfidf_contribution": 0.42418,
+        "inlegalbert_contribution": 0.24918,
+        "legal_knowledge_contribution": 0.04976,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 58.7,
+        "percentage_dense": 34.5,
+        "percentage_legal": 6.9
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_132",
+          "CONST:ART_75"
+        ],
+        "shared_statutory_count": 2,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9953
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "High semantic similarity via InLegalBERT (1.00/1.00)",
+          "Shared statutory provisions: CONST:ART_132, CONST:ART_75",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000035468",
+      "candidate_id": "0001766429",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.7109,
+      "score_breakdown": {
+        "tfidf_contribution": 0.42127,
+        "inlegalbert_contribution": 0.24333,
+        "legal_knowledge_contribution": 0.0463,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 59.3,
+        "percentage_dense": 34.2,
+        "percentage_legal": 6.5
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_132",
+          "CONST:ART_75"
+        ],
+        "shared_statutory_count": 2,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9983
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "High semantic similarity via InLegalBERT (0.97/1.00)",
+          "Shared statutory provisions: CONST:ART_132, CONST:ART_75",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000035468",
+      "candidate_id": "0001999527",
+      "rank": 4,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.70945,
+      "score_breakdown": {
+        "tfidf_contribution": 0.41351,
+        "inlegalbert_contribution": 0.24695,
+        "legal_knowledge_contribution": 0.04899,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 58.3,
+        "percentage_dense": 34.8,
+        "percentage_legal": 6.9
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_132",
+          "CONST:ART_66"
+        ],
+        "shared_statutory_count": 2,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9762
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "High semantic similarity via InLegalBERT (0.99/1.00)",
+          "Shared statutory provisions: CONST:ART_132, CONST:ART_66",
+          "Highly compatible rhetorical discourse structure (similarity 0.98)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000035468",
+      "candidate_id": "0001040261",
+      "rank": 5,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.6789,
+      "score_breakdown": {
+        "tfidf_contribution": 0.4289,
+        "inlegalbert_contribution": 0.23642,
+        "legal_knowledge_contribution": 0.01357,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 63.2,
+        "percentage_dense": 34.8,
+        "percentage_legal": 2.0
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9842
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "High semantic similarity via InLegalBERT (0.95/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.98)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    }
+  ],
+  "0000046064": [
+    {
+      "query_id": "0000046064",
+      "candidate_id": "0000466149",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.88905,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.20907,
+        "legal_knowledge_contribution": 0.02997,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 73.1,
+        "percentage_dense": 23.5,
+        "percentage_legal": 3.4
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9826
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.84/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.98)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000046064",
+      "candidate_id": "0001505286",
+      "rank": 2,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.65046,
+      "score_breakdown": {
+        "tfidf_contribution": 0.40825,
+        "inlegalbert_contribution": 0.22362,
+        "legal_knowledge_contribution": 0.0186,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 62.8,
+        "percentage_dense": 34.4,
+        "percentage_legal": 2.9
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9744
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "High semantic similarity via InLegalBERT (0.89/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.97)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000046064",
+      "candidate_id": "0001827392",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.64485,
+      "score_breakdown": {
+        "tfidf_contribution": 0.3838,
+        "inlegalbert_contribution": 0.20766,
+        "legal_knowledge_contribution": 0.05339,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 59.5,
+        "percentage_dense": 32.2,
+        "percentage_legal": 8.3
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [
+          "AIR:1966:SC:1300"
+        ],
+        "shared_citation_count": 1,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9673
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "High semantic similarity via InLegalBERT (0.83/1.00)",
+          "Shared formal precedent citations: AIR:1966:SC:1300",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.97)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000046064",
+      "candidate_id": "0001526873",
+      "rank": 4,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.63156,
+      "score_breakdown": {
+        "tfidf_contribution": 0.40807,
+        "inlegalbert_contribution": 0.20365,
+        "legal_knowledge_contribution": 0.01984,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 64.6,
+        "percentage_dense": 32.2,
+        "percentage_legal": 3.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9832
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "High semantic similarity via InLegalBERT (0.81/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.98)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000046064",
+      "candidate_id": "0001173575",
+      "rank": 5,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.63079,
+      "score_breakdown": {
+        "tfidf_contribution": 0.38118,
+        "inlegalbert_contribution": 0.22738,
+        "legal_knowledge_contribution": 0.02222,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 60.4,
+        "percentage_dense": 36.0,
+        "percentage_legal": 3.5
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9772
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "High semantic similarity via InLegalBERT (0.91/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.98)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    }
+  ],
+  "0000067667": [
+    {
+      "query_id": "0000067667",
+      "candidate_id": "0000653417",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.88967,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.17804,
+        "legal_knowledge_contribution": 0.06163,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 73.1,
+        "percentage_dense": 20.0,
+        "percentage_legal": 6.9
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_136",
+          "IPC:193",
+          "IPC:228"
+        ],
+        "shared_statutory_count": 3,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9289
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.71/1.00)",
+          "Shared statutory provisions: CONST:ART_136, IPC:193, IPC:228",
+          "Highly compatible rhetorical discourse structure (similarity 0.93)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000067667",
+      "candidate_id": "0000426032",
+      "rank": 2,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.88704,
+      "score_breakdown": {
+        "tfidf_contribution": 0.63599,
+        "inlegalbert_contribution": 0.23584,
+        "legal_knowledge_contribution": 0.01521,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 71.7,
+        "percentage_dense": 26.6,
+        "percentage_legal": 1.7
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.875
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.98/1.00)",
+          "High semantic similarity via InLegalBERT (0.94/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.88)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000067667",
+      "candidate_id": "0001118349",
+      "rank": 3,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.87227,
+      "score_breakdown": {
+        "tfidf_contribution": 0.62559,
+        "inlegalbert_contribution": 0.23278,
+        "legal_knowledge_contribution": 0.0139,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 71.7,
+        "percentage_dense": 26.7,
+        "percentage_legal": 1.6
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.851
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.96/1.00)",
+          "High semantic similarity via InLegalBERT (0.93/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.85)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000067667",
+      "candidate_id": "0000748977",
+      "rank": 4,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.8411,
+      "score_breakdown": {
+        "tfidf_contribution": 0.59387,
+        "inlegalbert_contribution": 0.20787,
+        "legal_knowledge_contribution": 0.03936,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 70.6,
+        "percentage_dense": 24.7,
+        "percentage_legal": 4.7
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_136",
+          "CONST:ART_227"
+        ],
+        "shared_statutory_count": 2,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.8487
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.91/1.00)",
+          "High semantic similarity via InLegalBERT (0.83/1.00)",
+          "Shared statutory provisions: CONST:ART_136, CONST:ART_227",
+          "Highly compatible rhetorical discourse structure (similarity 0.85)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000067667",
+      "candidate_id": "0000522930",
+      "rank": 5,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.83414,
+      "score_breakdown": {
+        "tfidf_contribution": 0.56987,
+        "inlegalbert_contribution": 0.226,
+        "legal_knowledge_contribution": 0.03827,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 68.3,
+        "percentage_dense": 27.1,
+        "percentage_legal": 4.6
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [
+          "CONST:ART_227"
+        ],
+        "shared_statutory_count": 1,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.966
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.88/1.00)",
+          "High semantic similarity via InLegalBERT (0.90/1.00)",
+          "Shared statutory provisions: CONST:ART_227",
+          "Highly compatible rhetorical discourse structure (similarity 0.97)"
+        ],
+        "non_matching_factors": []
+      }
+    }
+  ],
+  "0000067739": [
+    {
+      "query_id": "0000067739",
+      "candidate_id": "0000082058",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.97956,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.25,
+        "legal_knowledge_contribution": 0.07956,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 66.4,
+        "percentage_dense": 25.5,
+        "percentage_legal": 8.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9998
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (1.00/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000067739",
+      "candidate_id": "0001798717",
+      "rank": 2,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.89075,
+      "score_breakdown": {
+        "tfidf_contribution": 0.62173,
+        "inlegalbert_contribution": 0.23054,
+        "legal_knowledge_contribution": 0.03848,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.8,
+        "percentage_dense": 25.9,
+        "percentage_legal": 4.3
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9981
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.96/1.00)",
+          "High semantic similarity via InLegalBERT (0.92/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000067739",
+      "candidate_id": "0000572278",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.8638,
+      "score_breakdown": {
+        "tfidf_contribution": 0.55152,
+        "inlegalbert_contribution": 0.23441,
+        "legal_knowledge_contribution": 0.07787,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 63.8,
+        "percentage_dense": 27.1,
+        "percentage_legal": 9.0
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9792
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.85/1.00)",
+          "High semantic similarity via InLegalBERT (0.94/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.98)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000067739",
+      "candidate_id": "0000144847",
+      "rank": 4,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.80013,
+      "score_breakdown": {
+        "tfidf_contribution": 0.53105,
+        "inlegalbert_contribution": 0.23046,
+        "legal_knowledge_contribution": 0.03861,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 66.4,
+        "percentage_dense": 28.8,
+        "percentage_legal": 4.8
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9997
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.82/1.00)",
+          "High semantic similarity via InLegalBERT (0.92/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": []
+      }
+    },
+    {
+      "query_id": "0000067739",
+      "candidate_id": "0001988958",
+      "rank": 5,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.78582,
+      "score_breakdown": {
+        "tfidf_contribution": 0.48999,
+        "inlegalbert_contribution": 0.22684,
+        "legal_knowledge_contribution": 0.06899,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 62.4,
+        "percentage_dense": 28.9,
+        "percentage_legal": 8.8
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9958
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.75/1.00)",
+          "High semantic similarity via InLegalBERT (0.91/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": []
+      }
+    }
+  ],
+  "0000092507": [
+    {
+      "query_id": "0000092507",
+      "candidate_id": "0000701162",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.90055,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.24052,
+        "legal_knowledge_contribution": 0.01003,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 72.2,
+        "percentage_dense": 26.7,
+        "percentage_legal": 1.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9834
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.96/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.98)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000092507",
+      "candidate_id": "0001066060",
+      "rank": 2,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.85411,
+      "score_breakdown": {
+        "tfidf_contribution": 0.59675,
+        "inlegalbert_contribution": 0.24778,
+        "legal_knowledge_contribution": 0.00958,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.9,
+        "percentage_dense": 29.0,
+        "percentage_legal": 1.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "HIGH_COURT",
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.992
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.92/1.00)",
+          "High semantic similarity via InLegalBERT (0.99/1.00)",
+          "Jurisdictional forum: HIGH_COURT, SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000092507",
+      "candidate_id": "0001567210",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.83721,
+      "score_breakdown": {
+        "tfidf_contribution": 0.57259,
+        "inlegalbert_contribution": 0.24636,
+        "legal_knowledge_contribution": 0.01826,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 68.4,
+        "percentage_dense": 29.4,
+        "percentage_legal": 2.2
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "HIGH_COURT"
+        ],
+        "rhetorical_similarity": 0.9927
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.88/1.00)",
+          "High semantic similarity via InLegalBERT (0.99/1.00)",
+          "Jurisdictional forum: HIGH_COURT",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000092507",
+      "candidate_id": "0001416283",
+      "rank": 4,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.8102,
+      "score_breakdown": {
+        "tfidf_contribution": 0.59743,
+        "inlegalbert_contribution": 0.20198,
+        "legal_knowledge_contribution": 0.01079,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 73.7,
+        "percentage_dense": 24.9,
+        "percentage_legal": 1.3
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9921
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.92/1.00)",
+          "High semantic similarity via InLegalBERT (0.81/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000092507",
+      "candidate_id": "0000018076",
+      "rank": 5,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.80976,
+      "score_breakdown": {
+        "tfidf_contribution": 0.55411,
+        "inlegalbert_contribution": 0.24654,
+        "legal_knowledge_contribution": 0.00911,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 68.4,
+        "percentage_dense": 30.4,
+        "percentage_legal": 1.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9918
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.85/1.00)",
+          "High semantic similarity via InLegalBERT (0.99/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query",
+          "No reported precedent citations shared with query"
+        ]
+      }
+    }
+  ],
+  "0000098072": [
+    {
+      "query_id": "0000098072",
+      "candidate_id": "0057910187",
+      "rank": 1,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.93176,
+      "score_breakdown": {
+        "tfidf_contribution": 0.64719,
+        "inlegalbert_contribution": 0.24245,
+        "legal_knowledge_contribution": 0.04211,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.5,
+        "percentage_dense": 26.0,
+        "percentage_legal": 4.5
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9984
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.97/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000098072",
+      "candidate_id": "0172442656",
+      "rank": 2,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.9275,
+      "score_breakdown": {
+        "tfidf_contribution": 0.64873,
+        "inlegalbert_contribution": 0.24492,
+        "legal_knowledge_contribution": 0.03385,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.9,
+        "percentage_dense": 26.4,
+        "percentage_legal": 3.6
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9954
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.98/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000098072",
+      "candidate_id": "0000153655",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.90772,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.22487,
+        "legal_knowledge_contribution": 0.03285,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 71.6,
+        "percentage_dense": 24.8,
+        "percentage_legal": 3.6
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9904
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.90/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000098072",
+      "candidate_id": "0000912111",
+      "rank": 4,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.89905,
+      "score_breakdown": {
+        "tfidf_contribution": 0.62215,
+        "inlegalbert_contribution": 0.24325,
+        "legal_knowledge_contribution": 0.03365,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.2,
+        "percentage_dense": 27.1,
+        "percentage_legal": 3.7
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9916
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.96/1.00)",
+          "High semantic similarity via InLegalBERT (0.97/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000098072",
+      "candidate_id": "0001620184",
+      "rank": 5,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.87981,
+      "score_breakdown": {
+        "tfidf_contribution": 0.58851,
+        "inlegalbert_contribution": 0.24116,
+        "legal_knowledge_contribution": 0.05014,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 66.9,
+        "percentage_dense": 27.4,
+        "percentage_legal": 5.7
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9969
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.91/1.00)",
+          "High semantic similarity via InLegalBERT (0.96/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No reported precedent citations shared with query"
+        ]
+      }
+    }
+  ],
+  "0000105440": [
+    {
+      "query_id": "0000105440",
+      "candidate_id": "0000981438",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.93927,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.24089,
+        "legal_knowledge_contribution": 0.04839,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.2,
+        "percentage_dense": 25.6,
+        "percentage_legal": 5.2
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9961
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.96/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 1.00)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000105440",
+      "candidate_id": "0001783426",
+      "rank": 2,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.91819,
+      "score_breakdown": {
+        "tfidf_contribution": 0.62098,
+        "inlegalbert_contribution": 0.25,
+        "legal_knowledge_contribution": 0.04721,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 67.6,
+        "percentage_dense": 27.2,
+        "percentage_legal": 5.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9875
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.96/1.00)",
+          "High semantic similarity via InLegalBERT (1.00/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000105440",
+      "candidate_id": "0000468409",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.87049,
+      "score_breakdown": {
+        "tfidf_contribution": 0.59885,
+        "inlegalbert_contribution": 0.22452,
+        "legal_knowledge_contribution": 0.04712,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 68.8,
+        "percentage_dense": 25.8,
+        "percentage_legal": 5.4
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9868
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.92/1.00)",
+          "High semantic similarity via InLegalBERT (0.90/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000105440",
+      "candidate_id": "0001781912",
+      "rank": 4,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.85497,
+      "score_breakdown": {
+        "tfidf_contribution": 0.57879,
+        "inlegalbert_contribution": 0.22891,
+        "legal_knowledge_contribution": 0.04727,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 67.7,
+        "percentage_dense": 26.8,
+        "percentage_legal": 5.5
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9879
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.89/1.00)",
+          "High semantic similarity via InLegalBERT (0.92/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000105440",
+      "candidate_id": "0001986314",
+      "rank": 5,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.76501,
+      "score_breakdown": {
+        "tfidf_contribution": 0.50663,
+        "inlegalbert_contribution": 0.21039,
+        "legal_knowledge_contribution": 0.04798,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 66.2,
+        "percentage_dense": 27.5,
+        "percentage_legal": 6.3
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9931
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.78/1.00)",
+          "High semantic similarity via InLegalBERT (0.84/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.99)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    }
+  ],
+  "0000125801": [
+    {
+      "query_id": "0000125801",
+      "candidate_id": "0001776507",
+      "rank": 1,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.9227,
+      "score_breakdown": {
+        "tfidf_contribution": 0.65,
+        "inlegalbert_contribution": 0.2352,
+        "legal_knowledge_contribution": 0.0375,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 70.4,
+        "percentage_dense": 25.5,
+        "percentage_legal": 4.1
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9598
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 1.00/1.00)",
+          "High semantic similarity via InLegalBERT (0.94/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.96)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000125801",
+      "candidate_id": "0000068208",
+      "rank": 2,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.89861,
+      "score_breakdown": {
+        "tfidf_contribution": 0.61943,
+        "inlegalbert_contribution": 0.23111,
+        "legal_knowledge_contribution": 0.04807,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 68.9,
+        "percentage_dense": 25.7,
+        "percentage_legal": 5.3
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9428
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.95/1.00)",
+          "High semantic similarity via InLegalBERT (0.92/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.94)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000125801",
+      "candidate_id": "0001435406",
+      "rank": 3,
+      "is_ground_truth_precedent": true,
+      "hybrid_score": 0.88477,
+      "score_breakdown": {
+        "tfidf_contribution": 0.61435,
+        "inlegalbert_contribution": 0.22202,
+        "legal_knowledge_contribution": 0.0484,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.4,
+        "percentage_dense": 25.1,
+        "percentage_legal": 5.5
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9462
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.95/1.00)",
+          "High semantic similarity via InLegalBERT (0.89/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.95)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000125801",
+      "candidate_id": "0001363770",
+      "rank": 4,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.87202,
+      "score_breakdown": {
+        "tfidf_contribution": 0.60959,
+        "inlegalbert_contribution": 0.23628,
+        "legal_knowledge_contribution": 0.02615,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 69.9,
+        "percentage_dense": 27.1,
+        "percentage_legal": 3.0
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [],
+        "rhetorical_similarity": 0.9689
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.94/1.00)",
+          "High semantic similarity via InLegalBERT (0.95/1.00)",
+          "Highly compatible rhetorical discourse structure (similarity 0.97)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    },
+    {
+      "query_id": "0000125801",
+      "candidate_id": "0000791009",
+      "rank": 5,
+      "is_ground_truth_precedent": false,
+      "hybrid_score": 0.85962,
+      "score_breakdown": {
+        "tfidf_contribution": 0.56407,
+        "inlegalbert_contribution": 0.25,
+        "legal_knowledge_contribution": 0.04555,
+        "bm25_contribution": 0.0,
+        "percentage_tfidf": 65.6,
+        "percentage_dense": 29.1,
+        "percentage_legal": 5.3
+      },
+      "legal_features": {
+        "shared_statutory_provisions": [],
+        "shared_statutory_count": 0,
+        "shared_precedent_citations": [],
+        "shared_citation_count": 0,
+        "shared_judges": [],
+        "shared_courts": [
+          "SUPREME_COURT_OF_INDIA"
+        ],
+        "rhetorical_similarity": 0.9796
+      },
+      "interpretation": {
+        "primary_retrieval_driver": "TF-IDF Lexical Anchor",
+        "matching_factors": [
+          "Strong lexical phrasing overlap (TF-IDF score 0.87/1.00)",
+          "High semantic similarity via InLegalBERT (1.00/1.00)",
+          "Jurisdictional forum: SUPREME_COURT_OF_INDIA",
+          "Highly compatible rhetorical discourse structure (similarity 0.98)"
+        ],
+        "non_matching_factors": [
+          "No statutory provisions shared with query"
+        ]
+      }
+    }
+  ]
+}

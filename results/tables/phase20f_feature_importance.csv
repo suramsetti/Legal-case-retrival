@@ -1,0 +1,61 @@
+class_name,rank,feature,coefficient,direction
+Accepted,1,masked_holding the,2.4971,Positive
+Accepted,2,appellant,1.7979,Positive
+Accepted,3,the appellant,1.7752,Positive
+Accepted,4,set aside,1.655,Positive
+Accepted,5,aside,1.5907,Positive
+Accepted,6,masked_holding,1.4818,Positive
+Accepted,7,is set,1.1641,Positive
+Accepted,8,set,1.0999,Positive
+Accepted,9,aside the,1.0485,Positive
+Accepted,10,allowing,1.0113,Positive
+Accepted,11,the appellants,0.9579,Positive
+Accepted,12,judgment and,0.9546,Positive
+Accepted,13,and order,0.9023,Positive
+Accepted,14,in error,0.8832,Positive
+Accepted,15,the respondent,0.8594,Positive
+Accepted,16,allowing the,0.8531,Positive
+Accepted,17,the high,0.8275,Positive
+Accepted,18,appellate,0.8148,Positive
+Accepted,19,clearly,0.7616,Positive
+Accepted,20,respondent,0.7609,Positive
+Other,1,petitioner,3.2456,Positive
+Other,2,the petitioner,3.1425,Positive
+Other,3,the petitioners,2.6851,Positive
+Other,4,petitioners,2.6489,Positive
+Other,5,accordingly,1.4094,Positive
+Other,6,petitions,1.2548,Positive
+Other,7,petition,1.2488,Positive
+Other,8,petitioner was,1.1066,Positive
+Other,9,32,1.1059,Positive
+Other,10,32 of,1.0915,Positive
+Other,11,this petition,1.0212,Positive
+Other,12,is accordingly,1.01,Positive
+Other,13,accordingly dismissed,0.994,Positive
+Other,14,petitioner has,0.9418,Positive
+Other,15,article 32,0.9115,Positive
+Other,16,petition is,0.8967,Positive
+Other,17,is dismissed,0.8514,Positive
+Other,18,dismissed,0.8408,Positive
+Other,19,these,0.8306,Positive
+Other,20,petitioner in,0.8125,Positive
+Rejected,1,masked_holding,2.6333,Positive
+Rejected,2,masked_holding masked_ruling,1.9169,Positive
+Rejected,3,appellants,1.5928,Positive
+Rejected,4,appellant,1.4911,Positive
+Rejected,5,the appellant,1.4802,Positive
+Rejected,6,the appellants,1.4311,Positive
+Rejected,7,appeal,1.3417,Positive
+Rejected,8,to interfere,1.1796,Positive
+Rejected,9,appellant that,1.1758,Positive
+Rejected,10,court masked_holding,1.1174,Positive
+Rejected,11,appeals,1.0247,Positive
+Rejected,12,interfere,1.0023,Positive
+Rejected,13,contention,0.9996,Positive
+Rejected,14,rightly,0.9284,Positive
+Rejected,15,interfere with,0.9143,Positive
+Rejected,16,civil appeal,0.8406,Positive
+Rejected,17,over the,0.761,Positive
+Rejected,18,criminal appeal,0.7565,Positive
+Rejected,19,high court,0.7345,Positive
+Rejected,20,dismissing the,0.7329,Positive

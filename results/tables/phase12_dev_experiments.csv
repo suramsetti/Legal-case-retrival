@@ -1,0 +1,5 @@
+Model,Configuration,P@1,MRR,nDCG@10
+1. Phase 11 Frozen Baseline,"Margin-Gated Pairwise (tau=0.07, alpha=0.12, gamma=0.04)",0.7966,0.8556,0.6434
+2. Cross-Encoder Only,InLegalBERT Joint Token Attention (Top-5),0.4237,0.6092,0.4562
+3. Rhetorical-Aware Cross-Encoder,Section-Aware Chunking + Discourse Alignment,0.4237,0.6122,0.4574
+4. Phase 11 Adaptive + Cross-Encoder,"Margin-Gated (tau=0.05, beta=0.1, gamma=0.0)",0.7797,0.8415,0.6349

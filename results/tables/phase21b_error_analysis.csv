@@ -1,0 +1,10 @@
+subgroup_category,subgroup_value,sample_size,population_share,m4_accuracy,m8_accuracy,accuracy_delta,m4_macro_f1,m8_macro_f1,macro_f1_delta
+Prior Exposure,Phase 18 Exposed,812,12.87,0.5591,0.5628,0.0037,0.3966,0.3991,0.0025
+Prior Exposure,Unexposed (Blind),5499,87.13,0.5907,0.5963,0.0056,0.5974,0.5999,0.0024
+Document Length,Long (>4500 words),1489,23.59,0.5144,0.5165,0.002,0.5223,0.5222,-0.0002
+Document Length,Medium (1501-4500 words),2642,41.86,0.5905,0.5889,-0.0015,0.5827,0.579,-0.0037
+Document Length,Short (<=1500 words),2180,34.54,0.6312,0.6472,0.0161,0.6358,0.6474,0.0116
+Citation Richness,Citation-Poor (<=5),6298,99.79,0.5869,0.5924,0.0056,0.5901,0.5923,0.0022
+Citation Richness,Citation-Rich (>5),13,0.21,0.4615,0.3846,-0.0769,0.4459,0.4,-0.0459
+Reasoning Section,Reasoning Missing/Brief,584,9.25,0.6233,0.6404,0.0171,0.6231,0.6355,0.0124
+Reasoning Section,Reasoning Present,5727,90.75,0.5829,0.587,0.0042,0.5828,0.5846,0.0018

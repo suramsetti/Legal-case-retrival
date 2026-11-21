@@ -1,0 +1,11 @@
+Model,Type,P@1,P@5,P@10,R@5,R@10,MRR,nDCG@5,nDCG@10,evaluated_queries
+BM25 Baseline (Lexical),Unsupervised,0.4831,0.3169,0.2271,0.2787,0.3841,0.5988,0.3987,0.3963,118
+TF-IDF Baseline (Lexical),Unsupervised,0.7881,0.4831,0.3102,0.4773,0.5556,0.8373,0.6597,0.6223,118
+InLegalBERT Baseline (Dense),Unsupervised,0.3051,0.1763,0.1254,0.1404,0.1989,0.4043,0.2247,0.2177,118
+Model A: Reciprocal Rank Fusion (k=60),Rank Fusion,0.5593,0.3508,0.2644,0.3341,0.4906,0.6589,0.4553,0.472,118
+Model A: Reciprocal Rank Fusion (k=20),Rank Fusion,0.6356,0.3983,0.2856,0.3842,0.5166,0.7276,0.5284,0.5284,118
+Model A: Reciprocal Rank Fusion (k=100),Rank Fusion,0.5339,0.3339,0.2508,0.3003,0.4644,0.6391,0.4325,0.4505,118
+Model B: Weighted Linear Fusion (Best Dev Weights),Score Fusion,0.7881,0.4712,0.3212,0.4701,0.577,0.8461,0.6543,0.6349,118
+Model C: LightGBM LambdaMART Ranker,Learning-to-Rank,0.3475,0.1881,0.128,0.1755,0.2091,0.4321,0.2627,0.2444,118
+Model D: XGBoost Ranker,Learning-to-Rank,0.3305,0.1898,0.1373,0.1662,0.2249,0.4364,0.2638,0.2548,118
+Model E: Leakage-Safe Logistic Stacking,Meta-Learner,0.6186,0.339,0.2305,0.3315,0.4057,0.7017,0.4867,0.4643,118

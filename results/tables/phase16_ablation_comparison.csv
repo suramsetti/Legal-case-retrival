@@ -1,0 +1,25 @@
+Configuration,Split,P@1,P@5,P@10,MRR,nDCG@5,nDCG@10,Recall@5,Recall@10,Latency_ms_per_q
+Config A: Phase 14 Frozen Baseline,Development Split (118 queries),0.8136,0.4847,0.3297,0.864,0.6679,0.6456,0.4803,0.5874,13.38
+Config B: Phase 15 Frozen Baseline,Development Split (118 queries),0.8136,0.4831,0.3297,0.8626,0.6636,0.6445,0.4718,0.5887,14.8
+Config C: Standalone InLegalBERT Dense,Development Split (118 queries),0.3051,0.1763,0.1254,0.4043,0.2247,0.2177,0.1404,0.1989,4.2
+Config D: Hard-Negative Bi-Encoder,Development Split (118 queries),0.3898,0.2356,0.1703,0.4927,0.2949,0.2877,0.1736,0.2544,4.8
+Config E: Cross-Encoder Reranking,Development Split (118 queries),0.7288,0.4305,0.2992,0.7987,0.6002,0.5882,0.4327,0.5458,14.5
+Config F: Legal Feature-Enhanced,Development Split (118 queries),0.6441,0.4237,0.2907,0.745,0.5588,0.5432,0.4146,0.5267,5.1
+Config G: Complete Phase 16 Hybrid Stage 1,Development Split (118 queries),0.7966,0.4712,0.3153,0.8491,0.6522,0.6267,0.4728,0.5705,6.2
+Config H: Phase 16 Adaptive Fusion (Proposed),Development Split (118 queries),0.7966,0.4763,0.3271,0.847,0.654,0.6368,0.4699,0.584,20.6
+Config A: Phase 14 Frozen Baseline,"Test Split (Exploratory, 234 queries)",0.6624,0.4444,0.3064,0.766,0.6121,0.5904,0.4555,0.5583,25.56
+Config B: Phase 15 Frozen Baseline,"Test Split (Exploratory, 234 queries)",0.6624,0.4453,0.3064,0.766,0.6124,0.5905,0.4559,0.5586,28.26
+Config C: Standalone InLegalBERT Dense,"Test Split (Exploratory, 234 queries)",0.2521,0.1299,0.1051,0.3618,0.1944,0.2029,0.14,0.2062,4.2
+Config D: Hard-Negative Bi-Encoder,"Test Split (Exploratory, 234 queries)",0.3376,0.2085,0.1543,0.4542,0.2827,0.2749,0.1919,0.2591,4.8
+Config E: Cross-Encoder Reranking,"Test Split (Exploratory, 234 queries)",0.6197,0.4009,0.285,0.7167,0.5547,0.5424,0.405,0.5149,14.5
+Config F: Legal Feature-Enhanced,"Test Split (Exploratory, 234 queries)",0.5855,0.3957,0.2808,0.6917,0.5339,0.5218,0.3857,0.504,5.1
+Config G: Complete Phase 16 Hybrid Stage 1,"Test Split (Exploratory, 234 queries)",0.6325,0.4342,0.309,0.7397,0.5926,0.5832,0.4353,0.5602,6.2
+Config H: Phase 16 Adaptive Fusion (Proposed),"Test Split (Exploratory, 234 queries)",0.6624,0.4444,0.3077,0.7588,0.6089,0.589,0.4492,0.5568,31.86
+Config A: Phase 14 Frozen Baseline,Independent Held-Out (117 unseen queries),0.6325,0.4034,0.2726,0.7222,0.5537,0.5383,0.4281,0.5272,34.27
+Config B: Phase 15 Frozen Baseline,Independent Held-Out (117 unseen queries),0.6325,0.4034,0.2726,0.7222,0.553,0.5379,0.4281,0.5272,18.57
+Config C: Standalone InLegalBERT Dense,Independent Held-Out (117 unseen queries),0.2222,0.1145,0.1,0.3207,0.1766,0.1894,0.1407,0.197,4.2
+Config D: Hard-Negative Bi-Encoder,Independent Held-Out (117 unseen queries),0.265,0.1829,0.1427,0.3751,0.2459,0.2476,0.1759,0.2357,4.8
+Config E: Cross-Encoder Reranking,Independent Held-Out (117 unseen queries),0.5385,0.3504,0.2513,0.6436,0.4787,0.48,0.3684,0.477,14.5
+Config F: Legal Feature-Enhanced,Independent Held-Out (117 unseen queries),0.5214,0.3453,0.2547,0.6265,0.4651,0.4737,0.3471,0.4823,5.1
+Config G: Complete Phase 16 Hybrid Stage 1,Independent Held-Out (117 unseen queries),0.5641,0.3863,0.2744,0.6709,0.5194,0.5185,0.3952,0.5147,6.2
+Config H: Phase 16 Adaptive Fusion (Proposed),Independent Held-Out (117 unseen queries),0.6239,0.4017,0.2752,0.7097,0.5456,0.535,0.4102,0.5223,22.96

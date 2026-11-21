@@ -1,0 +1,59 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 19: Advanced Legal Document Representation and Classification Optimization",
+  "timestamp": "2026-11-03 22:38:00",
+  "dataset_scope": "Jud-IPL Standalone Legal Intelligence Research System (0% IL-TUR dependency)",
+  "task": "Binary Legal Judgment Outcome Prediction (Accepted=1, Rejected=0)",
+  "best_proposed_model": "Hybrid Feature Fusion (Section-Aware TF-IDF + Legal Features + Char N-Grams)",
+  "decision_threshold": 0.49,
+  "validation_macro_f1": 0.6779,
+  "validation_accuracy": 0.6789,
+  "validation_roc_auc": 0.7441,
+  "frozen_checkpoints": {
+    "hybrid_fusion_model": {
+      "filename": "hybrid_fusion_model.joblib",
+      "size_bytes": 495,
+      "sha256": "54458f4b0f84ed323a026a098b75cb047c80ce08cf9e411dd7032480d9e69840"
+    },
+    "section_aware_tfidf_lr": {
+      "filename": "section_aware_tfidf_lr.joblib",
+      "size_bytes": 2354915,
+      "sha256": "3439ed5c11bfa2c3e80a8f333ae5fea475d7ab16c4dcb1df7377b9dd1367b418"
+    },
+    "citation_aware_lr": {
+      "filename": "citation_aware_lr.joblib",
+      "size_bytes": 1197043,
+      "sha256": "0fce792aa48318634011a20e811e54c05712deedd91d12a6d8f91e6ceba52b67"
+    },
+    "char_ngram_lr": {
+      "filename": "char_ngram_lr.joblib",
+      "size_bytes": 1057859,
+      "sha256": "98923abc44b5604b630eff98a72b3e77440be9fd19956cade59047d0418a70e9"
+    },
+    "section_aware_transformer": {
+      "filename": "section_aware_transformer.pt",
+      "size_bytes": 400543,
+      "sha256": "4040b58e6b4a2b2ad19b088f2afe3b9fa80ab10d100e5ef89ac7989010fcaab7"
+    },
+    "hierarchical_legal_model": {
+      "filename": "hierarchical_legal_model.pt",
+      "size_bytes": 3816539,
+      "sha256": "9ffc505f88237f237389ba764282993dc778e478dc974aa97a190d84c138938a"
+    }
+  },
+  "independent_test_audit": {
+    "total_corpus_documents": 42006,
+    "train_partition_size": 24849,
+    "validation_partition_size": 5320,
+    "phase18_test_partition_size": 5351,
+    "total_binary_partitioned": 35520,
+    "unpartitioned_documents": 6486,
+    "unpartitioned_labels": {
+      "Other": 6485,
+      "": 1
+    },
+    "eligible_unused_binary_documents": 0,
+    "independent_test_available": false,
+    "limitation_statement": "All 35,520 valid binary outcome judgments in Jud-IPL were exhausted during the initial Phase 18 split (24,849 train, 5,320 val, 5,351 test). The remaining 6,486 documents in Jud-IPL comprise 6,485 cases with label 'Other' (remands, interlocutory orders, advisory references) and 1 blank record, none of which possess ground-truth binary outcome labels. Per Strict Constraint 5 ('Never fabricate metrics or labels') and Phase 19G guidance ('If insufficient unused documents exist, report this limitation and do not claim a new independent test result'), no synthetic or unverified test results are generated."
+  }
+}

@@ -1,0 +1,7 @@
+model_id,class,precision,recall,f1_score,support,false_positives,false_negatives
+M4,Accepted,0.5657,0.5763,0.5709,2459,1088,1042
+M4,Other,0.5353,0.6969,0.6055,980,593,297
+M4,Rejected,0.6332,0.5578,0.5931,2872,928,1270
+M8,Accepted,0.5774,0.5872,0.5823,2459,1057,1015
+M8,Other,0.5217,0.6867,0.593,980,617,307
+M8,Rejected,0.6425,0.5637,0.6005,2872,901,1253

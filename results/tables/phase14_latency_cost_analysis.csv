@@ -1,0 +1,6 @@
+Configuration,Latency_ms_per_query,Avg_Tokens_per_Query,Estimated_Cost_USD_per_Query,Cost_per_10k_Queries_USD,Confidence_Gated,Deterministic_Fallback
+Config A (Phase 11 Baseline),3.69,0,0.0,0.0,No,100% Phase 11 Baseline Guarantee
+Config B (Phase 11 + Legal Feature Extraction),32.19,450,6.75e-05,0.675,No,100% Phase 11 Baseline Guarantee
+Config C (Phase 11 + Confidence-Gated Features),7.67,120,1.8e-05,0.18,Yes,100% Phase 11 Baseline Guarantee
+Config D (Phase 11 + Gemini Query Understanding),38.69,650,9.75e-05,0.975,No,100% Phase 11 Baseline Guarantee
+Config E (Best Validated Hybrid),7.67,120,1.8e-05,0.18,Yes,100% Phase 11 Baseline Guarantee

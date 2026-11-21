@@ -1,0 +1,3 @@
+System,Avg_Latency_ms,Avg_Tokens_per_Query,Est_Cost_USD_per_Query,Cost_per_10k_Queries_USD,Fallback_Guarantee
+Phase 14 Production Engine,7.67,120,1.8e-05,0.18,100% Phase 11 Baseline
+Phase 15 Generalization Engine,7.42,120,1.8e-05,0.18,100% Phase 11 Baseline

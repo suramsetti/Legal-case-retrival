@@ -1,0 +1,4 @@
+model,split,strategy,dim,P@1,P@5,P@10,R@5,R@10,MRR,nDCG@5,nDCG@10,runtime_sec
+inlegalbert,dev,Dense_FullDoc,768,0.3051,0.1763,0.1254,0.1404,0.1989,0.3946,0.2247,0.2177,0.017
+inlegalbert,test,Dense_FullDoc,768,0.2521,0.1299,0.1051,0.14,0.2062,0.3507,0.1944,0.2029,0.132
+bert-base-uncased,dev,Dense_FullDoc,768,0.2458,0.1407,0.1034,0.1239,0.1827,0.3455,0.1885,0.1913,0.016

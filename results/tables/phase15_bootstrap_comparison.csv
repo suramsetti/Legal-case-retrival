@@ -1,0 +1,5 @@
+Metric,Phase14_Baseline,Phase15_Generalization,Mean_Difference,95%_CI_Lower,95%_CI_Upper,p_value,Statistically_Significant
+P@1,0.6325,0.6325,0.0,0.0,0.0,1.0,False
+MRR,0.7222,0.7222,0.0,0.0,0.0,1.0,False
+nDCG@10,0.5383,0.5379,-0.0004,-0.0011,0.0,0.3785,False
+Recall@10,0.5272,0.5272,0.0,0.0,0.0,1.0,False

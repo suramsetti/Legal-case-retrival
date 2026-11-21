@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "implementation": {
+    "route": "POST /api/search",
+    "service_class": "RetrievalService",
+    "candidate_count_loaded": 1727,
+    "feature_rows_loaded": 409062,
+    "weights": {
+      "tfidf_score": 0.65,
+      "inlegalbert_sim": 0.25,
+      "composite_legal_score": 0.1,
+      "bm25_score": 0.0
+    },
+    "candidate_storage": "data/processed/IL-TUR-PCR/test_candidates/documents.parquet",
+    "feature_index": "data/processed/IL-TUR-PCR/test/hybrid_features.parquet",
+    "checkpoint_artifact": "models/checkpoints/weighted_fusion_weights.json",
+    "judipl_accessed": false
+  },
+  "free_text": {
+    "status_code": 200,
+    "query_type": "free_text",
+    "result_count": 5,
+    "result_ids": [
+      "0000042334",
+      "0000307495",
+      "0000079786",
+      "0000853570",
+      "0000307021"
+    ],
+    "scores": [
+      0.9,
+      0.6427,
+      0.6372,
+      0.5402,
+      0.4953
+    ],
+    "snippets_present": true,
+    "rank_order": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "benchmark": {
+    "query_id": "0000021652",
+    "status_code": 200,
+    "query_type": "benchmark_query",
+    "result_count": 3,
+    "self_excluded": true,
+    "scores": [
+      0.9942,
+      0.9218,
+      0.7451
+    ]
+  },
+  "genuine_scores": true,
+  "mapping_verified": true
+}

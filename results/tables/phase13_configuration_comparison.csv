@@ -1,0 +1,8 @@
+Configuration,P@1,P@5,P@10,Recall@5,Recall@10,MRR,nDCG@5,nDCG@10,Promoted_to_R1,Demoted_from_R1,Net_R1_Gain
+Config A (Phase 11 Baseline),0.7966,0.4847,0.3297,0.4803,0.5874,0.8556,0.6654,0.6434,0,0,0
+Config B (Phase 11 + Query Expansion),0.7881,0.4847,0.3297,0.4793,0.5874,0.8497,0.6637,0.6427,2,3,-1
+Config C (Phase 11 + Ratio Extraction),0.7966,0.4814,0.3297,0.4771,0.5874,0.8478,0.6598,0.6406,1,1,0
+Config D (Phase 11 + Precedent Reranking),0.6441,0.4034,0.2814,0.3904,0.4855,0.7306,0.5494,0.531,1,19,-18
+Config E (Phase 11 + Expansion + Ratio),0.7712,0.4831,0.3297,0.4791,0.5874,0.8381,0.6583,0.639,0,3,-3
+Config F (Full Gemini Pipeline),0.6271,0.361,0.2508,0.3594,0.4374,0.6937,0.5076,0.4901,1,21,-20
+Config G (Full Gemini + Evidence Validation),0.6271,0.361,0.2517,0.3594,0.4385,0.6938,0.5076,0.4908,1,21,-20

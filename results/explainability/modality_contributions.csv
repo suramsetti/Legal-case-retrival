@@ -1,0 +1,6 @@
+Candidate_Slice,TFIDF_Mean_Contrib,TFIDF_Pct_Share,Dense_Mean_Contrib,Dense_Pct_Share,Legal_Mean_Contrib,Legal_Pct_Share,BM25_Mean_Contrib,BM25_Pct_Share
+all_pairs,0.21665,48.34,0.20384,45.48,0.02774,6.19,0.0,0.0
+top1_candidates,0.6439,68.69,0.23466,25.03,0.05882,6.27,0.0,0.0
+top5_candidates,0.55201,66.37,0.23071,27.74,0.04897,5.89,0.0,0.0
+top10_candidates,0.50679,64.75,0.22943,29.31,0.04645,5.93,0.0,0.0
+true_positives,0.41475,61.33,0.22058,32.62,0.04095,6.06,0.0,0.0

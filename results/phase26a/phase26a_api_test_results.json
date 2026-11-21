@@ -1,0 +1,76 @@
+{
+  "valid_free_text": {
+    "status_code": 200,
+    "query_type": "free_text",
+    "result_count": 5,
+    "result_ids": [
+      "0000042334",
+      "0000307495",
+      "0000079786",
+      "0000853570",
+      "0000307021"
+    ],
+    "scores": [
+      0.9,
+      0.6427,
+      0.6372,
+      0.5402,
+      0.4953
+    ],
+    "snippets_present": true,
+    "rank_order": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "valid_benchmark_query": {
+    "query_id": "0000021652",
+    "status_code": 200,
+    "query_type": "benchmark_query",
+    "result_count": 3,
+    "self_excluded": true,
+    "scores": [
+      0.9942,
+      0.9218,
+      0.7451
+    ]
+  },
+  "empty": {
+    "status_code": 400,
+    "body": {
+      "error": "Query cannot be empty. Please provide a legal query description or case ID.",
+      "results": []
+    }
+  },
+  "whitespace": {
+    "status_code": 400,
+    "body": {
+      "error": "Query cannot be empty. Please provide a legal query description or case ID.",
+      "results": []
+    }
+  },
+  "invalid_type": {
+    "status_code": 400,
+    "body": {
+      "error": "Query must be a string.",
+      "results": []
+    }
+  },
+  "invalid_top_k": {
+    "status_code": 400,
+    "body": {
+      "error": "top_k must be an integer.",
+      "results": []
+    }
+  },
+  "out_of_range_top_k": {
+    "status_code": 400,
+    "body": {
+      "error": "top_k must be between 1 and 100.",
+      "results": []
+    }
+  }
+}

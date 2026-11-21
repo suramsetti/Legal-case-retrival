@@ -1,0 +1,5 @@
+model_name,val_accuracy,val_macro_f1,val_weighted_f1,val_precision,val_recall,val_roc_auc,val_pr_auc,confusion_matrix,best_epoch,inference_ms_per_doc,train_time_sec,checkpoint_file
+InLegalBERT Sequence Classifier,0.5,0.4987,0.4987,0.5,0.5,0.5061,0.5115,"[[135, 165], [135, 165]]",5,0.051,2.71,inlegalbert_sequence_classifier_best.pt
+InLegalBERT BiLSTM,0.5,0.4978,0.4978,0.5,0.5,0.5127,0.5245,"[[130, 170], [130, 170]]",4,0.386,20.39,inlegalbert_bilstm_best.pt
+InLegalBERT Attention Pooling,0.5117,0.5108,0.5108,0.5117,0.5117,0.5355,0.5496,"[[141, 159], [134, 166]]",3,0.095,4.53,inlegalbert_attention_pooling_best.pt
+InLegalBERT BiLSTM Attention,0.53,0.5242,0.5242,0.5315,0.53,0.5168,0.5125,"[[126, 174], [108, 192]]",5,0.422,22.0,inlegalbert_bilstm_attention_best.pt

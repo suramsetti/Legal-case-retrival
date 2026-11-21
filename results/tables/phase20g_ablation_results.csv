@@ -1,0 +1,7 @@
+ablation_id,configuration,accuracy,balanced_accuracy,macro_f1,f1_accepted,f1_rejected,f1_other,roc_auc_ovr,delta_macro_f1
+ABL-0 (Best Fusion),Hybrid Multi-Class Fusion (M8),0.595,0.6171,0.595,0.5913,0.5986,0.595,0.7699,0.0
+ABL-1,Section-Aware TF-IDF alone (M4),0.5906,0.6135,0.5913,0.5836,0.5955,0.5947,0.7721,-0.0037
+ABL-2,Monolithic TF-IDF alone (M1),0.5785,0.6008,0.5782,0.5765,0.5812,0.5768,0.7524,-0.0168
+ABL-3,Calibrated Linear SVM (M2),0.5761,0.6001,0.5757,0.5805,0.5729,0.5738,0.752,-0.0193
+ABL-4,Sub-word Char N-Grams alone (M3),0.5625,0.5927,0.5647,0.5553,0.5639,0.5748,0.7505,-0.0303
+ABL-5,Citation-Aware Model alone (M5),0.5722,0.5981,0.5729,0.5702,0.5724,0.5761,0.75,-0.0221

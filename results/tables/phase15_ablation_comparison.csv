@@ -1,0 +1,7 @@
+Split,System,P@1,P@5,P@10,MRR,nDCG@5,nDCG@10,Recall@10,Latency_ms_per_q
+Development Split (118 queries),Phase 14 Production Engine,0.8136,0.4847,0.3297,0.864,0.6679,0.6456,0.5874,8.02
+Development Split (118 queries),Phase 15 Generalization Engine,0.8136,0.4831,0.3297,0.8626,0.6636,0.6445,0.5887,7.44
+"Test Split (Exploratory, 234 queries)",Phase 14 Production Engine,0.6624,0.4444,0.3064,0.766,0.6121,0.5904,0.5583,11.12
+"Test Split (Exploratory, 234 queries)",Phase 15 Generalization Engine,0.6624,0.4453,0.3064,0.766,0.6124,0.5905,0.5586,12.0
+Independent Held-Out (117 unseen queries),Phase 14 Production Engine,0.6325,0.4034,0.2726,0.7222,0.5537,0.5383,0.5272,11.48
+Independent Held-Out (117 unseen queries),Phase 15 Generalization Engine,0.6325,0.4034,0.2726,0.7222,0.553,0.5379,0.5272,11.83

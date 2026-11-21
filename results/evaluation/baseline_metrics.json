@@ -1,0 +1,488 @@
+{
+  "dev": {
+    "split": "dev",
+    "total_queries": 118,
+    "valid_queries_count": 118,
+    "zero_relevant_queries_count": 0,
+    "zero_relevant_query_ids": [],
+    "candidate_pool_size": 1023,
+    "candidate_chunk_count": 41376,
+    "avg_resolvable_relevant": 8.25,
+    "models": {
+      "BM25_Chunk_Max": {
+        "strategy": "BM25_Chunk_Max",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "max",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.6441,
+          "P@5": 0.4729,
+          "P@10": 0.3424,
+          "R@5": 0.4603,
+          "R@10": 0.603,
+          "MRR": 0.7434,
+          "nDCG@5": 0.6023,
+          "nDCG@10": 0.6055
+        },
+        "eval_runtime_seconds": 0.374
+      },
+      "BM25_Chunk_Top3Mean": {
+        "strategy": "BM25_Chunk_Top3Mean",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 3,
+        "metrics": {
+          "P@1": 0.6356,
+          "P@5": 0.4678,
+          "P@10": 0.3415,
+          "R@5": 0.459,
+          "R@10": 0.5867,
+          "MRR": 0.7516,
+          "nDCG@5": 0.609,
+          "nDCG@10": 0.6106
+        },
+        "eval_runtime_seconds": 0.693
+      },
+      "BM25_Chunk_Top5Mean": {
+        "strategy": "BM25_Chunk_Top5Mean",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 5,
+        "metrics": {
+          "P@1": 0.6949,
+          "P@5": 0.4593,
+          "P@10": 0.3339,
+          "R@5": 0.4477,
+          "R@10": 0.5659,
+          "MRR": 0.7754,
+          "nDCG@5": 0.6105,
+          "nDCG@10": 0.6054
+        },
+        "eval_runtime_seconds": 0.549
+      },
+      "BM25_FullDoc": {
+        "strategy": "BM25_FullDoc",
+        "model_type": "bm25",
+        "scope": "doc",
+        "aggregation": "direct",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.4831,
+          "P@5": 0.3169,
+          "P@10": 0.2271,
+          "R@5": 0.2787,
+          "R@10": 0.3841,
+          "MRR": 0.5939,
+          "nDCG@5": 0.3987,
+          "nDCG@10": 0.3963
+        },
+        "eval_runtime_seconds": 0.006
+      },
+      "TFIDF_Chunk_Max": {
+        "strategy": "TFIDF_Chunk_Max",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "max",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.7203,
+          "P@5": 0.522,
+          "P@10": 0.3627,
+          "R@5": 0.4953,
+          "R@10": 0.625,
+          "MRR": 0.8031,
+          "nDCG@5": 0.6666,
+          "nDCG@10": 0.6552
+        },
+        "eval_runtime_seconds": 0.286
+      },
+      "TFIDF_Chunk_Top3Mean": {
+        "strategy": "TFIDF_Chunk_Top3Mean",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 3,
+        "metrics": {
+          "P@1": 0.7712,
+          "P@5": 0.5102,
+          "P@10": 0.3686,
+          "R@5": 0.4773,
+          "R@10": 0.6295,
+          "MRR": 0.8327,
+          "nDCG@5": 0.677,
+          "nDCG@10": 0.6769
+        },
+        "eval_runtime_seconds": 0.588
+      },
+      "TFIDF_Chunk_Top5Mean": {
+        "strategy": "TFIDF_Chunk_Top5Mean",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 5,
+        "metrics": {
+          "P@1": 0.7797,
+          "P@5": 0.5051,
+          "P@10": 0.3525,
+          "R@5": 0.4795,
+          "R@10": 0.5874,
+          "MRR": 0.8381,
+          "nDCG@5": 0.676,
+          "nDCG@10": 0.6575
+        },
+        "eval_runtime_seconds": 0.657
+      },
+      "TFIDF_FullDoc": {
+        "strategy": "TFIDF_FullDoc",
+        "model_type": "tfidf",
+        "scope": "doc",
+        "aggregation": "direct",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.7881,
+          "P@5": 0.4831,
+          "P@10": 0.3102,
+          "R@5": 0.4773,
+          "R@10": 0.5556,
+          "MRR": 0.8338,
+          "nDCG@5": 0.6597,
+          "nDCG@10": 0.6223
+        },
+        "eval_runtime_seconds": 0.006
+      }
+    },
+    "total_split_runtime_seconds": 30.75
+  },
+  "test": {
+    "split": "test",
+    "total_queries": 237,
+    "valid_queries_count": 234,
+    "zero_relevant_queries_count": 3,
+    "zero_relevant_query_ids": [
+      "0000431954",
+      "0001508893",
+      "0001864396"
+    ],
+    "candidate_pool_size": 1727,
+    "candidate_chunk_count": 56955,
+    "avg_resolvable_relevant": 7.38,
+    "models": {
+      "BM25_Chunk_Max": {
+        "strategy": "BM25_Chunk_Max",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "max",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.5299,
+          "P@5": 0.4043,
+          "P@10": 0.3085,
+          "R@5": 0.3984,
+          "R@10": 0.5375,
+          "MRR": 0.6528,
+          "nDCG@5": 0.524,
+          "nDCG@10": 0.5316
+        },
+        "eval_runtime_seconds": 0.97
+      },
+      "BM25_Chunk_Top3Mean": {
+        "strategy": "BM25_Chunk_Top3Mean",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 3,
+        "metrics": {
+          "P@1": 0.547,
+          "P@5": 0.4017,
+          "P@10": 0.3068,
+          "R@5": 0.3963,
+          "R@10": 0.5362,
+          "MRR": 0.6605,
+          "nDCG@5": 0.5273,
+          "nDCG@10": 0.5348
+        },
+        "eval_runtime_seconds": 1.95
+      },
+      "BM25_Chunk_Top5Mean": {
+        "strategy": "BM25_Chunk_Top5Mean",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 5,
+        "metrics": {
+          "P@1": 0.5128,
+          "P@5": 0.3974,
+          "P@10": 0.3051,
+          "R@5": 0.3858,
+          "R@10": 0.5364,
+          "MRR": 0.6421,
+          "nDCG@5": 0.5182,
+          "nDCG@10": 0.5288
+        },
+        "eval_runtime_seconds": 2.073
+      },
+      "BM25_FullDoc": {
+        "strategy": "BM25_FullDoc",
+        "model_type": "bm25",
+        "scope": "doc",
+        "aggregation": "direct",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.4573,
+          "P@5": 0.3103,
+          "P@10": 0.2316,
+          "R@5": 0.2835,
+          "R@10": 0.3996,
+          "MRR": 0.5751,
+          "nDCG@5": 0.4094,
+          "nDCG@10": 0.408
+        },
+        "eval_runtime_seconds": 0.01
+      },
+      "TFIDF_Chunk_Max": {
+        "strategy": "TFIDF_Chunk_Max",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "max",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.5684,
+          "P@5": 0.447,
+          "P@10": 0.3487,
+          "R@5": 0.4475,
+          "R@10": 0.5953,
+          "MRR": 0.6972,
+          "nDCG@5": 0.5803,
+          "nDCG@10": 0.5912
+        },
+        "eval_runtime_seconds": 0.819
+      },
+      "TFIDF_Chunk_Top3Mean": {
+        "strategy": "TFIDF_Chunk_Top3Mean",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 3,
+        "metrics": {
+          "P@1": 0.5769,
+          "P@5": 0.4521,
+          "P@10": 0.3436,
+          "R@5": 0.4511,
+          "R@10": 0.5915,
+          "MRR": 0.7036,
+          "nDCG@5": 0.5919,
+          "nDCG@10": 0.5968
+        },
+        "eval_runtime_seconds": 2.025
+      },
+      "TFIDF_Chunk_Top5Mean": {
+        "strategy": "TFIDF_Chunk_Top5Mean",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 5,
+        "metrics": {
+          "P@1": 0.5769,
+          "P@5": 0.4479,
+          "P@10": 0.3393,
+          "R@5": 0.4459,
+          "R@10": 0.5906,
+          "MRR": 0.7051,
+          "nDCG@5": 0.5909,
+          "nDCG@10": 0.596
+        },
+        "eval_runtime_seconds": 2.106
+      },
+      "TFIDF_FullDoc": {
+        "strategy": "TFIDF_FullDoc",
+        "model_type": "tfidf",
+        "scope": "doc",
+        "aggregation": "direct",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.641,
+          "P@5": 0.4376,
+          "P@10": 0.3103,
+          "R@5": 0.4492,
+          "R@10": 0.5631,
+          "MRR": 0.7388,
+          "nDCG@5": 0.5956,
+          "nDCG@10": 0.5834
+        },
+        "eval_runtime_seconds": 0.014
+      }
+    },
+    "total_split_runtime_seconds": 40.12
+  },
+  "train": {
+    "split": "train",
+    "total_queries": 827,
+    "valid_queries_count": 817,
+    "zero_relevant_queries_count": 10,
+    "zero_relevant_query_ids": [
+      "0000081544",
+      "0000346402",
+      "0000413768",
+      "0000510738",
+      "0000573252",
+      "0000794130",
+      "0001691127",
+      "0001695633",
+      "0001719918",
+      "0001931233"
+    ],
+    "candidate_pool_size": 4320,
+    "candidate_chunk_count": 128297,
+    "avg_resolvable_relevant": 6.5,
+    "models": {
+      "BM25_Chunk_Max": {
+        "strategy": "BM25_Chunk_Max",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "max",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.3868,
+          "P@5": 0.2867,
+          "P@10": 0.2153,
+          "R@5": 0.2998,
+          "R@10": 0.4124,
+          "MRR": 0.5196,
+          "nDCG@5": 0.3759,
+          "nDCG@10": 0.3876
+        },
+        "eval_runtime_seconds": 13.179
+      },
+      "BM25_Chunk_Top3Mean": {
+        "strategy": "BM25_Chunk_Top3Mean",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 3,
+        "metrics": {
+          "P@1": 0.4137,
+          "P@5": 0.2918,
+          "P@10": 0.2165,
+          "R@5": 0.3016,
+          "R@10": 0.4096,
+          "MRR": 0.5394,
+          "nDCG@5": 0.3863,
+          "nDCG@10": 0.3946
+        },
+        "eval_runtime_seconds": 69.407
+      },
+      "BM25_Chunk_Top5Mean": {
+        "strategy": "BM25_Chunk_Top5Mean",
+        "model_type": "bm25",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 5,
+        "metrics": {
+          "P@1": 0.4051,
+          "P@5": 0.2852,
+          "P@10": 0.211,
+          "R@5": 0.2923,
+          "R@10": 0.398,
+          "MRR": 0.5312,
+          "nDCG@5": 0.3767,
+          "nDCG@10": 0.3845
+        },
+        "eval_runtime_seconds": 65.733
+      },
+      "BM25_FullDoc": {
+        "strategy": "BM25_FullDoc",
+        "model_type": "bm25",
+        "scope": "doc",
+        "aggregation": "direct",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.3207,
+          "P@5": 0.2169,
+          "P@10": 0.1621,
+          "R@5": 0.2182,
+          "R@10": 0.3055,
+          "MRR": 0.4408,
+          "nDCG@5": 0.2898,
+          "nDCG@10": 0.295
+        },
+        "eval_runtime_seconds": 0.125
+      },
+      "TFIDF_Chunk_Max": {
+        "strategy": "TFIDF_Chunk_Max",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "max",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.4162,
+          "P@5": 0.3253,
+          "P@10": 0.2464,
+          "R@5": 0.3393,
+          "R@10": 0.471,
+          "MRR": 0.5653,
+          "nDCG@5": 0.4211,
+          "nDCG@10": 0.4382
+        },
+        "eval_runtime_seconds": 13.326
+      },
+      "TFIDF_Chunk_Top3Mean": {
+        "strategy": "TFIDF_Chunk_Top3Mean",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 3,
+        "metrics": {
+          "P@1": 0.437,
+          "P@5": 0.3315,
+          "P@10": 0.2432,
+          "R@5": 0.3507,
+          "R@10": 0.4639,
+          "MRR": 0.5791,
+          "nDCG@5": 0.4346,
+          "nDCG@10": 0.4417
+        },
+        "eval_runtime_seconds": 68.308
+      },
+      "TFIDF_Chunk_Top5Mean": {
+        "strategy": "TFIDF_Chunk_Top5Mean",
+        "model_type": "tfidf",
+        "scope": "chunk",
+        "aggregation": "top_k_mean",
+        "top_k_aggregation": 5,
+        "metrics": {
+          "P@1": 0.4382,
+          "P@5": 0.3283,
+          "P@10": 0.2382,
+          "R@5": 0.3427,
+          "R@10": 0.4563,
+          "MRR": 0.5813,
+          "nDCG@5": 0.4297,
+          "nDCG@10": 0.4354
+        },
+        "eval_runtime_seconds": 65.528
+      },
+      "TFIDF_FullDoc": {
+        "strategy": "TFIDF_FullDoc",
+        "model_type": "tfidf",
+        "scope": "doc",
+        "aggregation": "direct",
+        "top_k_aggregation": 1,
+        "metrics": {
+          "P@1": 0.4639,
+          "P@5": 0.3099,
+          "P@10": 0.219,
+          "R@5": 0.3388,
+          "R@10": 0.4394,
+          "MRR": 0.5947,
+          "nDCG@5": 0.4269,
+          "nDCG@10": 0.4283
+        },
+        "eval_runtime_seconds": 0.127
+      }
+    },
+    "total_split_runtime_seconds": 441.2
+  }
+}

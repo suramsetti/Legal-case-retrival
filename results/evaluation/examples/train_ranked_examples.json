@@ -1,0 +1,3058 @@
+{
+  "BM25_Chunk_Max": [
+    {
+      "query_id": "0000000599",
+      "ground_truth_relevant": [
+        "0001742283",
+        "0001292810"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001207163",
+          "score": 4239.5332,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000264503",
+          "score": 3982.0613,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001296654",
+          "score": 3765.8318,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001742283",
+          "score": 3619.9004,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000016726",
+          "score": 3538.7002,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000175790",
+          "score": 3478.2629,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001292810",
+          "score": 3439.5742,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001504198",
+          "score": 3411.5862,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000468835",
+          "score": 3409.2109,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001598222",
+          "score": 3191.1155,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.2,
+        "P@10": 0.2,
+        "R@5": 0.5,
+        "R@10": 1.0,
+        "MRR": 0.25,
+        "nDCG@5": 0.2641,
+        "nDCG@10": 0.4685
+      }
+    },
+    {
+      "query_id": "0000002886",
+      "ground_truth_relevant": [
+        "0001488491",
+        "0000502366",
+        "0001633734",
+        "0000722940",
+        "0000798843",
+        "0001093075",
+        "0000066438",
+        "0000877318",
+        "0000087686",
+        "0001192616",
+        "0001284923",
+        "0000936815",
+        "0001388538",
+        "0001182074",
+        "0000515942",
+        "0000292374",
+        "0001139598",
+        "0000091645"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000515942",
+          "score": 4830.2261,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000534552",
+          "score": 4806.5684,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001626208",
+          "score": 4686.522,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000936815",
+          "score": 4613.0669,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001544426",
+          "score": 4589.2568,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001332953",
+          "score": 4498.8062,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001488491",
+          "score": 4495.3257,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001182074",
+          "score": 4477.4683,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001388538",
+          "score": 4402.4736,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000672592",
+          "score": 4333.7593,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.4,
+        "P@10": 0.5,
+        "R@5": 0.1111,
+        "R@10": 0.2778,
+        "MRR": 1.0,
+        "nDCG@5": 0.4852,
+        "nDCG@10": 0.5239
+      }
+    },
+    {
+      "query_id": "0000009122",
+      "ground_truth_relevant": [
+        "0000882637"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001014468",
+          "score": 2996.4775,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000347812",
+          "score": 2962.512,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0172560102",
+          "score": 2906.7507,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000939288",
+          "score": 2892.0571,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000096494",
+          "score": 2888.9038,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000507659",
+          "score": 2871.8296,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000487832",
+          "score": 2859.8357,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000554586",
+          "score": 2824.6658,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000653753",
+          "score": 2823.521,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000581229",
+          "score": 2803.8091,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    },
+    {
+      "query_id": "0000009256",
+      "ground_truth_relevant": [
+        "0000144447",
+        "0001857451",
+        "0000814469",
+        "0001220020",
+        "0091917453",
+        "0000984460",
+        "0001333573",
+        "0001672668",
+        "0001806797",
+        "0001437558",
+        "0001630046",
+        "0000333647",
+        "0000128011",
+        "0001829587",
+        "0001334480",
+        "0000665431"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001437558",
+          "score": 2029.9957,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000984460",
+          "score": 1946.7859,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000814469",
+          "score": 1920.7601,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001747962",
+          "score": 1870.4222,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001688386",
+          "score": 1860.5619,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 1821.0254,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000144447",
+          "score": 1802.2854,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001047268",
+          "score": 1797.8984,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001886928",
+          "score": 1777.6801,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000904314",
+          "score": 1745.5079,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.6,
+        "P@10": 0.4,
+        "R@5": 0.1875,
+        "R@10": 0.25,
+        "MRR": 1.0,
+        "nDCG@5": 0.7227,
+        "nDCG@10": 0.5424
+      }
+    },
+    {
+      "query_id": "0000010271",
+      "ground_truth_relevant": [
+        "0000686491",
+        "0001862687",
+        "0000937251",
+        "0001786065",
+        "0000040914",
+        "0001035123",
+        "0001147147",
+        "0000455716"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000235169",
+          "score": 2636.426,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000137587",
+          "score": 2629.0068,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000758530",
+          "score": 2598.626,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000163109",
+          "score": 2576.5422,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001029775",
+          "score": 2465.8369,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000243070",
+          "score": 2457.9856,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001257548",
+          "score": 2451.3945,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000241174",
+          "score": 2443.9143,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001142123",
+          "score": 2440.0798,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000515070",
+          "score": 2434.2314,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    }
+  ],
+  "BM25_Chunk_Top3Mean": [
+    {
+      "query_id": "0000000599",
+      "ground_truth_relevant": [
+        "0001742283",
+        "0001292810"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001207163",
+          "score": 3951.6736,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001296654",
+          "score": 3622.7273,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000264503",
+          "score": 3588.0945,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001742283",
+          "score": 3346.3176,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001292810",
+          "score": 3299.2109,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000468835",
+          "score": 3203.3103,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000016726",
+          "score": 3188.5095,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000175790",
+          "score": 3114.241,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001504198",
+          "score": 3102.3699,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000811367",
+          "score": 3050.9163,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 1.0,
+        "R@10": 1.0,
+        "MRR": 0.25,
+        "nDCG@5": 0.5013,
+        "nDCG@10": 0.5013
+      }
+    },
+    {
+      "query_id": "0000002886",
+      "ground_truth_relevant": [
+        "0001488491",
+        "0000502366",
+        "0001633734",
+        "0000722940",
+        "0000798843",
+        "0001093075",
+        "0000066438",
+        "0000877318",
+        "0000087686",
+        "0001192616",
+        "0001284923",
+        "0000936815",
+        "0001388538",
+        "0001182074",
+        "0000515942",
+        "0000292374",
+        "0001139598",
+        "0000091645"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000515942",
+          "score": 4782.0757,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000534552",
+          "score": 4715.0132,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001544426",
+          "score": 4484.042,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001388538",
+          "score": 4241.3066,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000347330",
+          "score": 4172.9297,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001959928",
+          "score": 4158.4678,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001332953",
+          "score": 4135.4888,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001182074",
+          "score": 4129.5244,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001488491",
+          "score": 4064.4248,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000936815",
+          "score": 4063.1323,
+          "is_relevant": true
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.4,
+        "P@10": 0.5,
+        "R@5": 0.1111,
+        "R@10": 0.2778,
+        "MRR": 1.0,
+        "nDCG@5": 0.4852,
+        "nDCG@10": 0.5142
+      }
+    },
+    {
+      "query_id": "0000009122",
+      "ground_truth_relevant": [
+        "0000882637"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000939288",
+          "score": 2827.5652,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0172560102",
+          "score": 2785.948,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000612149",
+          "score": 2683.9507,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000581229",
+          "score": 2671.8843,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001014468",
+          "score": 2665.7246,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000487832",
+          "score": 2653.6084,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000347812",
+          "score": 2651.717,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001628129",
+          "score": 2647.3767,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000653753",
+          "score": 2645.2681,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000718964",
+          "score": 2623.5244,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    },
+    {
+      "query_id": "0000009256",
+      "ground_truth_relevant": [
+        "0000144447",
+        "0001857451",
+        "0000814469",
+        "0001220020",
+        "0091917453",
+        "0000984460",
+        "0001333573",
+        "0001672668",
+        "0001806797",
+        "0001437558",
+        "0001630046",
+        "0000333647",
+        "0000128011",
+        "0001829587",
+        "0001334480",
+        "0000665431"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001437558",
+          "score": 1952.9968,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001688386",
+          "score": 1824.577,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000814469",
+          "score": 1738.4462,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001886928",
+          "score": 1694.7185,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 1694.3517,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000144447",
+          "score": 1677.6311,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001444110",
+          "score": 1650.4832,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000845482",
+          "score": 1637.7527,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001747962",
+          "score": 1635.4683,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000665431",
+          "score": 1631.4097,
+          "is_relevant": true
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.4,
+        "P@10": 0.4,
+        "R@5": 0.125,
+        "R@10": 0.25,
+        "MRR": 1.0,
+        "nDCG@5": 0.5087,
+        "nDCG@10": 0.4722
+      }
+    },
+    {
+      "query_id": "0000010271",
+      "ground_truth_relevant": [
+        "0000686491",
+        "0001862687",
+        "0000937251",
+        "0001786065",
+        "0000040914",
+        "0001035123",
+        "0001147147",
+        "0000455716"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000137587",
+          "score": 2533.6021,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000235169",
+          "score": 2516.2183,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000241174",
+          "score": 2378.8577,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000758530",
+          "score": 2367.165,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000922429",
+          "score": 2364.2505,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001257548",
+          "score": 2362.0066,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000515070",
+          "score": 2320.7156,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001038933",
+          "score": 2320.3921,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000163109",
+          "score": 2310.6011,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000320833",
+          "score": 2287.979,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    }
+  ],
+  "BM25_Chunk_Top5Mean": [
+    {
+      "query_id": "0000000599",
+      "ground_truth_relevant": [
+        "0001742283",
+        "0001292810"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001207163",
+          "score": 3850.2354,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001296654",
+          "score": 3491.8228,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000264503",
+          "score": 3399.0273,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001292810",
+          "score": 3218.7888,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001742283",
+          "score": 3168.7942,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000468835",
+          "score": 3013.8274,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000175790",
+          "score": 3002.2961,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000016726",
+          "score": 2982.0903,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001598222",
+          "score": 2878.5444,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000717481",
+          "score": 2877.9072,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 1.0,
+        "R@10": 1.0,
+        "MRR": 0.25,
+        "nDCG@5": 0.5013,
+        "nDCG@10": 0.5013
+      }
+    },
+    {
+      "query_id": "0000002886",
+      "ground_truth_relevant": [
+        "0001488491",
+        "0000502366",
+        "0001633734",
+        "0000722940",
+        "0000798843",
+        "0001093075",
+        "0000066438",
+        "0000877318",
+        "0000087686",
+        "0001192616",
+        "0001284923",
+        "0000936815",
+        "0001388538",
+        "0001182074",
+        "0000515942",
+        "0000292374",
+        "0001139598",
+        "0000091645"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000534552",
+          "score": 4645.9395,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000515942",
+          "score": 4622.4082,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001544426",
+          "score": 4154.4937,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001959928",
+          "score": 4122.7617,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000347330",
+          "score": 4111.0649,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001388538",
+          "score": 4055.1396,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001554481",
+          "score": 3940.4031,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001488491",
+          "score": 3924.3118,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001332953",
+          "score": 3883.9651,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001182074",
+          "score": 3881.2825,
+          "is_relevant": true
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.2,
+        "P@10": 0.4,
+        "R@5": 0.0556,
+        "R@10": 0.2222,
+        "MRR": 0.5,
+        "nDCG@5": 0.214,
+        "nDCG@10": 0.3503
+      }
+    },
+    {
+      "query_id": "0000009122",
+      "ground_truth_relevant": [
+        "0000882637"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000939288",
+          "score": 2754.7993,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000612149",
+          "score": 2644.9849,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001628129",
+          "score": 2585.5054,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000784844",
+          "score": 2572.5215,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001193897",
+          "score": 2570.3232,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000487832",
+          "score": 2550.325,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000718964",
+          "score": 2547.9341,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001195724",
+          "score": 2543.4377,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000368689",
+          "score": 2536.2314,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000557981",
+          "score": 2527.2229,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    },
+    {
+      "query_id": "0000009256",
+      "ground_truth_relevant": [
+        "0000144447",
+        "0001857451",
+        "0000814469",
+        "0001220020",
+        "0091917453",
+        "0000984460",
+        "0001333573",
+        "0001672668",
+        "0001806797",
+        "0001437558",
+        "0001630046",
+        "0000333647",
+        "0000128011",
+        "0001829587",
+        "0001334480",
+        "0000665431"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001688386",
+          "score": 1778.3063,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001437558",
+          "score": 1746.5797,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000814469",
+          "score": 1687.9617,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001886928",
+          "score": 1645.5181,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000845482",
+          "score": 1637.7527,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 1615.8599,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001444110",
+          "score": 1610.3585,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000144447",
+          "score": 1607.7451,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000155267",
+          "score": 1588.4834,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000665431",
+          "score": 1588.4425,
+          "is_relevant": true
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.4,
+        "R@5": 0.125,
+        "R@10": 0.25,
+        "MRR": 0.5,
+        "nDCG@5": 0.3836,
+        "nDCG@10": 0.382
+      }
+    },
+    {
+      "query_id": "0000010271",
+      "ground_truth_relevant": [
+        "0000686491",
+        "0001862687",
+        "0000937251",
+        "0001786065",
+        "0000040914",
+        "0001035123",
+        "0001147147",
+        "0000455716"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000137587",
+          "score": 2451.9224,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000235169",
+          "score": 2385.1624,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000241174",
+          "score": 2321.6484,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001038933",
+          "score": 2276.623,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001257548",
+          "score": 2254.7195,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000515070",
+          "score": 2236.8479,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000922429",
+          "score": 2210.2678,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000320833",
+          "score": 2207.7268,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001892414",
+          "score": 2184.6448,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001825522",
+          "score": 2183.5332,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    }
+  ],
+  "BM25_FullDoc": [
+    {
+      "query_id": "0000000599",
+      "ground_truth_relevant": [
+        "0001742283",
+        "0001292810"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001207163",
+          "score": 4450.3874,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000175790",
+          "score": 3719.3293,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001292810",
+          "score": 3683.5946,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001742283",
+          "score": 3648.7923,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001296654",
+          "score": 3648.097,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000010498",
+          "score": 3363.3653,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000717481",
+          "score": 3276.8995,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001925650",
+          "score": 3238.4486,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000264503",
+          "score": 3222.4917,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001504198",
+          "score": 3179.5418,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 1.0,
+        "R@10": 1.0,
+        "MRR": 0.3333,
+        "nDCG@5": 0.5706,
+        "nDCG@10": 0.5706
+      }
+    },
+    {
+      "query_id": "0000002886",
+      "ground_truth_relevant": [
+        "0001488491",
+        "0000502366",
+        "0001633734",
+        "0000722940",
+        "0000798843",
+        "0001093075",
+        "0000066438",
+        "0000877318",
+        "0000087686",
+        "0001192616",
+        "0001284923",
+        "0000936815",
+        "0001388538",
+        "0001182074",
+        "0000515942",
+        "0000292374",
+        "0001139598",
+        "0000091645"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001332953",
+          "score": 4147.9592,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001688386",
+          "score": 3768.922,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000570106",
+          "score": 3753.7909,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001554481",
+          "score": 3661.5491,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000877318",
+          "score": 3647.0187,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000347330",
+          "score": 3621.1552,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000842650",
+          "score": 3593.0274,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001869233",
+          "score": 3567.3789,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001872604",
+          "score": 3565.7991,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000066438",
+          "score": 3519.4234,
+          "is_relevant": true
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.2,
+        "P@10": 0.2,
+        "R@5": 0.0556,
+        "R@10": 0.1111,
+        "MRR": 0.2,
+        "nDCG@5": 0.1312,
+        "nDCG@10": 0.1488
+      }
+    },
+    {
+      "query_id": "0000009122",
+      "ground_truth_relevant": [
+        "0000882637"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000434894",
+          "score": 3531.9125,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000939288",
+          "score": 3498.6771,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001586918",
+          "score": 3258.6391,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001908113",
+          "score": 3223.931,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001813863",
+          "score": 3185.2447,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001350925",
+          "score": 2993.0073,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000667073",
+          "score": 2900.4547,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001193897",
+          "score": 2858.9988,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000881730",
+          "score": 2801.7499,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001505859",
+          "score": 2783.6797,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    },
+    {
+      "query_id": "0000009256",
+      "ground_truth_relevant": [
+        "0000144447",
+        "0001857451",
+        "0000814469",
+        "0001220020",
+        "0091917453",
+        "0000984460",
+        "0001333573",
+        "0001672668",
+        "0001806797",
+        "0001437558",
+        "0001630046",
+        "0000333647",
+        "0000128011",
+        "0001829587",
+        "0001334480",
+        "0000665431"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001688386",
+          "score": 1958.3038,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001010762",
+          "score": 1709.1053,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001018868",
+          "score": 1661.9512,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000144447",
+          "score": 1625.3091,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001444110",
+          "score": 1614.5154,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001434001",
+          "score": 1594.2602,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000773084",
+          "score": 1562.5607,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648916",
+          "score": 1555.223,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001747962",
+          "score": 1545.2889,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 1527.7692,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.2,
+        "P@10": 0.1,
+        "R@5": 0.0625,
+        "R@10": 0.0625,
+        "MRR": 0.25,
+        "nDCG@5": 0.1461,
+        "nDCG@10": 0.0948
+      }
+    },
+    {
+      "query_id": "0000010271",
+      "ground_truth_relevant": [
+        "0000686491",
+        "0001862687",
+        "0000937251",
+        "0001786065",
+        "0000040914",
+        "0001035123",
+        "0001147147",
+        "0000455716"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000137587",
+          "score": 3871.4616,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001035123",
+          "score": 3742.7443,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000235169",
+          "score": 3557.9349,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000515070",
+          "score": 3496.3916,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000937251",
+          "score": 3454.9873,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000667073",
+          "score": 3451.0182,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000241174",
+          "score": 3429.3363,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001892414",
+          "score": 3426.1528,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000128084",
+          "score": 3407.6238,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000126399",
+          "score": 3258.469,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 0.25,
+        "R@10": 0.25,
+        "MRR": 0.5,
+        "nDCG@5": 0.3452,
+        "nDCG@10": 0.2574
+      }
+    }
+  ],
+  "TFIDF_Chunk_Max": [
+    {
+      "query_id": "0000000599",
+      "ground_truth_relevant": [
+        "0001742283",
+        "0001292810"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001207163",
+          "score": 0.3937,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001742283",
+          "score": 0.3929,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001296654",
+          "score": 0.3721,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001292810",
+          "score": 0.3561,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000264503",
+          "score": 0.3413,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000717481",
+          "score": 0.3364,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000468835",
+          "score": 0.3363,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001925650",
+          "score": 0.3303,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000175790",
+          "score": 0.322,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001504198",
+          "score": 0.3131,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 1.0,
+        "R@10": 1.0,
+        "MRR": 0.5,
+        "nDCG@5": 0.6509,
+        "nDCG@10": 0.6509
+      }
+    },
+    {
+      "query_id": "0000002886",
+      "ground_truth_relevant": [
+        "0001488491",
+        "0000502366",
+        "0001633734",
+        "0000722940",
+        "0000798843",
+        "0001093075",
+        "0000066438",
+        "0000877318",
+        "0000087686",
+        "0001192616",
+        "0001284923",
+        "0000936815",
+        "0001388538",
+        "0001182074",
+        "0000515942",
+        "0000292374",
+        "0001139598",
+        "0000091645"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000515942",
+          "score": 0.3452,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001182074",
+          "score": 0.3336,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001626208",
+          "score": 0.3162,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000534552",
+          "score": 0.3131,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001633734",
+          "score": 0.3127,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001388538",
+          "score": 0.3049,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000936815",
+          "score": 0.2904,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000347330",
+          "score": 0.2886,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000592259",
+          "score": 0.2839,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000877318",
+          "score": 0.2816,
+          "is_relevant": true
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.6,
+        "P@10": 0.6,
+        "R@5": 0.1667,
+        "R@10": 0.3333,
+        "MRR": 1.0,
+        "nDCG@5": 0.6844,
+        "nDCG@10": 0.6595
+      }
+    },
+    {
+      "query_id": "0000009122",
+      "ground_truth_relevant": [
+        "0000882637"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001908113",
+          "score": 0.2312,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0172560102",
+          "score": 0.2297,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000096494",
+          "score": 0.2274,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001350925",
+          "score": 0.2211,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0043346695",
+          "score": 0.2189,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000204632",
+          "score": 0.2175,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001347962",
+          "score": 0.2172,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001388203",
+          "score": 0.2161,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001505859",
+          "score": 0.2156,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001243336",
+          "score": 0.2147,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    },
+    {
+      "query_id": "0000009256",
+      "ground_truth_relevant": [
+        "0000144447",
+        "0001857451",
+        "0000814469",
+        "0001220020",
+        "0091917453",
+        "0000984460",
+        "0001333573",
+        "0001672668",
+        "0001806797",
+        "0001437558",
+        "0001630046",
+        "0000333647",
+        "0000128011",
+        "0001829587",
+        "0001334480",
+        "0000665431"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001437558",
+          "score": 0.3389,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 0.3042,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000984460",
+          "score": 0.3038,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000144447",
+          "score": 0.2967,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001747962",
+          "score": 0.296,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000128011",
+          "score": 0.295,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000814469",
+          "score": 0.2888,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000845482",
+          "score": 0.2876,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001912440",
+          "score": 0.2873,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001886928",
+          "score": 0.2858,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.6,
+        "P@10": 0.5,
+        "R@5": 0.1875,
+        "R@10": 0.3125,
+        "MRR": 1.0,
+        "nDCG@5": 0.6548,
+        "nDCG@10": 0.5767
+      }
+    },
+    {
+      "query_id": "0000010271",
+      "ground_truth_relevant": [
+        "0000686491",
+        "0001862687",
+        "0000937251",
+        "0001786065",
+        "0000040914",
+        "0001035123",
+        "0001147147",
+        "0000455716"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000137587",
+          "score": 0.3313,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000937251",
+          "score": 0.2823,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001035123",
+          "score": 0.278,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000126399",
+          "score": 0.2665,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000253695",
+          "score": 0.2662,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001735608",
+          "score": 0.2656,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000949443",
+          "score": 0.2589,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000235169",
+          "score": 0.2561,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001029775",
+          "score": 0.2539,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000480287",
+          "score": 0.2505,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 0.25,
+        "R@10": 0.25,
+        "MRR": 0.5,
+        "nDCG@5": 0.3836,
+        "nDCG@10": 0.2861
+      }
+    }
+  ],
+  "TFIDF_Chunk_Top3Mean": [
+    {
+      "query_id": "0000000599",
+      "ground_truth_relevant": [
+        "0001742283",
+        "0001292810"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001207163",
+          "score": 0.3694,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001742283",
+          "score": 0.3499,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001296654",
+          "score": 0.346,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001292810",
+          "score": 0.3398,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000468835",
+          "score": 0.3206,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000264503",
+          "score": 0.3156,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000175790",
+          "score": 0.3111,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000717481",
+          "score": 0.3044,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001598222",
+          "score": 0.3022,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001925650",
+          "score": 0.2887,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 1.0,
+        "R@10": 1.0,
+        "MRR": 0.5,
+        "nDCG@5": 0.6509,
+        "nDCG@10": 0.6509
+      }
+    },
+    {
+      "query_id": "0000002886",
+      "ground_truth_relevant": [
+        "0001488491",
+        "0000502366",
+        "0001633734",
+        "0000722940",
+        "0000798843",
+        "0001093075",
+        "0000066438",
+        "0000877318",
+        "0000087686",
+        "0001192616",
+        "0001284923",
+        "0000936815",
+        "0001388538",
+        "0001182074",
+        "0000515942",
+        "0000292374",
+        "0001139598",
+        "0000091645"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000515942",
+          "score": 0.3402,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001182074",
+          "score": 0.3046,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000534552",
+          "score": 0.3045,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001633734",
+          "score": 0.2942,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001388538",
+          "score": 0.2782,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000877318",
+          "score": 0.2748,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000592259",
+          "score": 0.2745,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001626208",
+          "score": 0.2745,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000347330",
+          "score": 0.2739,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001554481",
+          "score": 0.273,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.8,
+        "P@10": 0.5,
+        "R@5": 0.2222,
+        "R@10": 0.2778,
+        "MRR": 1.0,
+        "nDCG@5": 0.8304,
+        "nDCG@10": 0.6173
+      }
+    },
+    {
+      "query_id": "0000009122",
+      "ground_truth_relevant": [
+        "0000882637"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0172560102",
+          "score": 0.218,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001350925",
+          "score": 0.2176,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001908113",
+          "score": 0.2161,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000096494",
+          "score": 0.2073,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000939288",
+          "score": 0.2066,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000612149",
+          "score": 0.2063,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001505859",
+          "score": 0.206,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000204632",
+          "score": 0.2044,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000547449",
+          "score": 0.2026,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001271682",
+          "score": 0.2022,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    },
+    {
+      "query_id": "0000009256",
+      "ground_truth_relevant": [
+        "0000144447",
+        "0001857451",
+        "0000814469",
+        "0001220020",
+        "0091917453",
+        "0000984460",
+        "0001333573",
+        "0001672668",
+        "0001806797",
+        "0001437558",
+        "0001630046",
+        "0000333647",
+        "0000128011",
+        "0001829587",
+        "0001334480",
+        "0000665431"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001437558",
+          "score": 0.3288,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000845482",
+          "score": 0.2876,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001912440",
+          "score": 0.2831,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 0.2798,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000814469",
+          "score": 0.277,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000144447",
+          "score": 0.2744,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001688386",
+          "score": 0.2724,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001886928",
+          "score": 0.2672,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001434001",
+          "score": 0.2595,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001444110",
+          "score": 0.2556,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.4,
+        "P@10": 0.3,
+        "R@5": 0.125,
+        "R@10": 0.1875,
+        "MRR": 1.0,
+        "nDCG@5": 0.4704,
+        "nDCG@10": 0.3836
+      }
+    },
+    {
+      "query_id": "0000010271",
+      "ground_truth_relevant": [
+        "0000686491",
+        "0001862687",
+        "0000937251",
+        "0001786065",
+        "0000040914",
+        "0001035123",
+        "0001147147",
+        "0000455716"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000137587",
+          "score": 0.3266,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000937251",
+          "score": 0.2708,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001035123",
+          "score": 0.2489,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000126399",
+          "score": 0.2406,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000949443",
+          "score": 0.2404,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000235169",
+          "score": 0.2396,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001029775",
+          "score": 0.2373,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000480287",
+          "score": 0.2329,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000253695",
+          "score": 0.2325,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001892414",
+          "score": 0.2283,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 0.25,
+        "R@10": 0.25,
+        "MRR": 0.5,
+        "nDCG@5": 0.3836,
+        "nDCG@10": 0.2861
+      }
+    }
+  ],
+  "TFIDF_Chunk_Top5Mean": [
+    {
+      "query_id": "0000000599",
+      "ground_truth_relevant": [
+        "0001742283",
+        "0001292810"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001207163",
+          "score": 0.3597,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001296654",
+          "score": 0.3373,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001742283",
+          "score": 0.3294,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001292810",
+          "score": 0.3258,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000175790",
+          "score": 0.3028,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000468835",
+          "score": 0.3009,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000264503",
+          "score": 0.2997,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000717481",
+          "score": 0.2929,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001598222",
+          "score": 0.2882,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000010498",
+          "score": 0.2743,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 1.0,
+        "R@10": 1.0,
+        "MRR": 0.3333,
+        "nDCG@5": 0.5706,
+        "nDCG@10": 0.5706
+      }
+    },
+    {
+      "query_id": "0000002886",
+      "ground_truth_relevant": [
+        "0001488491",
+        "0000502366",
+        "0001633734",
+        "0000722940",
+        "0000798843",
+        "0001093075",
+        "0000066438",
+        "0000877318",
+        "0000087686",
+        "0001192616",
+        "0001284923",
+        "0000936815",
+        "0001388538",
+        "0001182074",
+        "0000515942",
+        "0000292374",
+        "0001139598",
+        "0000091645"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000515942",
+          "score": 0.3245,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000534552",
+          "score": 0.298,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001182074",
+          "score": 0.2792,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000877318",
+          "score": 0.272,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001554481",
+          "score": 0.2712,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001633734",
+          "score": 0.2701,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000592259",
+          "score": 0.2679,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000091645",
+          "score": 0.2678,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000347330",
+          "score": 0.267,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000502366",
+          "score": 0.2666,
+          "is_relevant": true
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.6,
+        "P@10": 0.6,
+        "R@5": 0.1667,
+        "R@10": 0.3333,
+        "MRR": 1.0,
+        "nDCG@5": 0.6548,
+        "nDCG@10": 0.6364
+      }
+    },
+    {
+      "query_id": "0000009122",
+      "ground_truth_relevant": [
+        "0000882637"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001350925",
+          "score": 0.2131,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001908113",
+          "score": 0.2102,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000939288",
+          "score": 0.2047,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0172560102",
+          "score": 0.2014,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000612149",
+          "score": 0.2007,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001505859",
+          "score": 0.198,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000204632",
+          "score": 0.1957,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001271682",
+          "score": 0.1956,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001347962",
+          "score": 0.1946,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000368689",
+          "score": 0.1936,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    },
+    {
+      "query_id": "0000009256",
+      "ground_truth_relevant": [
+        "0000144447",
+        "0001857451",
+        "0000814469",
+        "0001220020",
+        "0091917453",
+        "0000984460",
+        "0001333573",
+        "0001672668",
+        "0001806797",
+        "0001437558",
+        "0001630046",
+        "0000333647",
+        "0000128011",
+        "0001829587",
+        "0001334480",
+        "0000665431"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001437558",
+          "score": 0.2973,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000845482",
+          "score": 0.2876,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001912440",
+          "score": 0.2767,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000814469",
+          "score": 0.2708,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000144447",
+          "score": 0.2673,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001688386",
+          "score": 0.2659,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 0.2657,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001886928",
+          "score": 0.2581,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001434001",
+          "score": 0.2554,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000984460",
+          "score": 0.254,
+          "is_relevant": true
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.6,
+        "P@10": 0.4,
+        "R@5": 0.1875,
+        "R@10": 0.25,
+        "MRR": 1.0,
+        "nDCG@5": 0.6164,
+        "nDCG@10": 0.4636
+      }
+    },
+    {
+      "query_id": "0000010271",
+      "ground_truth_relevant": [
+        "0000686491",
+        "0001862687",
+        "0000937251",
+        "0001786065",
+        "0000040914",
+        "0001035123",
+        "0001147147",
+        "0000455716"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000137587",
+          "score": 0.3105,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000937251",
+          "score": 0.2518,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000235169",
+          "score": 0.2323,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001035123",
+          "score": 0.2297,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000949443",
+          "score": 0.2235,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000241174",
+          "score": 0.2224,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000126399",
+          "score": 0.2212,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001029775",
+          "score": 0.2201,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001038933",
+          "score": 0.2166,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001892414",
+          "score": 0.2163,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 0.25,
+        "R@10": 0.25,
+        "MRR": 0.5,
+        "nDCG@5": 0.3601,
+        "nDCG@10": 0.2685
+      }
+    }
+  ],
+  "TFIDF_FullDoc": [
+    {
+      "query_id": "0000000599",
+      "ground_truth_relevant": [
+        "0001742283",
+        "0001292810"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001207163",
+          "score": 0.4962,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001292810",
+          "score": 0.4478,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001296654",
+          "score": 0.4177,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000175790",
+          "score": 0.3911,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001694314",
+          "score": 0.3866,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000264503",
+          "score": 0.3856,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001742283",
+          "score": 0.3852,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000717481",
+          "score": 0.3656,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000010498",
+          "score": 0.3452,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001925650",
+          "score": 0.3448,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.2,
+        "P@10": 0.2,
+        "R@5": 0.5,
+        "R@10": 1.0,
+        "MRR": 0.5,
+        "nDCG@5": 0.3869,
+        "nDCG@10": 0.5912
+      }
+    },
+    {
+      "query_id": "0000002886",
+      "ground_truth_relevant": [
+        "0001488491",
+        "0000502366",
+        "0001633734",
+        "0000722940",
+        "0000798843",
+        "0001093075",
+        "0000066438",
+        "0000877318",
+        "0000087686",
+        "0001192616",
+        "0001284923",
+        "0000936815",
+        "0001388538",
+        "0001182074",
+        "0000515942",
+        "0000292374",
+        "0001139598",
+        "0000091645"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000877318",
+          "score": 0.3485,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001332953",
+          "score": 0.3485,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000347330",
+          "score": 0.3446,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001633734",
+          "score": 0.3391,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000066438",
+          "score": 0.3376,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001554481",
+          "score": 0.3329,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001182074",
+          "score": 0.3324,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001434001",
+          "score": 0.3311,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001869233",
+          "score": 0.3305,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 0.326,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.6,
+        "P@10": 0.4,
+        "R@5": 0.1667,
+        "R@10": 0.2222,
+        "MRR": 1.0,
+        "nDCG@5": 0.6164,
+        "nDCG@10": 0.4734
+      }
+    },
+    {
+      "query_id": "0000009122",
+      "ground_truth_relevant": [
+        "0000882637"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000434894",
+          "score": 0.3141,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001350925",
+          "score": 0.3117,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000939288",
+          "score": 0.3093,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001908113",
+          "score": 0.2987,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001271682",
+          "score": 0.2876,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000204632",
+          "score": 0.2718,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001813863",
+          "score": 0.2702,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001193897",
+          "score": 0.2685,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001586918",
+          "score": 0.2684,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001200243",
+          "score": 0.262,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.0,
+        "P@10": 0.0,
+        "R@5": 0.0,
+        "R@10": 0.0,
+        "MRR": 0.0,
+        "nDCG@5": 0.0,
+        "nDCG@10": 0.0
+      }
+    },
+    {
+      "query_id": "0000009256",
+      "ground_truth_relevant": [
+        "0000144447",
+        "0001857451",
+        "0000814469",
+        "0001220020",
+        "0091917453",
+        "0000984460",
+        "0001333573",
+        "0001672668",
+        "0001806797",
+        "0001437558",
+        "0001630046",
+        "0000333647",
+        "0000128011",
+        "0001829587",
+        "0001334480",
+        "0000665431"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0001437558",
+          "score": 0.3491,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000814469",
+          "score": 0.3174,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0001912440",
+          "score": 0.3149,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001648089",
+          "score": 0.3058,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001444110",
+          "score": 0.3049,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001434001",
+          "score": 0.3009,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000144447",
+          "score": 0.3003,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000336404",
+          "score": 0.2975,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001886928",
+          "score": 0.2931,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001238641",
+          "score": 0.293,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 1.0,
+        "P@5": 0.4,
+        "P@10": 0.3,
+        "R@5": 0.125,
+        "R@10": 0.1875,
+        "MRR": 1.0,
+        "nDCG@5": 0.5531,
+        "nDCG@10": 0.4323
+      }
+    },
+    {
+      "query_id": "0000010271",
+      "ground_truth_relevant": [
+        "0000686491",
+        "0001862687",
+        "0000937251",
+        "0001786065",
+        "0000040914",
+        "0001035123",
+        "0001147147",
+        "0000455716"
+      ],
+      "top_10_retrieved": [
+        {
+          "doc_id": "0000137587",
+          "score": 0.4247,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001035123",
+          "score": 0.3295,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000937251",
+          "score": 0.3171,
+          "is_relevant": true
+        },
+        {
+          "doc_id": "0000949443",
+          "score": 0.3084,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000515070",
+          "score": 0.3083,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000235169",
+          "score": 0.3051,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000126399",
+          "score": 0.3033,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001892414",
+          "score": 0.284,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0000253695",
+          "score": 0.2812,
+          "is_relevant": false
+        },
+        {
+          "doc_id": "0001735608",
+          "score": 0.2783,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "P@1": 0.0,
+        "P@5": 0.4,
+        "P@10": 0.2,
+        "R@5": 0.25,
+        "R@10": 0.25,
+        "MRR": 0.5,
+        "nDCG@5": 0.3836,
+        "nDCG@10": 0.2861
+      }
+    }
+  ]
+}

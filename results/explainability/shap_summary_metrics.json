@@ -1,0 +1,41 @@
+{
+  "base_expected_value": 0.4448,
+  "feature_weights": {
+    "bm25_score": 0.0,
+    "tfidf_score": 0.65,
+    "inlegalbert_sim": 0.25,
+    "composite_legal_score": 0.1
+  },
+  "global_importance": [
+    {
+      "feature": "tfidf_score",
+      "weight": 0.65,
+      "mean_abs_shap": 0.07565,
+      "mean_shap": 0.0028
+    },
+    {
+      "feature": "inlegalbert_sim",
+      "weight": 0.25,
+      "mean_abs_shap": 0.01902,
+      "mean_shap": -0.00023
+    },
+    {
+      "feature": "composite_legal_score",
+      "weight": 0.1,
+      "mean_abs_shap": 0.01416,
+      "mean_shap": 0.00085
+    },
+    {
+      "feature": "bm25_score",
+      "weight": 0.0,
+      "mean_abs_shap": 0.0,
+      "mean_shap": 0.0
+    }
+  ],
+  "expected_background_feature_values": {
+    "bm25_score": 0.3041,
+    "tfidf_score": 0.32899,
+    "inlegalbert_sim": 0.81627,
+    "composite_legal_score": 0.26885
+  }
+}

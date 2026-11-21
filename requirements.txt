@@ -1,0 +1,26 @@
+# Core Scientific & Data Processing
+numpy
+pandas
+pyarrow
+scipy
+scikit-learn
+lightgbm
+xgboost
+pyyaml
+tqdm
+
+# Deep Learning & NLP
+torch
+transformers
+
+# API & Web Service
+fastapi
+uvicorn
+Flask
+flask-cors
+google-generativeai
+python-dotenv
+pydantic
+
+# Testing & Code Quality
+pytest

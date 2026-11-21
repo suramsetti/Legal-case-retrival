@@ -1,0 +1,46 @@
+{
+  "evaluation_phase": "Phase 21B",
+  "project": "Jud-IPL Standalone Legal Intelligence Research System",
+  "evaluation_timestamp": "2026-11-04T11:06:00+05:30",
+  "dataset": {
+    "source": "Jud-IPL Only (0% IL-TUR Dependency)",
+    "partition": "data/processed/judipl/phase18c/three_class/test_masked.parquet",
+    "original_test_count": 6313,
+    "excluded_duplicate_count": 2,
+    "excluded_ids": ["0001116667", "0001505760"],
+    "eligible_test_count": 6311,
+    "class_distribution": {
+      "Rejected": 2872,
+      "Accepted": 2459,
+      "Other": 980
+    },
+    "prior_phase18_exposure": {
+      "exposed_count": 812,
+      "exposed_pct": 12.87,
+      "unexposed_count": 5499,
+      "unexposed_pct": 87.13
+    }
+  },
+  "evaluated_models": {
+    "M4": {
+      "name": "Section-Aware TF-IDF Classifier",
+      "checkpoint": "models/checkpoints/phase20/m4_section_aware_tfidf.joblib",
+      "sha256": "1d5963eec3d4002112e61fe79f73f96391738ed2bc8e56dc97ed8743ac13b460",
+      "features": 50000,
+      "sections": ["preamble", "facts", "arguments", "legal_reasoning", "disposition"]
+    },
+    "M8": {
+      "name": "Hybrid Multi-Class Fusion Ensemble",
+      "checkpoint": "models/checkpoints/phase20/m8_hybrid_fusion.joblib",
+      "sha256": "552e0819080d560c1bf82b5a2eeba8a2e805fe2fed88907ca004eed16f2b4db2",
+      "fusion_weights": {
+        "m1": 0.50,
+        "m4": 0.25,
+        "m5": 0.15,
+        "m3": 0.10
+      },
+      "classes": ["Accepted", "Other", "Rejected"]
+    }
+  }
+}
+

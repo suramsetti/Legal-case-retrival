@@ -1,0 +1,50 @@
+{
+  "dataset": "IL-TUR-PCR",
+  "splits": {
+    "train": {
+      "query_count": 827,
+      "candidate_count": 4320,
+      "hybrid_feature_rows": 15232,
+      "query_id_unique": true,
+      "candidate_id_unique": true,
+      "empty_candidate_documents": 0,
+      "duplicate_query_candidate_pairs": 0,
+      "missing_candidate_references": 0,
+      "self_retrieval_pairs": 0,
+      "positive_pairs": 5308,
+      "negative_pairs": 9924
+    },
+    "dev": {
+      "query_count": 118,
+      "candidate_count": 1023,
+      "hybrid_feature_rows": 120596,
+      "query_id_unique": true,
+      "candidate_id_unique": true,
+      "empty_candidate_documents": 0,
+      "duplicate_query_candidate_pairs": 0,
+      "missing_candidate_references": 0,
+      "self_retrieval_pairs": 0,
+      "positive_pairs": 973,
+      "negative_pairs": 119623
+    },
+    "test": {
+      "query_count": 237,
+      "candidate_count": 1727,
+      "hybrid_feature_rows": 409062,
+      "query_id_unique": true,
+      "candidate_id_unique": true,
+      "empty_candidate_documents": 0,
+      "duplicate_query_candidate_pairs": 0,
+      "missing_candidate_references": 0,
+      "self_retrieval_pairs": 0,
+      "positive_pairs": 1727,
+      "negative_pairs": 407335
+    }
+  },
+  "cross_split": {
+    "dev_candidate_vs_train_query": 124,
+    "dev_candidate_vs_test_query": 40,
+    "test_candidate_vs_train_query": 269
+  },
+  "reported_citation_pool_coverage_pct": 98.7342
+}

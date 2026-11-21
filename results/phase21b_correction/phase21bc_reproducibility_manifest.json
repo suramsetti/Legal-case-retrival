@@ -1,0 +1,42 @@
+{
+  "audit": "Phase 21B-C",
+  "created_utc": "2026-11-04T06:06:34.937221+00:00",
+  "dataset": "Jud-IPL only",
+  "class_order": [
+    "Accepted",
+    "Other",
+    "Rejected"
+  ],
+  "eligible_test_size": 6311,
+  "original_test_size": 6313,
+  "excluded_test_ids": [
+    "0001116667",
+    "0001505760"
+  ],
+  "historical_phase18_binary_overlap": 812,
+  "historical_unexposed_eligible": 5499,
+  "prediction_files": {
+    "m4_test_predictions.csv": {
+      "path": "C:\\Users\\mohan\\OneDrive\\Desktop\\Projects\\legal-case-retrieval\\results\\predictions\\phase21b\\m4_test_predictions.csv",
+      "sha256": "27100657d5a62ee5098880af2bb1b5c8e9ca6eb53b824146a8ca53f467383635"
+    },
+    "m8_test_predictions.csv": {
+      "path": "C:\\Users\\mohan\\OneDrive\\Desktop\\Projects\\legal-case-retrieval\\results\\predictions\\phase21b\\m8_test_predictions.csv",
+      "sha256": "ab48d68311bed1254bd99f8b77716d7afc7e4346da241e47915f421939572e08"
+    }
+  },
+  "checkpoint_hashes": {
+    "m1_tfidf_lr_unweighted.joblib": "26c62266ad9a2d59722b49c1464111f0ec3ff8cf4ff336ec0332db818f4f5d50",
+    "m3_char_ngram_lr.joblib": "1ce55ad05ceddde1032ec0db5c23f6d9384261a8a03832f0ce2853cd3bc3b820",
+    "m4_section_aware_tfidf.joblib": "1d5963eec3d4002112e61fe79f73f96391738ed2bc8e56dc97ed8743ac13b460",
+    "m5_citation_aware_lr.joblib": "53b592c95352fea1db9ef837b3424bea5598b79d932e24330f1d4e52c9e45b69",
+    "m8_hybrid_fusion.joblib": "552e0819080d560c1bf82b5a2eeba8a2e805fe2fed88907ca004eed16f2b4db2"
+  },
+  "frozen_evidence_unchanged": true,
+  "bootstrap": {
+    "iterations": 1000,
+    "seed": 42,
+    "resampling": "paired document indices",
+    "ci": "percentile 2.5/97.5"
+  }
+}

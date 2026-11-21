@@ -1,0 +1,121 @@
+{
+  "test_suite": "tests/unit/test_phase27a_pdf_extraction.py",
+  "execution_timestamp": "2026-11-04T17:05:00+05:30",
+  "engine": "pypdf 6.18.1",
+  "total_automated_tests": 16,
+  "passed": 16,
+  "failed": 0,
+  "execution_duration_seconds": 66.32,
+  "test_cases": [
+    {
+      "name": "test_valid_single_page_pdf",
+      "category": "service",
+      "status": "PASS",
+      "details": "Extracted text, word count, character count from valid 1-page judgment PDF."
+    },
+    {
+      "name": "test_valid_multipage_pdf",
+      "category": "service",
+      "status": "PASS",
+      "details": "Extracted text across 3 pages preserving page ordering and page-level metadata."
+    },
+    {
+      "name": "test_scanned_pdf_detection",
+      "category": "service",
+      "status": "PASS",
+      "details": "Correctly detected image-only PDF with 0 extractable text layer and returned scanned=True."
+    },
+    {
+      "name": "test_empty_pdf_detection",
+      "category": "service",
+      "status": "PASS",
+      "details": "Detected empty PDF document and returned status 400."
+    },
+    {
+      "name": "test_invalid_extension",
+      "category": "security",
+      "status": "PASS",
+      "details": "Rejected file with extension other than .pdf."
+    },
+    {
+      "name": "test_invalid_signature",
+      "category": "security",
+      "status": "PASS",
+      "details": "Enforced %PDF- magic bytes header; rejected masqueraded files."
+    },
+    {
+      "name": "test_corrupted_pdf",
+      "category": "robustness",
+      "status": "PASS",
+      "details": "Caught corrupt bytes and unreadable streams without server crash."
+    },
+    {
+      "name": "test_oversized_pdf",
+      "category": "security",
+      "status": "PASS",
+      "details": "Enforced 15 MB maximum payload boundary; returned HTTP 413."
+    },
+    {
+      "name": "test_exceeding_page_limit",
+      "category": "security",
+      "status": "PASS",
+      "details": "Enforced 100-page limit; rejected oversized document with HTTP 400."
+    },
+    {
+      "name": "test_temporary_file_cleanup",
+      "category": "security",
+      "status": "PASS",
+      "details": "Verified 0 orphaned temporary files in temp directory after both success and error extraction."
+    },
+    {
+      "name": "test_api_extract_valid_pdf",
+      "category": "api_integration",
+      "status": "PASS",
+      "details": "POST /api/judipl/extract-pdf returned 200 with JSON payload containing extracted text."
+    },
+    {
+      "name": "test_api_extract_scanned_pdf",
+      "category": "api_integration",
+      "status": "PASS",
+      "details": "POST /api/judipl/extract-pdf returned 400 with honest OCR unavailable message."
+    },
+    {
+      "name": "test_api_extract_missing_file_field",
+      "category": "api_integration",
+      "status": "PASS",
+      "details": "Returned 400 when form-data lacks 'file' key."
+    },
+    {
+      "name": "test_api_extract_invalid_extension",
+      "category": "api_integration",
+      "status": "PASS",
+      "details": "Returned 400 for .exe file upload."
+    },
+    {
+      "name": "test_pdf_extraction_to_m4_inference",
+      "category": "end_to_end_ml",
+      "status": "PASS",
+      "details": "Extracted PDF text processed through frozen M4 and M8 classifiers; generated valid 3-class probabilities."
+    },
+    {
+      "name": "test_dataset_isolation_preserved",
+      "category": "isolation",
+      "status": "PASS",
+      "details": "Jud-IPL PDF pipeline maintains 0% contamination of IL-TUR candidate pool or search state."
+    }
+  ],
+  "endpoints": {
+    "POST /api/judipl/extract-pdf": {
+      "verified": true,
+      "max_size_mb": 15,
+      "max_pages": 100,
+      "scanned_detection": true,
+      "magic_signature_validation": true
+    },
+    "POST /api/judipl/analyze": {
+      "verified_with_pdf_input": true,
+      "supported_models": ["M4", "M8"]
+    }
+  }
+}
+

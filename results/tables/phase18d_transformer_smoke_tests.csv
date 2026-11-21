@@ -1,0 +1,5 @@
+model,status,parameters,forward_ms,backward_ms,loss
+InLegalBERTSequenceClassifier,PASSED,7846786,455.69,148.26,0.7039
+InLegalBERTBiLSTM,PASSED,8637826,222.74,361.73,0.8185
+InLegalBERTAttentionPooling,PASSED,7880322,134.61,36.08,0.6876
+InLegalBERTBiLSTMAttention,PASSED,8670850,15.63,169.83,0.6869

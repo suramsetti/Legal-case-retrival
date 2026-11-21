@@ -1,0 +1,16 @@
+task,partition,label,count,percentage
+binary,train,Accepted,11722,47.17292446376112
+binary,train,Rejected,13127,52.82707553623889
+binary,val,Accepted,2432,45.714285714285715
+binary,val,Rejected,2888,54.285714285714285
+binary,test,Accepted,2530,47.280882078116235
+binary,test,Rejected,2821,52.719117921883765
+three_class,train,Accepted,11669,39.697227419629186
+three_class,train,Rejected,13188,44.86477292056472
+three_class,train,Other,4538,15.43799965980609
+three_class,val,Accepted,2555,40.57487692552009
+three_class,val,Rejected,2775,44.06860409718914
+three_class,val,Other,967,15.356518977290772
+three_class,test,Accepted,2460,38.96721051797877
+three_class,test,Rejected,2873,45.50926659274513
+three_class,test,Other,980,15.523522889276098

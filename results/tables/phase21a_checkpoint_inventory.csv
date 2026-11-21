@@ -1,0 +1,10 @@
+model_id,filename,exists,file_type,size_bytes,size_mb,param_count,internal_class,modified_time,sha256
+M1,m1_tfidf_lr_unweighted.joblib,True,joblib,1593747,1.5199,25000,MulticlassTfidfClassifier,2026-11-03 23:12:32,26c62266ad9a2d59722b49c1464111f0ec3ff8cf4ff336ec0332db818f4f5d50
+M1-W,m1w_tfidf_lr_balanced.joblib,True,joblib,1593763,1.5199,25000,MulticlassTfidfClassifier,2026-11-03 23:14:28,6b1688e2638448df6fbb0b32ae33500b08b7b25f2fa084b29047c33cbc1cb843
+M2,m2_tfidf_calibrated_svm.joblib,True,joblib,2796179,2.6666,25000,MulticlassLinearSVM,2026-11-03 23:16:24,c13224805aa4e93ef0c61d55ae5be416acfdad2b3616ace3f72d922de18075c3
+M3,m3_char_ngram_lr.joblib,True,joblib,1458131,1.3906,25000,MulticlassCharNgramClassifier,2026-11-03 23:24:21,1ce55ad05ceddde1032ec0db5c23f6d9384261a8a03832f0ce2853cd3bc3b820
+M4,m4_section_aware_tfidf.joblib,True,joblib,3155139,3.009,50000,MulticlassSectionAwareClassifier,2026-11-03 23:30:29,1d5963eec3d4002112e61fe79f73f96391738ed2bc8e56dc97ed8743ac13b460
+M5,m5_citation_aware_lr.joblib,True,joblib,1597363,1.5234,25015,MulticlassCitationAwareClassifier,2026-11-03 23:41:55,53b592c95352fea1db9ef837b3424bea5598b79d932e24330f1d4e52c9e45b69
+M6,m6_section_transformer.pt,True,pytorch_state_dict,406654,0.3878,100867,state_dict (5 keys),2026-11-03 23:41:56,6d447910d7d531b80e17846aa82ff4fa2aafe5796026573bb80349512de3ef97
+M7,m7_hierarchical_model.pt,True,pytorch_state_dict,3816924,3.6401,952707,state_dict (15 keys),2026-11-03 23:41:56,d6319ce226341690bc12fe58fbfc2e4bdd65a6b95f95fcbd952a59213bacfb25
+M8,m8_hybrid_fusion.joblib,True,joblib_bundle,130,0.0001,4,"dict (weights: ['m1', 'm4', 'm5', 'm3'])",2026-11-03 23:41:56,552e0819080d560c1bf82b5a2eeba8a2e805fe2fed88907ca004eed16f2b4db2

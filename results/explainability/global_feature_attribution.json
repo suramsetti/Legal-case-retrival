@@ -1,0 +1,202 @@
+{
+  "all_pairs": {
+    "bm25_score": {
+      "mean_contribution": 0.0,
+      "std_contribution": 0.0,
+      "mean_normalized_score": 0.30261,
+      "percentage_of_score": 0.0
+    },
+    "tfidf_score": {
+      "mean_contribution": 0.21665,
+      "std_contribution": 0.09691,
+      "mean_normalized_score": 0.33331,
+      "percentage_of_score": 48.34
+    },
+    "inlegalbert_sim": {
+      "mean_contribution": 0.20384,
+      "std_contribution": 0.02695,
+      "mean_normalized_score": 0.81534,
+      "percentage_of_score": 45.48
+    },
+    "composite_legal_score": {
+      "mean_contribution": 0.02774,
+      "std_contribution": 0.01903,
+      "mean_normalized_score": 0.27739,
+      "percentage_of_score": 6.19
+    },
+    "legal_sub_contributions": {
+      "statute_jaccard": {
+        "mean_sub_contribution": 0.00097
+      },
+      "citation_jaccard": {
+        "mean_sub_contribution": 2e-05
+      },
+      "entity_jaccard": {
+        "mean_sub_contribution": 0.00271
+      },
+      "rhetorical_cosine": {
+        "mean_sub_contribution": 0.01324
+      }
+    }
+  },
+  "top1_candidates": {
+    "bm25_score": {
+      "mean_contribution": 0.0,
+      "std_contribution": 0.0,
+      "mean_normalized_score": 0.89932,
+      "percentage_of_score": 0.0
+    },
+    "tfidf_score": {
+      "mean_contribution": 0.6439,
+      "std_contribution": 0.01724,
+      "mean_normalized_score": 0.99061,
+      "percentage_of_score": 68.69
+    },
+    "inlegalbert_sim": {
+      "mean_contribution": 0.23466,
+      "std_contribution": 0.0157,
+      "mean_normalized_score": 0.93863,
+      "percentage_of_score": 25.03
+    },
+    "composite_legal_score": {
+      "mean_contribution": 0.05882,
+      "std_contribution": 0.0274,
+      "mean_normalized_score": 0.58816,
+      "percentage_of_score": 6.27
+    },
+    "legal_sub_contributions": {
+      "statute_jaccard": {
+        "mean_sub_contribution": 0.01087
+      },
+      "citation_jaccard": {
+        "mean_sub_contribution": 0.00236
+      },
+      "entity_jaccard": {
+        "mean_sub_contribution": 0.00557
+      },
+      "rhetorical_cosine": {
+        "mean_sub_contribution": 0.014
+      }
+    }
+  },
+  "top5_candidates": {
+    "bm25_score": {
+      "mean_contribution": 0.0,
+      "std_contribution": 0.0,
+      "mean_normalized_score": 0.81772,
+      "percentage_of_score": 0.0
+    },
+    "tfidf_score": {
+      "mean_contribution": 0.55201,
+      "std_contribution": 0.09052,
+      "mean_normalized_score": 0.84924,
+      "percentage_of_score": 66.37
+    },
+    "inlegalbert_sim": {
+      "mean_contribution": 0.23071,
+      "std_contribution": 0.01811,
+      "mean_normalized_score": 0.92282,
+      "percentage_of_score": 27.74
+    },
+    "composite_legal_score": {
+      "mean_contribution": 0.04897,
+      "std_contribution": 0.02699,
+      "mean_normalized_score": 0.48968,
+      "percentage_of_score": 5.89
+    },
+    "legal_sub_contributions": {
+      "statute_jaccard": {
+        "mean_sub_contribution": 0.00711
+      },
+      "citation_jaccard": {
+        "mean_sub_contribution": 0.00152
+      },
+      "entity_jaccard": {
+        "mean_sub_contribution": 0.00497
+      },
+      "rhetorical_cosine": {
+        "mean_sub_contribution": 0.0139
+      }
+    }
+  },
+  "top10_candidates": {
+    "bm25_score": {
+      "mean_contribution": 0.0,
+      "std_contribution": 0.0,
+      "mean_normalized_score": 0.76113,
+      "percentage_of_score": 0.0
+    },
+    "tfidf_score": {
+      "mean_contribution": 0.50679,
+      "std_contribution": 0.10215,
+      "mean_normalized_score": 0.77968,
+      "percentage_of_score": 64.75
+    },
+    "inlegalbert_sim": {
+      "mean_contribution": 0.22943,
+      "std_contribution": 0.01728,
+      "mean_normalized_score": 0.91772,
+      "percentage_of_score": 29.31
+    },
+    "composite_legal_score": {
+      "mean_contribution": 0.04645,
+      "std_contribution": 0.0265,
+      "mean_normalized_score": 0.46449,
+      "percentage_of_score": 5.93
+    },
+    "legal_sub_contributions": {
+      "statute_jaccard": {
+        "mean_sub_contribution": 0.00645
+      },
+      "citation_jaccard": {
+        "mean_sub_contribution": 0.00112
+      },
+      "entity_jaccard": {
+        "mean_sub_contribution": 0.00468
+      },
+      "rhetorical_cosine": {
+        "mean_sub_contribution": 0.01388
+      }
+    }
+  },
+  "true_positives": {
+    "bm25_score": {
+      "mean_contribution": 0.0,
+      "std_contribution": 0.0,
+      "mean_normalized_score": 0.59438,
+      "percentage_of_score": 0.0
+    },
+    "tfidf_score": {
+      "mean_contribution": 0.41475,
+      "std_contribution": 0.15423,
+      "mean_normalized_score": 0.63808,
+      "percentage_of_score": 61.33
+    },
+    "inlegalbert_sim": {
+      "mean_contribution": 0.22058,
+      "std_contribution": 0.02655,
+      "mean_normalized_score": 0.88234,
+      "percentage_of_score": 32.62
+    },
+    "composite_legal_score": {
+      "mean_contribution": 0.04095,
+      "std_contribution": 0.02417,
+      "mean_normalized_score": 0.40955,
+      "percentage_of_score": 6.06
+    },
+    "legal_sub_contributions": {
+      "statute_jaccard": {
+        "mean_sub_contribution": 0.00612
+      },
+      "citation_jaccard": {
+        "mean_sub_contribution": 0.00179
+      },
+      "entity_jaccard": {
+        "mean_sub_contribution": 0.0042
+      },
+      "rhetorical_cosine": {
+        "mean_sub_contribution": 0.01364
+      }
+    }
+  }
+}

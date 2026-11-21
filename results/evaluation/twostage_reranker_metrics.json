@@ -1,0 +1,28 @@
+{
+  "model": "Two-Stage Hybrid Retrieval + Pairwise Neural Re-Ranker",
+  "stage1_baseline_test": {
+    "P@1": 0.641,
+    "P@5": 0.4393,
+    "P@10": 0.3077,
+    "R@5": 0.4516,
+    "R@10": 0.5563,
+    "MRR": 0.7472,
+    "nDCG@5": 0.6031,
+    "nDCG@10": 0.5858,
+    "evaluated_queries": 234
+  },
+  "stage2_reranked_test": {
+    "P@1": 0.6453,
+    "P@5": 0.4239,
+    "P@10": 0.2957,
+    "R@5": 0.4323,
+    "R@10": 0.5398,
+    "MRR": 0.748,
+    "nDCG@5": 0.5878,
+    "nDCG@10": 0.5704,
+    "evaluated_queries": 234
+  },
+  "best_alpha": 0.2,
+  "top_k_reranked": 30,
+  "elapsed_seconds": 169.01
+}

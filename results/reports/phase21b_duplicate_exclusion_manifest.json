@@ -1,0 +1,82 @@
+{
+  "audit_phase": "Phase 21B-2",
+  "description": "Deterministic cross-split duplicate exclusion manifest",
+  "original_test_size": 6313,
+  "excluded_test_count": 2,
+  "eligible_test_size": 6311,
+  "excluded_test_ids": [
+    "0001116667",
+    "0001505760"
+  ],
+  "collision_details": [
+    {
+      "hash": "55e2943267035597e0f5f2c26a528585",
+      "splits": [
+        "Train",
+        "Test"
+      ],
+      "documents": [
+        {
+          "id": "0001664346",
+          "raw_id": "1664346",
+          "duplicate_group": "0001664346",
+          "hash": "55e2943267035597e0f5f2c26a528585",
+          "split": "Train"
+        },
+        {
+          "id": "0001116667",
+          "raw_id": "1116667",
+          "duplicate_group": "0001116667",
+          "hash": "55e2943267035597e0f5f2c26a528585",
+          "split": "Test"
+        }
+      ]
+    },
+    {
+      "hash": "e39219f573fd665ad5fb2af1b111bce9",
+      "splits": [
+        "Train",
+        "Validation"
+      ],
+      "documents": [
+        {
+          "id": "0054290303",
+          "raw_id": "54290303",
+          "duplicate_group": "0054290303",
+          "hash": "e39219f573fd665ad5fb2af1b111bce9",
+          "split": "Train"
+        },
+        {
+          "id": "0000289593",
+          "raw_id": "289593",
+          "duplicate_group": "0000289593",
+          "hash": "e39219f573fd665ad5fb2af1b111bce9",
+          "split": "Validation"
+        }
+      ]
+    },
+    {
+      "hash": "c264cff91bf065c02a55e5cda0e32028",
+      "splits": [
+        "Test",
+        "Validation"
+      ],
+      "documents": [
+        {
+          "id": "0103682128",
+          "raw_id": "103682128",
+          "duplicate_group": "0103682128",
+          "hash": "c264cff91bf065c02a55e5cda0e32028",
+          "split": "Validation"
+        },
+        {
+          "id": "0001505760",
+          "raw_id": "1505760",
+          "duplicate_group": "0001505760",
+          "hash": "c264cff91bf065c02a55e5cda0e32028",
+          "split": "Test"
+        }
+      ]
+    }
+  ]
+}

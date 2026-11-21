@@ -1,0 +1,43 @@
+# Configuration for Legal Case Retrieval System
+
+project:
+  name: "legal-case-retrieval"
+  description: "Enhanced Legal Document Similarity and Case Retrieval Using Hybrid BERT, Legal Knowledge, and Ensemble Learning"
+  version: "0.1.0"
+
+paths:
+  data:
+    raw: "data/raw/Jud-IPL"
+    interim: "data/interim"
+    processed: "data/processed"
+    external: "data/external"
+  models:
+    bert: "models/bert"
+    embeddings: "models/embeddings"
+    checkpoints: "models/checkpoints"
+  results:
+    figures: "results/figures"
+    tables: "results/tables"
+    evaluation: "results/evaluation"
+    reports: "results/reports"
+  logs: "logs"
+
+preprocessing:
+  max_sequence_length: 512
+  lowercase: true
+  remove_stopwords: false
+
+embeddings:
+  model_name_or_path: "bert-base-uncased"
+  batch_size: 16
+  pooling: "mean"
+
+retrieval:
+  top_k: 10
+  similarity_metric: "cosine"
+
+backend:
+  host: "127.0.0.1"
+  port: 8000
+  reload: true
+

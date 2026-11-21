@@ -1,0 +1,10 @@
+val_accuracy,val_macro_f1,val_weighted_f1,val_precision,val_recall,val_roc_auc,val_pr_auc,confusion_matrix,configuration,model_type,calibration
+0.6933,0.6922,0.6922,0.6962,0.6933,0.7559,0.728,"[[226, 74], [110, 190]]",Baseline: Word 1-2 N-Gram TF-IDF + LR,Linear Baseline,None
+0.5,0.4987,0.4987,0.5,0.5,0.5061,0.5115,"[[135, 165], [135, 165]]",InLegalBERT Sequence Classifier,Transformer,None
+0.5,0.4978,0.4978,0.5,0.5,0.5127,0.5245,"[[130, 170], [130, 170]]",InLegalBERT BiLSTM,Transformer,None
+0.5117,0.5108,0.5108,0.5117,0.5117,0.5355,0.5496,"[[141, 159], [134, 166]]",InLegalBERT Attention Pooling,Transformer,None
+0.53,0.5242,0.5242,0.5315,0.53,0.5168,0.5125,"[[126, 174], [108, 192]]",InLegalBERT BiLSTM Attention,Transformer,None
+0.5083,0.5082,0.5082,0.5083,0.5083,0.5355,0.5496,"[[158, 142], [153, 147]]",InLegalBERT Attention Pooling (Calibrated),Transformer (Calibrated),Platt Scaling
+0.505,0.4995,0.4995,0.5052,0.505,0.5278,0.5346,"[[120, 180], [117, 183]]",Transformer Ensemble (Attention + BiLSTM Attention),Transformer Ensemble,None
+0.7033,0.7031,0.7031,0.7039,0.7033,0.7559,0.7309,"[[219, 81], [97, 203]]",Hybrid Fusion (0.60 Attention + 0.40 N-Gram LR),Hybrid Ensemble,None
+0.7083,0.7082,0.7082,0.7087,0.7083,0.7579,0.7324,"[[219, 81], [94, 206]]",Hybrid Fusion Calibrated (0.60 Attn + 0.40 LR),Hybrid Ensemble,Platt Scaling

@@ -1,0 +1,2706 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LegalAI Intelligence Platform | Unified Legal Intelligence Dashboard</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f6fe',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#071a33',
+            },
+            surface: {
+              card: '#0c2340',
+              deep: '#040d1a',
+              border: '#1e3a5f'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- React 18, React-DOM, and Babel Standalone for In-Browser JSX -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    .font-serif-legal { font-family: "Georgia", "Cambria", serif; }
+    /* Smooth transitions */
+    .tab-content { animation: fadeIn 0.2s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased transition-colors duration-150 dark:bg-[#040d1a] dark:text-slate-100">
+<div id="root"></div>
+
+<script type="text/babel">
+const { useEffect, useState, useMemo, useCallback } = React;
+
+// Navigation Pages Configuration
+const NAV_ITEMS = [
+  { id: "dashboard", label: "Dashboard", icon: "▦", desc: "Overview & Workspace Metrics" },
+  { id: "analysis", label: "AI Analysis", icon: "⌁", desc: "Outcome Classification & Case Retrieval" },
+  { id: "explorer", label: "Dataset Explorer", icon: "▤", desc: "Browse Parquet Corpus Metadata" },
+  { id: "evaluation", label: "Model Evaluation", icon: "▥", desc: "Held-Out Test Benchmarks & Statistics" },
+  { id: "history", label: "Analysis History", icon: "◷", desc: "Session Inferences & Queries" },
+  { id: "info", label: "Research Information", icon: "ⓘ", desc: "Methodology, Disclosures & Ethics" },
+  { id: "settings", label: "Settings", icon: "⚙", desc: "Theme & System Diagnostics" },
+];
+
+const CANONICAL_CLASSES = ["Accepted", "Other", "Rejected"];
+
+// Helper for number formatting
+const fmt = (n, digits = 4) => typeof n === "number" && !isNaN(n) ? n.toFixed(digits) : "—";
+const fmtPct = (n, digits = 2) => typeof n === "number" && !isNaN(n) ? `${(n * 100).toFixed(digits)}%` : "—";
+
+// Reusable Components
+function Card({ children, className = "", highlight = false }) {
+  return (
+    <div className={`rounded-2xl border transition-all duration-150 ${
+      highlight 
+        ? "border-blue-400 bg-white shadow-md dark:border-blue-500/40 dark:bg-[#0c2340]"
+        : "border-slate-200 bg-white shadow-sm dark:border-slate-800/80 dark:bg-[#071a33]/60"
+    } ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+function Badge({ children, variant = "default", className = "" }) {
+  const variants = {
+    default: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
+    blue: "bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800/50",
+    emerald: "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800/50",
+    amber: "bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800/50",
+    rose: "bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-800/50",
+  };
+  return (
+    <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${variants[variant] || variants.default} ${className}`}>
+      {children}
+    </span>
+  );
+}
+
+function EmptyState({ icon = "▤", title = "No records found", text = "Submit data to view results." }) {
+  return (
+    <div className="rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 p-8 text-center">
+      <div className="text-3xl text-slate-400 mb-2">{icon}</div>
+      <h3 className="font-semibold text-slate-800 dark:text-slate-200">{title}</h3>
+      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-sm mx-auto">{text}</p>
+    </div>
+  );
+}
+
+function ErrorBanner({ error, clear }) {
+  if (!error) return null;
+  return (
+    <div role="alert" className="mb-5 flex items-start justify-between gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/40 dark:text-rose-300">
+      <div className="flex items-center gap-2">
+        <span className="text-base font-bold text-rose-600">⚠</span>
+        <span>{error}</span>
+      </div>
+      <button aria-label="Dismiss error" onClick={clear} className="text-rose-500 hover:text-rose-700 font-bold px-1.5">×</button>
+    </div>
+  );
+}
+
+// Sample Data for Fast Testing
+const SAMPLE_JUDGMENTS = [
+  {
+    title: "Criminal Appeal (Murder Conviction Challenge)",
+    text: `the trial court accepted the evidence of sharad pw1 as trustworthy and to have been corroborated by the evidence of bhaurao pw2 and other evidence on record. on an appeal preferred by the accused the high court confirmed the findings of the trial court and dismissed the appeal. the appellant filed this special leave petition against the judgment of conviction under section 302 of the indian penal code. we have heard learned counsel for the parties and scrutinized the record with care. the prosecution case rests substantially on the testimony of eye witnesses pw1 and pw2 whose presence at the scene of occurrence was natural and probable.`
+  },
+  {
+    title: "Civil & Tariff Appeal (Customs Classification)",
+    text: `headnote the appellant-firm imported special purpose complex machinery and claimed that it was classifiable under item 84.45/48 of the tariff schedule and duty was payable at the rate of 40 per cent. the assistant collector of customs held that the machine was an electrical goods item assessable under heading 85.01 and raised a demand for differential duty. the collector of customs (appeals) affirmed the order. the appellant approached the appellate tribunal which dismissed the appeal. this statutory appeal is directed against the tribunal's order holding that multi-function industrial tools are subject to the higher ad valorem schedule.`
+  },
+  {
+    title: "Constitutional & Revenue Appeal (Provisional Tax Collection)",
+    text: `s.p. bharucha, s.c. sen act headnote judgment bharucha, j this appeal related to the provisional collection of taxes act, 1931. the appellants manufactured chemical compounds and disputed the retroactive assessment of central excise duties under the amended tariff rules. the high court dismissed the writ petition on the ground that an alternate statutory appellate remedy existed. we have considered the constitutional questions raised concerning article 265 and find no merit in the contentions advanced on behalf of the appellant corporation.`
+  }
+];
+
+const SAMPLE_QUERIES = [
+  { label: "Benchmark Test Query (ID: 0000021652)", query: "0000021652" },
+  { label: "IPC 302 Murder Appeal & Self-Defence", query: "appeal against conviction under section 302 IPC plea of private defence and sudden provocation" },
+  { label: "NI Act 138 Cheque Bounce & Rebuttal", query: "dishonour of cheque under section 138 negotiable instruments act statutory presumption under section 139" },
+  { label: "Arbitration Act Section 34 Award Set Aside", query: "setting aside arbitral award under section 34 of arbitration and conciliation act patent illegality" }
+];
+
+// Main Application Component
+function App() {
+  const [dataset, setDataset] = useState(() => localStorage.getItem("legalai-pref-dataset") || "jud-ipl");
+  const [tab, setTab] = useState("dashboard");
+  const [dark, setDark] = useState(() => localStorage.getItem("legalai-theme") === "dark");
+  const [datasets, setDatasets] = useState([]);
+  const [metricsJudIpl, setMetricsJudIpl] = useState(null);
+  const [metricsIlTur, setMetricsIlTur] = useState(null);
+  const [history, setHistory] = useState([]);
+  const [result, setResult] = useState(null);
+  const [text, setText] = useState("");
+  const [search, setSearch] = useState("");
+  const [topK, setTopK] = useState(() => parseInt(localStorage.getItem("legalai-pref-topk") || "8", 10));
+  const [model, setModel] = useState(() => localStorage.getItem("legalai-pref-model") || "M4");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [connected, setConnected] = useState(false);
+  const [systemStats, setSystemStats] = useState(null);
+  const [pingMs, setPingMs] = useState(null);
+
+  // Sync Dark Theme
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    localStorage.setItem("legalai-theme", dark ? "dark" : "light");
+  }, [dark]);
+
+  // Initial System Probe
+  const probeBackend = useCallback(async () => {
+    const t0 = performance.now();
+    try {
+      const [dRes, hRes] = await Promise.all([
+        fetch("/api/datasets"),
+        fetch("/api/health")
+      ]);
+      const elapsed = Math.round(performance.now() - t0);
+      setPingMs(elapsed);
+      if (dRes.ok && hRes.ok) {
+        const dData = await dRes.json();
+        const hData = await hRes.json();
+        setDatasets(dData.datasets || []);
+        setSystemStats(hData);
+        setConnected(true);
+      } else {
+        setConnected(false);
+        setError("Backend API is currently unreachable. Please ensure the Flask server is running.");
+      }
+    } catch (e) {
+      setConnected(false);
+      setPingMs(null);
+      setError("Cannot connect to Flask server. Verify backend status.");
+    }
+  }, []);
+
+  useEffect(() => {
+    probeBackend();
+  }, [probeBackend]);
+
+  // Load Metrics when switching datasets or on load
+  useEffect(() => {
+    if (dataset === "jud-ipl" && !metricsJudIpl) {
+      fetch("/api/judipl/metrics")
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(setMetricsJudIpl)
+        .catch(() => setError("Jud-IPL benchmark evaluation table could not be loaded."));
+    } else if (dataset === "il-tur" && !metricsIlTur) {
+      fetch("/api/iltur/metrics")
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(setMetricsIlTur)
+        .catch(() => setError("IL-TUR PCR evaluation metrics could not be loaded."));
+    }
+  }, [dataset, metricsJudIpl, metricsIlTur]);
+
+  const activeDatasetObj = datasets.find(item => item.id === dataset);
+
+  // Dataset switching handler with state cleanup
+  const handleDatasetSwitch = (newDataset) => {
+    if (newDataset === dataset) return;
+    setDataset(newDataset);
+    setResult(null); // Clear incompatible analysis result
+    setError("");
+    setTab("dashboard");
+    localStorage.setItem("legalai-pref-dataset", newDataset);
+  };
+
+  const addHistoryItem = (entry) => {
+    const item = {
+      ...entry,
+      history_id: `${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
+      dataset,
+      created: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      date: new Date().toLocaleDateString()
+    };
+    setHistory(prev => [item, ...prev].slice(0, 30));
+  };
+
+  // Inference: Jud-IPL
+  const runJudIplAnalyze = async () => {
+    const cleanText = text.trim();
+    if (!cleanText) {
+      setError("Judgment text cannot be empty. Please enter or import legal case text.");
+      return;
+    }
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch("/api/judipl/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: cleanText, model_id: model })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Judgment analysis failed.");
+      setResult(data);
+      addHistoryItem({
+        task: "Judgment Classification",
+        summary: `Predicted ${data.predicted_label} (${data.model_id})`,
+        model_id: data.model_id,
+        predicted_label: data.predicted_label,
+        word_count: data.word_count,
+        raw_result: data
+      });
+      setTab("analysis");
+    } catch (e) {
+      setResult(null);
+      setError(e.message);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  // Inference: IL-TUR PCR Search
+  const runIlTurSearch = async (queryToSearch) => {
+    const q = (typeof queryToSearch === "string" ? queryToSearch : search).trim();
+    if (!q) {
+      setError("Search query cannot be empty. Enter a legal issue description or query ID.");
+      return;
+    }
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch("/api/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: q, top_k: topK })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Case retrieval failed.");
+      setResult(data);
+      addHistoryItem({
+        task: "Prior Case Retrieval",
+        summary: `Retrieved ${data.results?.length || 0} candidates for "${q.slice(0, 36)}..."`,
+        query: q,
+        result_count: data.results?.length || 0,
+        raw_result: data
+      });
+      setTab("analysis");
+    } catch (e) {
+      setResult(null);
+      setError(e.message);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const handleTxtFileUpload = (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    if (!file.name.toLowerCase().endsWith(".txt")) {
+      setError("Unsupported file format. Please upload a plaintext .txt file.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setText(String(e.target?.result || ""));
+      setError("");
+    };
+    reader.onerror = () => setError("Failed to read the selected text file.");
+    reader.readAsText(file);
+  };
+
+  const clearSessionHistory = () => {
+    if (window.confirm("Are you sure you want to clear your current browser session history?")) {
+      setHistory([]);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col md:flex-row bg-slate-50 dark:bg-[#040d1a]">
+      {/* Desktop Sidebar Navigation */}
+      <aside className="hidden md:flex w-72 shrink-0 flex-col bg-[#071a33] text-white border-r border-[#102a4e] p-5 shadow-xl select-none">
+        {/* Brand Header */}
+        <div className="flex items-center gap-3 mb-8">
+          <div className="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center text-xl font-bold shadow-md shadow-blue-500/30">
+            ⚖
+          </div>
+          <div>
+            <div className="text-base font-bold tracking-tight text-white">LegalAI</div>
+            <div className="text-[10px] uppercase font-semibold tracking-wider text-blue-300">Unified Research Platform</div>
+          </div>
+        </div>
+
+        {/* Dataset Workspace Switcher Card */}
+        <div className="mb-6 rounded-xl bg-[#0b2546] p-3 border border-[#163a66]">
+          <div className="text-[10px] font-bold uppercase tracking-wider text-blue-300 mb-1.5 flex items-center justify-between">
+            <span>Active Dataset Workspace</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          </div>
+          <select
+            aria-label="Dataset Workspace Selector"
+            value={dataset}
+            onChange={(e) => handleDatasetSwitch(e.target.value)}
+            className="w-full rounded-lg bg-[#071a33] text-sm text-white font-medium border border-[#1d4677] p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          >
+            <option value="jud-ipl">Jud-IPL · Classification (3-Class)</option>
+            <option value="il-tur">IL-TUR · Prior Case Retrieval</option>
+          </select>
+          <div className="mt-2 text-[11px] text-slate-300 flex items-center gap-1.5">
+            <span className="opacity-70">Task:</span>
+            <span className="font-semibold text-blue-200">
+              {dataset === "jud-ipl" ? "Judgment Outcome Prediction" : "Precedent Case Ranking"}
+            </span>
+          </div>
+        </div>
+
+        {/* Navigation Items */}
+        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 px-1">Navigation</div>
+        <nav className="space-y-1">
+          {NAV_ITEMS.map((item) => {
+            const isActive = tab === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setTab(item.id)}
+                className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm font-medium transition-all ${
+                  isActive
+                    ? "bg-blue-600 text-white shadow-sm shadow-blue-600/40"
+                    : "text-slate-300 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-base w-5 text-center">{item.icon}</span>
+                  <span>{item.label}</span>
+                </div>
+                {isActive && <span className="h-1.5 w-1.5 rounded-full bg-white"></span>}
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Sidebar Connection Diagnostics */}
+        <div className="mt-auto pt-6">
+          <div className="rounded-xl bg-[#0b2546]/80 p-3 text-xs border border-[#163a66]">
+            <div className="flex items-center justify-between">
+              <span className="text-slate-300 font-medium">Backend API</span>
+              <span className={`inline-flex items-center gap-1 font-semibold ${connected ? "text-emerald-400" : "text-rose-400"}`}>
+                <span className={`h-2 w-2 rounded-full ${connected ? "bg-emerald-400" : "bg-rose-400"}`}></span>
+                {connected ? "Online" : "Offline"}
+              </span>
+            </div>
+            {pingMs !== null && (
+              <div className="mt-1 text-[11px] text-slate-400">Response time: {pingMs} ms</div>
+            )}
+            <div className="mt-2 text-[10px] text-slate-400 border-t border-[#1d4677]/60 pt-1.5">
+              Strict 0% Cross-Corpus Contamination Enforced
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <main className="flex-1 min-w-0 flex flex-col">
+        {/* Top Header Bar */}
+        <header className="sticky top-0 z-20 flex min-h-16 flex-wrap items-center justify-between gap-4 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-[#071a33]/90 sm:px-6 lg:px-8">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+              <span>{activeDatasetObj?.name || "LegalAI Workspace"}</span>
+              <span>/</span>
+              <span className="text-blue-600 dark:text-blue-400">{NAV_ITEMS.find(n => n.id === tab)?.label}</span>
+            </div>
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white">
+              {NAV_ITEMS.find(n => n.id === tab)?.label}
+            </h1>
+          </div>
+
+          <div className="flex items-center gap-3">
+            {/* Quick Workspace Switcher for Header */}
+            <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl text-xs font-semibold">
+              <button
+                onClick={() => handleDatasetSwitch("jud-ipl")}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  dataset === "jud-ipl"
+                    ? "bg-white text-blue-600 shadow-sm dark:bg-[#0c2340] dark:text-blue-300 font-bold"
+                    : "text-slate-600 dark:text-slate-300 hover:text-slate-900"
+                }`}
+              >
+                Jud-IPL (Classification)
+              </button>
+              <button
+                onClick={() => handleDatasetSwitch("il-tur")}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  dataset === "il-tur"
+                    ? "bg-white text-blue-600 shadow-sm dark:bg-[#0c2340] dark:text-blue-300 font-bold"
+                    : "text-slate-600 dark:text-slate-300 hover:text-slate-900"
+                }`}
+              >
+                IL-TUR (Retrieval)
+              </button>
+            </div>
+
+            {/* Dark / Light Theme Toggle */}
+            <button
+              id="theme-toggle-btn"
+              aria-label="Toggle theme"
+              onClick={() => setDark(v => !v)}
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+            >
+              {dark ? "☀" : "☾"}
+            </button>
+          </div>
+        </header>
+
+        {/* Mobile Navigation Dropdown */}
+        <div className="border-b border-slate-200 bg-white px-4 py-2.5 dark:border-slate-800 dark:bg-[#071a33] md:hidden">
+          <label className="text-xs text-slate-500 font-medium mb-1 block">Switch Page:</label>
+          <select
+            aria-label="Mobile Navigation"
+            value={tab}
+            onChange={(e) => setTab(e.target.value)}
+            className="w-full rounded-lg border border-slate-300 bg-slate-50 p-2 text-sm font-semibold dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+          >
+            {NAV_ITEMS.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.icon} {item.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Viewport Content */}
+        <div className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto tab-content">
+          <ErrorBanner error={error} clear={() => setError("")} />
+
+          {tab === "dashboard" && (
+            <DashboardView
+              dataset={dataset}
+              activeDataset={activeDatasetObj}
+              metricsJudIpl={metricsJudIpl}
+              metricsIlTur={metricsIlTur}
+              setTab={setTab}
+            />
+          )}
+
+          {tab === "analysis" && (
+            <AnalysisView
+              dataset={dataset}
+              text={text}
+              setText={setText}
+              model={model}
+              setModel={setModel}
+              analyze={runJudIplAnalyze}
+              loadFile={handleTxtFileUpload}
+              result={result}
+              search={search}
+              setSearch={setSearch}
+              topK={topK}
+              setTopK={setTopK}
+              runSearch={runIlTurSearch}
+              busy={busy}
+            />
+          )}
+
+          {tab === "explorer" && <ExplorerView dataset={dataset} />}
+
+          {tab === "evaluation" && (
+            <EvaluationView
+              dataset={dataset}
+              metricsJudIpl={metricsJudIpl}
+              metricsIlTur={metricsIlTur}
+            />
+          )}
+
+          {tab === "history" && (
+            <HistoryView
+              rows={history}
+              setResult={setResult}
+              setTab={setTab}
+              clear={clearSessionHistory}
+            />
+          )}
+
+          {tab === "info" && <ResearchInfoView />}
+
+          {tab === "settings" && (
+            <SettingsView
+              dark={dark}
+              setDark={setDark}
+              connected={connected}
+              dataset={dataset}
+              setDataset={handleDatasetSwitch}
+              model={model}
+              setModel={setModel}
+              topK={topK}
+              setTopK={setTopK}
+              pingMs={pingMs}
+              probeBackend={probeBackend}
+              systemStats={systemStats}
+            />
+          )}
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-auto border-t border-slate-200 bg-white/70 py-4 px-6 text-center text-xs text-slate-500 dark:border-slate-800 dark:bg-[#071a33]/40 dark:text-slate-400">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <span>Unified LegalAI Intelligence Platform · Jud-IPL Outcome Classification & IL-TUR PCR Retrieval</span>
+            <span className="font-medium text-slate-400 dark:text-slate-500">Decision-Support Tool · Not Legal Advice</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// 1. DASHBOARD VIEW
+// -----------------------------------------------------------------------------
+function DashboardView({ dataset, activeDataset, metricsJudIpl, metricsIlTur, setTab }) {
+  const isJudIpl = dataset === "jud-ipl";
+
+  return (
+    <div className="space-y-8">
+      {/* Hero Banner */}
+      <div className="rounded-3xl bg-gradient-to-r from-[#071a33] via-[#0c2e59] to-[#123e75] p-6 sm:p-8 text-white shadow-lg border border-blue-900/40">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="max-w-2xl">
+            <Badge variant="blue" className="bg-blue-500/20 text-blue-200 border-blue-400/30 font-bold mb-3">
+              {isJudIpl ? "Jud-IPL Standalone Classification" : "IL-TUR Precedent Case Retrieval"}
+            </Badge>
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              {isJudIpl ? "Judicial Outcome Intelligence & Explainability" : "Hybrid Legal Precedent Case Retrieval"}
+            </h2>
+            <p className="mt-2 text-sm sm:text-base text-blue-100/80 leading-relaxed">
+              {isJudIpl
+                ? "Classify Indian Supreme Court judgments into Accepted, Other, or Rejected dispositions using rhetorical section awareness."
+                : "Retrieve highly relevant legal precedents across 1,727 candidates using weighted lexical-dense fusion."}
+            </p>
+          </div>
+          <button
+            onClick={() => setTab("analysis")}
+            className="rounded-xl bg-blue-500 hover:bg-blue-600 px-5 py-3 font-bold text-sm text-white shadow-md shadow-blue-500/30 transition flex items-center gap-2"
+          >
+            <span>Launch {isJudIpl ? "Judgment Analyzer" : "Precedent Search"}</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Dataset Statistics Grid */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Card className="p-5">
+          <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Target Task</div>
+          <div className="mt-2 text-xl font-bold text-slate-900 dark:text-white">
+            {isJudIpl ? "3-Class Outcome" : "Prior Case Retrieval"}
+          </div>
+          <div className="mt-1 text-xs text-blue-600 dark:text-blue-400 font-medium">
+            {isJudIpl ? "Accepted / Other / Rejected" : "Candidate Ranking"}
+          </div>
+        </Card>
+
+        <Card className="p-5">
+          <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            {isJudIpl ? "Eligible Test Population" : "Precedent Candidate Pool"}
+          </div>
+          <div className="mt-2 text-2xl font-bold text-slate-900 dark:text-white">
+            {isJudIpl ? "6,311" : "1,727"}
+          </div>
+          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            {isJudIpl ? "6,313 total (2 duplicate excluded)" : "Total indexed judgments"}
+          </div>
+        </Card>
+
+        <Card className="p-5">
+          <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Primary Model</div>
+          <div className="mt-2 text-xl font-bold text-slate-900 dark:text-white">
+            {isJudIpl ? "Model M4 (Section TF-IDF)" : "Weighted Linear Fusion"}
+          </div>
+          <div className="mt-1 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+            {isJudIpl ? "50,000 features · ~15 ms" : "TF-IDF 0.65 / Dense 0.25"}
+          </div>
+        </Card>
+
+        <Card className="p-5">
+          <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Integrity Boundary</div>
+          <div className="mt-2 text-xl font-bold text-emerald-600 dark:text-emerald-400">
+            0% Contamination
+          </div>
+          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            Strict partition isolation verified
+          </div>
+        </Card>
+      </div>
+
+      {/* Action Cards & Verification Status */}
+      <div className="grid gap-6 lg:grid-cols-3">
+        <Card className="p-6 lg:col-span-2">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Interactive Workflows</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-5">
+            Select an operational action for the active <span className="font-semibold text-slate-800 dark:text-slate-200">{activeDataset?.name || (isJudIpl ? "Jud-IPL" : "IL-TUR")}</span> dataset:
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <button
+              onClick={() => setTab("analysis")}
+              className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 text-left bg-slate-50/50 dark:bg-slate-800/40 transition group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-2xl">{isJudIpl ? "⚖" : "🔍"}</span>
+                <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition">Run →</span>
+              </div>
+              <div className="mt-3 font-bold text-slate-900 dark:text-white">
+                {isJudIpl ? "Analyze Judgment" : "Search Legal Precedents"}
+              </div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                {isJudIpl ? "Test M4 or M8 frozen inference" : "Rank PCR candidates with hybrid scoring"}
+              </div>
+            </button>
+
+            <button
+              onClick={() => setTab("explorer")}
+              className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 text-left bg-slate-50/50 dark:bg-slate-800/40 transition group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-2xl">📑</span>
+                <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition">Browse →</span>
+              </div>
+              <div className="mt-3 font-bold text-slate-900 dark:text-white">Dataset Explorer</div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                {isJudIpl ? "Inspect 6,311 test metadata records" : "Browse 1,727 PCR candidate excerpts"}
+              </div>
+            </button>
+
+            <button
+              onClick={() => setTab("evaluation")}
+              className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 text-left bg-slate-50/50 dark:bg-slate-800/40 transition group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-2xl">📊</span>
+                <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition">Audit →</span>
+              </div>
+              <div className="mt-3 font-bold text-slate-900 dark:text-white">Held-Out Model Evaluation</div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                {isJudIpl ? "Corrected Phase 21B-C metrics" : "Verified PCR benchmark performance"}
+              </div>
+            </button>
+
+            <button
+              onClick={() => setTab("info")}
+              className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 text-left bg-slate-50/50 dark:bg-slate-800/40 transition group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-2xl">ⓘ</span>
+                <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition">Docs →</span>
+              </div>
+              <div className="mt-3 font-bold text-slate-900 dark:text-white">Research Disclosures</div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                Exclusions, methodology, and citations
+              </div>
+            </button>
+          </div>
+        </Card>
+
+        {/* Scientific Compliance Checklist */}
+        <Card className="p-6">
+          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-3">Compliance & Integrity</h3>
+          <ul className="space-y-3 text-xs text-slate-600 dark:text-slate-300">
+            <li className="flex items-start gap-2">
+              <span className="text-emerald-500 font-bold">✓</span>
+              <span><strong>0% IL-TUR Dependency in Jud-IPL:</strong> Models trained strictly on Jud-IPL judgments.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-emerald-500 font-bold">✓</span>
+              <span><strong>Frozen Checkpoints:</strong> Joblib models loaded read-only without on-the-fly retraining.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-emerald-500 font-bold">✓</span>
+              <span><strong>Held-Out Isolation:</strong> Evaluation metrics reflect frozen test splits.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-amber-500 font-bold">ℹ</span>
+              <span><strong>Historical Overlap Disclosed:</strong> 812 test judgments share Phase 18 binary evaluation history.</span>
+            </li>
+          </ul>
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// 2. AI ANALYSIS VIEW (Jud-IPL & IL-TUR)
+// -----------------------------------------------------------------------------
+function AnalysisView({
+  dataset,
+  text,
+  setText,
+  model,
+  setModel,
+  analyze,
+  loadFile,
+  result,
+  search,
+  setSearch,
+  topK,
+  setTopK,
+  runSearch,
+  busy
+}) {
+  const isJudIpl = dataset === "jud-ipl";
+  const [inputMode, setInputMode] = useState("paste");
+  const [pdfFile, setPdfFile] = useState(null);
+  const [pdfExtracting, setPdfExtracting] = useState(false);
+  const [pdfDragActive, setPdfDragActive] = useState(false);
+  const [pdfError, setPdfError] = useState("");
+  const [explanation, setExplanation] = useState(null);
+  const [explaining, setExplaining] = useState(false);
+  const [explainError, setExplainError] = useState("");
+
+  // Reset explanation when prediction result changes
+  useEffect(() => {
+    setExplanation(null);
+    setExplainError("");
+  }, [result]);
+
+  const handlePdfSelect = (file) => {
+    if (!file) return;
+    setPdfError("");
+    if (!file.name.toLowerCase().endsWith(".pdf")) {
+      const err = "Invalid file extension for '" + file.name + "'. Only genuine .pdf files are supported.";
+      setPdfError(err);
+      setPdfFile({ file: null, name: file.name, sizeFormatted: (file.size / 1024).toFixed(1) + " KB", status: "error", error: err, metadata: null });
+      return;
+    }
+    const sizeKB = (file.size / 1024).toFixed(1) + " KB";
+    setPdfFile({ file, name: file.name, sizeFormatted: sizeKB, status: "ready", error: "", metadata: null });
+  };
+
+  const handlePdfDrop = (e) => {
+    e.preventDefault();
+    setPdfDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handlePdfSelect(e.dataTransfer.files[0]);
+    }
+  };
+
+  const extractPdfText = async () => {
+    if (!pdfFile || !pdfFile.file) return;
+    setPdfExtracting(true);
+    setPdfError("");
+    setPdfFile(prev => ({ ...prev, status: "extracting" }));
+    try {
+      const formData = new FormData();
+      formData.append("file", pdfFile.file);
+      const res = await fetch("/api/judipl/extract-pdf", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        const errMsg = data.error || "Failed to extract text from PDF.";
+        setPdfError(errMsg);
+        setPdfFile(prev => ({ ...prev, status: "error", error: errMsg }));
+        return;
+      }
+      setPdfFile(prev => ({
+        ...prev,
+        status: "extracted",
+        metadata: data
+      }));
+      setText(data.extracted_text || "");
+    } catch (err) {
+      const msg = err.message || "Network error during PDF text extraction.";
+      setPdfError(msg);
+      setPdfFile(prev => ({ ...prev, status: "error", error: msg }));
+    } finally {
+      setPdfExtracting(false);
+    }
+  };
+
+  const removePdfFile = () => {
+    setPdfFile(null);
+    setPdfError("");
+  };
+
+  const clearAllAnalysis = () => {
+    setText("");
+    setPdfFile(null);
+    setPdfError("");
+    setExplanation(null);
+    setExplainError("");
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+            {isJudIpl ? "Legal Judgment Outcome Analyzer" : "Prior Case Precedent Retrieval"}
+          </h2>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            {isJudIpl
+              ? "Live multi-class outcome prediction using frozen Jud-IPL rhetorical models."
+              : "Rank candidate precedent judgments using frozen hybrid feature fusion."}
+          </p>
+        </div>
+        <Badge variant={isJudIpl ? "blue" : "emerald"} className="text-xs px-3 py-1">
+          {isJudIpl ? "Task: 3-Class Classification" : "Task: Top-K Prior Case Retrieval"}
+        </Badge>
+      </div>
+
+      {isJudIpl ? (
+        // Jud-IPL Analyzer Component
+        <div className="grid gap-6 lg:grid-cols-12">
+          {/* Input Panel */}
+          <div className="lg:col-span-7 space-y-4">
+            <Card className="p-5 sm:p-6 space-y-4">
+              {/* Header with Model Selector and Modes */}
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <label className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                  Judgment Text Input
+                </label>
+                <div className="flex items-center gap-2">
+                  {/* Model Architecture Selector */}
+                  <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg text-xs">
+                    <span className="text-slate-500 pl-1 font-medium">Model:</span>
+                    <select
+                      aria-label="Model Architecture Selector"
+                      value={model}
+                      onChange={(e) => setModel(e.target.value)}
+                      className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 rounded px-2 py-1 font-bold border border-slate-200 dark:border-slate-700"
+                    >
+                      <option value="M4">M4: Section-Aware TF-IDF (Recommended)</option>
+                      <option value="M8">M8: Hybrid Late Fusion Ensemble</option>
+                    </select>
+                  </div>
+
+                  {/* Plaintext .txt File Importer */}
+                  <label className="cursor-pointer rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    Import .txt
+                    <input type="file" accept=".txt,.text" onChange={loadFile} className="hidden" />
+                  </label>
+
+                  {/* Clear Button */}
+                  {(text || pdfFile) && (
+                    <button
+                      id="clear-analysis-btn"
+                      onClick={clearAllAnalysis}
+                      className="text-xs text-rose-500 hover:text-rose-700 font-semibold px-2 py-1"
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Mode Tabs: Direct Text vs Upload PDF */}
+              <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2 text-xs">
+                <button
+                  id="mode-paste-btn"
+                  onClick={() => setInputMode("paste")}
+                  className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 ${
+                    inputMode === "paste"
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
+                >
+                  <span>📝 Direct Text Input</span>
+                </button>
+                <button
+                  id="mode-pdf-btn"
+                  onClick={() => setInputMode("pdf")}
+                  className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 ${
+                    inputMode === "pdf"
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
+                >
+                  <span>📄 Upload Judgment PDF</span>
+                  {pdfFile && (
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
+                  )}
+                </button>
+              </div>
+
+              {/* PDF Ingestion Area */}
+              {inputMode === "pdf" && (
+                <div className="space-y-3">
+                  <div
+                    id="pdf-drop-zone"
+                    onDragOver={(e) => { e.preventDefault(); setPdfDragActive(true); }}
+                    onDragLeave={() => setPdfDragActive(false)}
+                    onDrop={handlePdfDrop}
+                    onClick={() => document.getElementById("pdf-file-input")?.click()}
+                    className={`relative rounded-2xl border-2 border-dashed p-6 text-center transition cursor-pointer ${
+                      pdfDragActive
+                        ? "border-blue-500 bg-blue-50/70 dark:bg-blue-950/30"
+                        : "border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/30 hover:border-blue-400"
+                    }`}
+                  >
+                    <input
+                      id="pdf-file-input"
+                      type="file"
+                      accept=".pdf"
+                      onChange={(e) => handlePdfSelect(e.target.files?.[0])}
+                      className="hidden"
+                    />
+                    <div className="flex flex-col items-center justify-center gap-2">
+                      <div className="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl shadow-sm">
+                        📄
+                      </div>
+                      <div className="font-bold text-sm text-slate-800 dark:text-slate-200">
+                        Drag and drop legal judgment PDF here, or click to browse
+                      </div>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md">
+                        Supported: Genuine Indian Supreme Court .pdf documents up to 15 MB (max 100 pages). Scanned documents without text layer are detected honestly.
+                      </p>
+                    </div>
+                  </div>
+
+                  {pdfFile && (
+                    <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 shadow-sm space-y-3">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">📑</span>
+                          <div>
+                            <div className="font-mono text-xs font-bold text-slate-900 dark:text-white truncate max-w-xs sm:max-w-md" data-testid="pdf-filename">
+                              {pdfFile.name}
+                            </div>
+                            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                              Size: {pdfFile.sizeFormatted}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Badge
+                            variant={
+                              pdfFile.status === "extracted"
+                                ? "emerald"
+                                : pdfFile.status === "error"
+                                ? "rose"
+                                : pdfFile.status === "extracting"
+                                ? "amber"
+                                : "blue"
+                            }
+                            className="text-xs font-bold"
+                          >
+                            {pdfFile.status === "extracted"
+                              ? "Extracted"
+                              : pdfFile.status === "extracting"
+                              ? "Extracting..."
+                              : pdfFile.status === "error"
+                              ? "Extraction Error"
+                              : "Ready to Extract"}
+                          </Badge>
+                          {pdfFile.status === "ready" && (
+                            <button
+                              id="extract-pdf-btn"
+                              onClick={extractPdfText}
+                              disabled={pdfExtracting}
+                              className="rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-blue-700 transition shadow-sm"
+                            >
+                              Extract Text
+                            </button>
+                          )}
+                          <button
+                            id="remove-pdf-btn"
+                            onClick={removePdfFile}
+                            className="rounded-lg border border-slate-300 dark:border-slate-700 px-2.5 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                          >
+                            Remove File
+                          </button>
+                        </div>
+                      </div>
+
+                      {pdfError && (
+                        <div
+                          id="pdf-error-alert"
+                          role="alert"
+                          className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 dark:bg-rose-950/40 dark:border-rose-900/60 dark:text-rose-200 text-xs flex items-start gap-2"
+                        >
+                          <span className="font-bold text-rose-600 text-sm">⚠</span>
+                          <div className="flex-1">
+                            <div className="font-bold">PDF Extraction Blocked</div>
+                            <div className="mt-0.5">{pdfError}</div>
+                          </div>
+                        </div>
+                      )}
+
+                      {pdfFile.metadata && (
+                        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+                          <Badge variant="blue">Pages: {pdfFile.metadata.page_count}</Badge>
+                          <Badge variant="emerald">Characters: {pdfFile.metadata.character_count.toLocaleString()}</Badge>
+                          <Badge variant="amber">Words: {pdfFile.metadata.word_count.toLocaleString()}</Badge>
+                          <span className="text-[11px] text-slate-400 ml-auto">
+                            Extracted via authentic pypdf pipeline
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Sample Judgments Bar (Paste mode) */}
+              {inputMode === "paste" && (
+                <div className="mb-2 flex flex-wrap items-center gap-2 text-xs">
+                  <span className="text-slate-400 font-medium">Quick Samples:</span>
+                  {SAMPLE_JUDGMENTS.map((s, idx) => (
+                    <button
+                      key={idx}
+                      data-sample-idx={idx}
+                      onClick={() => setText(s.text)}
+                      className="rounded-md bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 px-2 py-1 text-[11px] font-medium border border-blue-200 dark:border-blue-900 hover:bg-blue-100 dark:hover:bg-blue-900/60 transition"
+                    >
+                      Sample {idx + 1}: {s.title.split("(")[0]}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Extracted Content Review Banner if extracted */}
+              {pdfFile?.status === "extracted" && (
+                <div className="rounded-xl bg-blue-50 p-3 text-xs text-blue-900 border border-blue-200 dark:bg-blue-950/30 dark:border-blue-900/40 dark:text-blue-200 flex items-center gap-2">
+                  <span className="text-base font-bold text-blue-600">✓</span>
+                  <span>
+                    <strong>Extracted Text Review:</strong> Judgment text extracted from all {pdfFile.metadata?.page_count || 1} pages is loaded below. You may inspect or edit the text before submitting for prediction.
+                  </span>
+                </div>
+              )}
+
+              {/* Textarea */}
+              <textarea
+                id="judgment-textarea"
+                aria-label="Judgment Text Input Area"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                rows="11"
+                placeholder={inputMode === "pdf" ? "Extracted PDF text will appear here for review and editing before analysis..." : "Paste an Indian Supreme Court legal judgment text here, or load a sample above..."}
+                className="font-serif-legal w-full rounded-xl border border-slate-300 p-4 text-sm leading-relaxed text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+
+              {/* Submission Controls */}
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800 pt-3">
+                <div className="flex items-center gap-3 text-xs text-slate-400">
+                  <span>{text.trim() ? text.trim().split(/\s+/).length.toLocaleString() : "0"} words</span>
+                  <span>·</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-medium">📄 PDF Extraction Active (pypdf engine)</span>
+                </div>
+                <button
+                  id="analyze-submit-btn"
+                  onClick={analyze}
+                  disabled={busy}
+                  className="rounded-xl bg-blue-600 px-6 py-2.5 font-bold text-sm text-white shadow-md hover:bg-blue-700 disabled:opacity-50 transition flex items-center gap-2"
+                >
+                  {busy ? (
+                    <>
+                      <span className="animate-spin text-base">◷</span>
+                      <span>Analyzing Judgment...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Predict Outcome</span>
+                      <span>→</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </Card>
+
+            {/* Disclaimer */}
+            <div className="rounded-xl bg-amber-50/80 p-4 text-xs text-amber-900 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/40 dark:text-amber-200">
+              <strong>Legal Disclaimer:</strong> Jud-IPL predictions are statistical research signals reflecting machine learning patterns on historical appellate data. They do not constitute legal advice. Judicial rulings depend on context, arguments, and statutory application verified by qualified legal advocates.
+            </div>
+          </div>
+
+          {/* Results Panel */}
+          <div className="lg:col-span-5 space-y-6">
+            {result?.predicted_label ? (
+              <>
+                <ClassificationResultCard result={result} />
+                <AILegalExplanationCard
+                  result={result}
+                  text={text}
+                  pdfFile={pdfFile}
+                  explanation={explanation}
+                  setExplanation={setExplanation}
+                  explaining={explaining}
+                  setExplaining={setExplaining}
+                  explainError={explainError}
+                  setExplainError={setExplainError}
+                />
+              </>
+            ) : (
+              <EmptyState
+                icon="⚖"
+                title="Awaiting Judgment Input"
+                text="Provide judgment text and click 'Predict Outcome' to generate frozen three-class predictions."
+              />
+            )}
+          </div>
+        </div>
+      ) : (
+        // IL-TUR PCR Search Component
+        <div className="space-y-6">
+          <Card className="p-5 sm:p-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <label className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                Precedent Search Query
+              </label>
+              <div className="flex items-center gap-2 text-xs">
+                <span className="text-slate-500 font-medium">Retrieve Top-K:</span>
+                <select
+                  aria-label="Top K Selector"
+                  value={topK}
+                  onChange={(e) => {
+                    const val = parseInt(e.target.value, 10);
+                    setTopK(val);
+                    localStorage.setItem("legalai-pref-topk", val);
+                  }}
+                  className="rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-1 font-bold text-slate-800 dark:text-slate-200"
+                >
+                  <option value={5}>Top 5 Candidates</option>
+                  <option value={8}>Top 8 Candidates</option>
+                  <option value={10}>Top 10 Candidates</option>
+                  <option value={20}>Top 20 Candidates</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Sample Queries Bar */}
+            <div className="mb-3 flex flex-wrap items-center gap-2 text-xs">
+              <span className="text-slate-400 font-medium">Sample Queries:</span>
+              {SAMPLE_QUERIES.map((sq, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSearch(sq.query)}
+                  className="rounded-md bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 px-2.5 py-1 text-[11px] font-medium border border-blue-200 dark:border-blue-900 hover:bg-blue-100 dark:hover:bg-blue-900/60 transition"
+                >
+                  {sq.label}
+                </button>
+              ))}
+            </div>
+
+            <textarea
+              aria-label="Legal Precedent Search Query"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              rows="4"
+              placeholder="Describe legal issues, sections, or enter an IL-TUR test query ID (e.g. 0000021652)..."
+              className="w-full rounded-xl border border-slate-300 p-4 text-sm leading-relaxed text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800 pt-3">
+              <span className="text-xs text-slate-500 dark:text-slate-400">
+                Ranking model: <strong>Weighted Linear Fusion</strong> (TF-IDF 0.65, InLegalBERT 0.25, Statutes 0.10)
+              </span>
+              <button
+                id="search-submit-btn"
+                onClick={() => runSearch()}
+                disabled={busy}
+                className="rounded-xl bg-blue-600 px-6 py-2.5 font-bold text-sm text-white shadow-md hover:bg-blue-700 disabled:opacity-50 transition flex items-center gap-2"
+              >
+                {busy ? (
+                  <>
+                    <span className="animate-spin">◷</span>
+                    <span>Retrieving Precedents...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Search Precedents</span>
+                    <span>→</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </Card>
+
+          {/* Ranking Notice Banner */}
+          <div className="rounded-xl bg-blue-50 p-3.5 text-xs text-blue-900 border border-blue-200 dark:bg-blue-950/30 dark:border-blue-900/40 dark:text-blue-200 flex items-center gap-2">
+            <span className="text-base font-bold text-blue-600">ℹ</span>
+            <span>
+              <strong>Ranking Score Disclosure:</strong> Displayed retrieval scores represent relative hybrid ranking scores normalized per query candidate pool. They are not calibrated posterior probabilities.
+            </span>
+          </div>
+
+          {/* Research Corpus Isolation Disclosure */}
+          <div className="rounded-xl bg-slate-50 p-3 text-xs text-slate-600 border border-slate-200 dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-400 flex items-center gap-2">
+            <span className="font-semibold text-slate-500">🔒 Corpus Isolation:</span>
+            <span>PDF document text ingestion is strictly scoped to Jud-IPL outcome prediction. IL-TUR accepts precedent query descriptions or benchmark IDs to preserve 0% cross-corpus research contamination.</span>
+          </div>
+
+          {/* Retrieval Results List */}
+          {result?.results ? (
+            <RetrievalResultsList results={result.results} queryType={result.query_type} />
+          ) : (
+            <EmptyState
+              icon="🔍"
+              title="No Precedents Retrieved Yet"
+              text="Submit a legal query or benchmark ID above to search against the 1,727 IL-TUR candidate pool."
+            />
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Jud-IPL Classification Result Card
+function ClassificationResultCard({ result }) {
+  const isAccepted = result.predicted_label === "Accepted";
+  const isOther = result.predicted_label === "Other";
+  const isRejected = result.predicted_label === "Rejected";
+
+  const bannerColor = isAccepted
+    ? "bg-emerald-50 border-emerald-300 text-emerald-900 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-200"
+    : isOther
+    ? "bg-amber-50 border-amber-300 text-amber-900 dark:bg-amber-950/40 dark:border-amber-800 dark:text-amber-200"
+    : "bg-blue-50 border-blue-300 text-blue-900 dark:bg-blue-950/40 dark:border-blue-800 dark:text-blue-200";
+
+  return (
+    <Card className="p-6 space-y-6">
+      <div>
+        <div className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">
+          Inference Result
+        </div>
+        <div className={`mt-2 p-4 rounded-2xl border ${bannerColor} flex items-center justify-between`}>
+          <div>
+            <div className="text-xs uppercase tracking-wider font-semibold opacity-70">Predicted Disposition</div>
+            <div data-testid="predicted-label" className="text-2xl sm:text-3xl font-black tracking-tight">{result.predicted_label}</div>
+          </div>
+          <Badge variant={isAccepted ? "emerald" : isOther ? "amber" : "blue"} className="px-3 py-1 font-bold">
+            Frozen {result.model_id}
+          </Badge>
+        </div>
+      </div>
+
+      {/* Probability Bars (Canonical Order: Accepted, Other, Rejected) */}
+      <div>
+        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+          Posterior Probability Distribution
+        </h4>
+        <div className="space-y-3">
+          {CANONICAL_CLASSES.map((label) => {
+            const prob = result.probabilities?.[label] || 0;
+            const pct = (prob * 100).toFixed(1);
+            const isHighest = result.predicted_label === label;
+
+            return (
+              <div key={label} className="space-y-1">
+                <div className="flex justify-between text-xs font-semibold">
+                  <span className={isHighest ? "text-slate-900 dark:text-white font-bold" : "text-slate-600 dark:text-slate-400"}>
+                    {label} {isHighest && "★"}
+                  </span>
+                  <span className="font-mono text-slate-800 dark:text-slate-200">{pct}%</span>
+                </div>
+                <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all duration-300 ${
+                      isHighest
+                        ? label === "Accepted"
+                          ? "bg-emerald-500"
+                          : label === "Other"
+                          ? "bg-amber-500"
+                          : "bg-blue-600"
+                        : "bg-slate-300 dark:bg-slate-600"
+                    }`}
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Model & Runtime Metadata */}
+      <div className="rounded-xl bg-slate-50 dark:bg-slate-800/60 p-3.5 text-xs text-slate-500 dark:text-slate-400 space-y-1.5 border border-slate-200 dark:border-slate-800">
+        <div className="flex justify-between">
+          <span>Active Classifier:</span>
+          <span className="font-semibold text-slate-800 dark:text-slate-200">{result.model_name} ({result.model_id})</span>
+        </div>
+        <div className="flex justify-between">
+          <span>Processed Words:</span>
+          <span className="font-semibold text-slate-800 dark:text-slate-200">{result.word_count.toLocaleString()} words</span>
+        </div>
+        <div className="flex justify-between">
+          <span>Class Count:</span>
+          <span className="font-semibold text-slate-800 dark:text-slate-200">3 (Accepted, Other, Rejected)</span>
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+// Helper Accordion Component for Explanation Subsections
+function AccordionSection({ title, badge, isOpen, onToggle, children }) {
+  return (
+    <div className="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-white dark:bg-[#071a33]/40">
+      <button
+        type="button"
+        onClick={onToggle}
+        className="w-full flex items-center justify-between p-3.5 text-left hover:bg-slate-50/80 dark:hover:bg-slate-800/50 transition cursor-pointer"
+      >
+        <span className="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200 flex items-center gap-2">
+          <span className="text-slate-400 font-mono">{isOpen ? "▾" : "▸"}</span>
+          <span>{title}</span>
+        </span>
+        {badge && (
+          <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
+            {badge}
+          </span>
+        )}
+      </button>
+      {isOpen && (
+        <div className="px-3.5 pb-3.5 pt-1 border-t border-slate-100 dark:border-slate-800/80 text-xs">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// AI Legal Explanation – {explanation?.engine ? explanation.engine : "Powered by OpenAI (GPT-4.1 Mini)"} Component
+function AILegalExplanationCard({
+  result,
+  text,
+  pdfFile,
+  explanation,
+  setExplanation,
+  explaining,
+  setExplaining,
+  explainError,
+  setExplainError
+}) {
+  const [copied, setCopied] = useState(false);
+  const [openSections, setOpenSections] = useState({
+    summary: true,
+    issues: true,
+    reasoning: true,
+    provisions: true,
+    paragraphs: true,
+    decision: true
+  });
+
+  const toggleSection = (key) => {
+    setOpenSections(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const toggleAll = (open) => {
+    setOpenSections({
+      summary: open,
+      issues: open,
+      reasoning: open,
+      provisions: open,
+      paragraphs: open,
+      decision: open
+    });
+  };
+
+  const handleExplain = async () => {
+    if (!text || !result) return;
+    setExplaining(true);
+    setExplainError("");
+    try {
+      const res = await fetch("/api/judipl/explain", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: text,
+          model_id: result.model_id || "M8",
+          predicted_label: result.predicted_label,
+          probabilities: result.probabilities || {},
+          metadata: pdfFile?.metadata || null
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to generate legal explanation.");
+      }
+      setExplanation(data.explanation || data);
+    } catch (err) {
+      setExplainError(err.message || "Failed to generate legal explanation.");
+    } finally {
+      setExplaining(false);
+    }
+  };
+
+  const handleCopy = () => {
+    if (!explanation) return;
+    const exp = explanation;
+    const formatted = [
+      "=== AI LEGAL EXPLANATION – POWERED BY OPENAI / GEMINI ===",
+      `Engine: ${exp.engine || "Gemini"}`,
+      `Active Classifier: ${result.model_id} (${result.model_name || "Jud-IPL Model"})`,
+      `Predicted Disposition: ${result.predicted_label}`,
+      `Court Actual Ruling: ${exp.actual_court_outcome || "N/A"}`,
+      `Prediction Agreement: ${exp.prediction_agreement || "N/A"}`,
+      `Agreement Explanation: ${exp.agreement_explanation || ""}`,
+      "",
+      "--- WHY DID THE COURT GIVE THIS DECISION? (OVERALL EXPLANATION) ---",
+      exp.overall_explanation || "",
+      "",
+      "--- A. CASE SUMMARY ---",
+      exp.case_summary || "",
+      "",
+      "--- B. LEGAL ISSUES ---",
+      Array.isArray(exp.legal_issues) ? exp.legal_issues.map((iss, i) => `${i + 1}. ${iss}`).join("\n") : (exp.legal_issues || ""),
+      "",
+      "--- C. COURT'S REASONING ---",
+      exp.court_reasoning || "",
+      "",
+      "--- D. RELEVANT LEGAL PROVISIONS ---",
+      Array.isArray(exp.legal_provisions)
+        ? exp.legal_provisions.map(p => typeof p === "object" ? `- ${p.provision}: ${p.relevance}` : `- ${p}`).join("\n")
+        : (exp.legal_provisions || ""),
+      "",
+      "--- E. SUPPORTING PARAGRAPHS ---",
+      Array.isArray(exp.supporting_paragraphs)
+        ? exp.supporting_paragraphs.map(sp => `[${sp.paragraph_ref || "Excerpt"}]:\n\"${sp.text}\"`).join("\n\n")
+        : (exp.supporting_paragraphs || ""),
+      "",
+      "--- F. FINAL COURT DECISION ---",
+      exp.actual_court_outcome || "",
+      "",
+      "--- LIMITATIONS AND UNCERTAINTY ---",
+      exp.limitations_and_uncertainty || "",
+      "",
+      "--- LEGAL DISCLAIMER ---",
+      exp.disclaimer || ""
+    ].join("\n");
+
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(formatted).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+      }).catch(() => {});
+    }
+  };
+
+  const agreement = explanation?.prediction_agreement || "Unclear";
+  const agreementVariant = agreement === "Match" ? "emerald" : agreement === "Mismatch" ? "rose" : "amber";
+  const agreementIcon = agreement === "Match" ? "✓" : agreement === "Mismatch" ? "✗" : "?";
+
+  return (
+    <Card id="ai-legal-explanation-section" className="p-6 space-y-5 border-blue-200/70 dark:border-blue-900/50 shadow-md">
+      {/* Header */}
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 dark:border-slate-800 pb-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-lg text-blue-600 dark:text-blue-400">✦</span>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">
+              AI Legal Explanation – {explanation?.engine ? explanation.engine : "Powered by OpenAI (GPT-4.1 Mini)"}
+            </h3>
+          </div>
+          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+            Natural language legal rationale, statutory provisions, and agreement verification.
+          </p>
+        </div>
+        {explanation?.engine && (
+          <Badge variant="blue" className="text-[11px] font-semibold">
+            {explanation.engine}
+          </Badge>
+        )}
+      </div>
+
+      {/* Trigger Callout when not yet generated */}
+      {!explanation && !explaining && (
+        <div className="space-y-3 pt-1">
+          <div className="p-4 rounded-xl bg-gradient-to-br from-blue-50/70 to-indigo-50/40 dark:from-blue-950/30 dark:to-indigo-950/20 border border-blue-200/70 dark:border-blue-900/40 text-xs text-slate-600 dark:text-slate-300 space-y-2">
+            <div className="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+              <span className="text-blue-600 dark:text-blue-400">✦</span>
+              <span>Explain Predicted Disposition</span>
+            </div>
+            <p className="leading-relaxed">
+              Unpack the substantive reasoning, framed legal questions, statutory acts, and compare the model's predicted outcome against the court's actual ruling.
+            </p>
+          </div>
+          <button
+            id="explain-prediction-btn"
+            onClick={handleExplain}
+            disabled={!text || !result}
+            className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-3 font-bold text-sm text-white shadow-md hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 transition flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>✦</span>
+            <span>Explain Prediction with AI (GPT-4.1 Mini)</span>
+            <span>→</span>
+          </button>
+        </div>
+      )}
+
+      {/* Loading Indicator */}
+      {explaining && (
+        <div id="explanation-loading-spinner" className="p-6 rounded-xl border border-blue-200 dark:border-blue-900/50 bg-blue-50/40 dark:bg-blue-950/20 text-center space-y-3">
+          <div className="inline-block animate-spin text-2xl text-blue-600 dark:text-blue-400">◷</div>
+          <div>
+            <div className="text-sm font-bold text-slate-800 dark:text-slate-200">
+              Analyzing Legal Reasoning with OpenAI (GPT-4.1 Mini)...
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-sm mx-auto">
+              Extracting ratio decidendi, statutory citations, and performing judicial outcome alignment analysis.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Error Message */}
+      {explainError && (
+        <div data-testid="explanation-error-banner" className="p-4 rounded-xl border border-rose-200 bg-rose-50 text-xs text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/40 dark:text-rose-300 space-y-2">
+          <div className="flex items-center gap-2 font-bold">
+            <span>⚠</span>
+            <span>Explanation Generation Failed</span>
+          </div>
+          <p className="leading-relaxed">{explainError}</p>
+          <button
+            onClick={handleExplain}
+            className="rounded-lg bg-rose-600 px-3 py-1 font-semibold text-white text-xs hover:bg-rose-700 transition"
+          >
+            Retry Explanation
+          </button>
+        </div>
+      )}
+
+      {/* Structured Legal Explanation Content */}
+      {explanation && (
+        <div className="space-y-4 pt-1">
+          {/* Section G: Dedicated Prediction Comparison Card */}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 p-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                AI Prediction vs. Actual Court Ruling
+              </div>
+              <Badge variant={agreementVariant} className="px-2.5 py-0.5 font-bold text-xs" data-testid="explanation-agreement-badge">
+                <span>{agreementIcon}</span>
+                <span>{agreement}</span>
+              </Badge>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div className="rounded-lg bg-white dark:bg-slate-800/80 p-3 border border-slate-200/80 dark:border-slate-700/80 space-y-1">
+                <div className="text-slate-400 font-medium">Model & Prediction</div>
+                <div className="font-bold text-slate-900 dark:text-white text-sm">
+                  {result.model_id} → <span className="text-blue-600 dark:text-blue-400">{result.predicted_label}</span>
+                </div>
+                <div className="text-[11px] text-slate-500">
+                  Confidence: {((result.probabilities?.[result.predicted_label] || 0) * 100).toFixed(1)}%
+                </div>
+              </div>
+              <div className="rounded-lg bg-white dark:bg-slate-800/80 p-3 border border-slate-200/80 dark:border-slate-700/80 space-y-1">
+                <div className="text-slate-400 font-medium">Court's Actual Ruling</div>
+                <div className="font-bold text-slate-900 dark:text-white text-sm">
+                  {explanation.actual_court_outcome || "Undetermined"}
+                </div>
+                <div className="text-[11px] text-slate-500">
+                  Extracted from Operative Ruling
+                </div>
+              </div>
+            </div>
+            {explanation.agreement_explanation && (
+              <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/70 dark:border-slate-800 pt-2.5">
+                <strong className="text-slate-700 dark:text-slate-200">Comparative Analysis: </strong>
+                {explanation.agreement_explanation}
+              </div>
+            )}
+          </div>
+
+          {/* Section H: Overall Explanation (Why did the court give this decision?) */}
+          {explanation.overall_explanation && (
+            <div className="rounded-xl border border-blue-200 bg-blue-50/70 dark:border-blue-900/50 dark:bg-blue-950/30 p-4 space-y-1.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 flex items-center gap-1.5">
+                <span>⚖</span>
+                <span>Why Did the Court Give This Decision?</span>
+              </div>
+              <p className="text-xs sm:text-sm text-blue-950 dark:text-blue-100 leading-relaxed font-serif-legal">
+                {explanation.overall_explanation}
+              </p>
+            </div>
+          )}
+
+          {/* Collapsible Accordion Sections */}
+          <div className="space-y-2.5">
+            {/* Section A: Case Summary */}
+            <AccordionSection
+              title="A. Case Summary"
+              badge="Factual Background"
+              isOpen={openSections.summary}
+              onToggle={() => toggleSection("summary")}
+            >
+              <p className="text-xs leading-relaxed text-slate-700 dark:text-slate-300">
+                {explanation.case_summary || "No summary provided."}
+              </p>
+            </AccordionSection>
+
+            {/* Section B: Legal Issues */}
+            <AccordionSection
+              title="B. Legal Issues Framed"
+              badge={Array.isArray(explanation.legal_issues) ? `${explanation.legal_issues.length} Questions` : null}
+              isOpen={openSections.issues}
+              onToggle={() => toggleSection("issues")}
+            >
+              {Array.isArray(explanation.legal_issues) && explanation.legal_issues.length > 0 ? (
+                <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300 list-disc list-inside">
+                  {explanation.legal_issues.map((issue, idx) => (
+                    <li key={idx} className="leading-relaxed">{issue}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-xs text-slate-600 dark:text-slate-400">{explanation.legal_issues || "No framed issues listed."}</p>
+              )}
+            </AccordionSection>
+
+            {/* Section C: Court's Reasoning */}
+            <AccordionSection
+              title="C. Court's Reasoning & Ratio Decidendi"
+              badge="Substantive Grounds"
+              isOpen={openSections.reasoning}
+              onToggle={() => toggleSection("reasoning")}
+            >
+              <p className="text-xs leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-line">
+                {explanation.court_reasoning || "Reasoning details unavailable."}
+              </p>
+            </AccordionSection>
+
+            {/* Section D: Relevant Legal Provisions */}
+            <AccordionSection
+              title="D. Relevant Legal Provisions & Statutes"
+              badge={Array.isArray(explanation.legal_provisions) ? `${explanation.legal_provisions.length} Cited` : null}
+              isOpen={openSections.provisions}
+              onToggle={() => toggleSection("provisions")}
+            >
+              {Array.isArray(explanation.legal_provisions) && explanation.legal_provisions.length > 0 ? (
+                <div className="space-y-2">
+                  {explanation.legal_provisions.map((prov, idx) => (
+                    <div key={idx} className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-2.5 border border-slate-200/80 dark:border-slate-800 text-xs">
+                      <div className="font-bold text-blue-700 dark:text-blue-300">
+                        {typeof prov === "object" ? prov.provision : prov}
+                      </div>
+                      {typeof prov === "object" && prov.relevance && (
+                        <div className="mt-0.5 text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
+                          {prov.relevance}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-xs text-slate-600 dark:text-slate-400">{explanation.legal_provisions || "None identified."}</p>
+              )}
+            </AccordionSection>
+
+            {/* Section E: Supporting Paragraphs */}
+            <AccordionSection
+              title="E. Supporting Judgment Paragraphs"
+              badge={Array.isArray(explanation.supporting_paragraphs) ? `${explanation.supporting_paragraphs.length} Excerpts` : null}
+              isOpen={openSections.paragraphs}
+              onToggle={() => toggleSection("paragraphs")}
+            >
+              {Array.isArray(explanation.supporting_paragraphs) && explanation.supporting_paragraphs.length > 0 ? (
+                <div className="space-y-2.5">
+                  {explanation.supporting_paragraphs.map((para, idx) => (
+                    <div key={idx} className="rounded-lg border-l-4 border-blue-500 bg-slate-50 dark:bg-slate-800/40 p-3 text-xs space-y-1">
+                      <div className="font-semibold text-[11px] text-blue-600 dark:text-blue-400">
+                        {para.paragraph_ref || `Key Judgment Passage ${idx + 1}`}
+                      </div>
+                      <blockquote className="italic text-slate-700 dark:text-slate-300 leading-relaxed font-serif-legal">
+                        "{para.text}"
+                      </blockquote>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-xs text-slate-600 dark:text-slate-400">{explanation.supporting_paragraphs || "None excerpted."}</p>
+              )}
+            </AccordionSection>
+
+            {/* Section F: Final Court Decision */}
+            <AccordionSection
+              title="F. Final Court Decision & Operative Order"
+              badge="Operative Ruling"
+              isOpen={openSections.decision}
+              onToggle={() => toggleSection("decision")}
+            >
+              <div className="rounded-lg bg-emerald-50/60 dark:bg-emerald-950/30 p-3 border border-emerald-200/80 dark:border-emerald-900/40 text-xs">
+                <div className="font-bold text-emerald-800 dark:text-emerald-300">
+                  {explanation.actual_court_outcome || "Court ruling undetermined"}
+                </div>
+                <div className="mt-1 text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
+                  Operative order rendered by the appellate court determining the legal rights and final decree.
+                </div>
+              </div>
+            </AccordionSection>
+          </div>
+
+          {/* Limitations and Uncertainty */}
+          {explanation.limitations_and_uncertainty && (
+            <div className="rounded-xl bg-amber-50/60 dark:bg-amber-950/20 p-3 border border-amber-200/80 dark:border-amber-900/30 text-xs text-amber-900 dark:text-amber-200 space-y-1">
+              <div className="font-bold flex items-center gap-1.5 text-[11px] uppercase tracking-wider">
+                <span>⚠</span>
+                <span>Limitations & Uncertainty</span>
+              </div>
+              <p className="text-[11px] leading-relaxed opacity-90">
+                {explanation.limitations_and_uncertainty}
+              </p>
+            </div>
+          )}
+
+          {/* Action Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm transition cursor-pointer"
+              >
+                <span>{copied ? "✓" : "📋"}</span>
+                <span>{copied ? "Copied to Clipboard!" : "Copy Explanation"}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => toggleAll(!Object.values(openSections).every(Boolean))}
+                className="text-[11px] text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 px-2 py-1 cursor-pointer"
+              >
+                {Object.values(openSections).every(Boolean) ? "Collapse All" : "Expand All"}
+              </button>
+            </div>
+            <button
+              type="button"
+              onClick={handleExplain}
+              disabled={explaining}
+              className="text-[11px] text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
+            >
+              Re-generate Explanation ↺
+            </button>
+          </div>
+
+          {/* Disclaimer */}
+          {explanation.disclaimer && (
+            <div className="text-[10px] text-slate-400 dark:text-slate-500 leading-normal pt-1">
+              <strong>Notice:</strong> {explanation.disclaimer}
+            </div>
+          )}
+        </div>
+      )}
+    </Card>
+  );
+}
+
+// IL-TUR Retrieval Results Component
+function RetrievalResultsList({ results, queryType }) {
+  const [expandedId, setExpandedId] = useState(null);
+
+  if (!results || results.length === 0) {
+    return <EmptyState icon="🔍" title="No Matching Candidates Found" text="No legal precedents met the threshold." />;
+  }
+
+  return (
+    <Card className="p-5 space-y-4">
+      <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+        <h3 className="font-bold text-slate-900 dark:text-white">
+          Ranked Candidates ({results.length} results)
+        </h3>
+        <span className="text-xs text-slate-500 dark:text-slate-400">
+          Query Mode: <strong className="uppercase">{queryType || "Free Text"}</strong>
+        </span>
+      </div>
+
+      <div className="space-y-3">
+        {results.map((row) => {
+          const isExpanded = expandedId === row.case_id;
+
+          return (
+            <div
+              key={row.case_id}
+              data-testid="pcr-candidate-card"
+              className="rounded-xl border border-slate-200 dark:border-slate-800 p-4 bg-slate-50/50 dark:bg-slate-900/50 hover:border-blue-400 transition"
+            >
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-950 font-bold text-xs text-blue-700 dark:text-blue-300">
+                    #{row.rank}
+                  </span>
+                  <div>
+                    <span className="font-mono text-sm font-bold text-slate-900 dark:text-white">
+                      Case #{row.case_id}
+                    </span>
+                    {row.is_ground_truth_precedent && (
+                      <Badge variant="emerald" className="ml-2 font-bold">
+                        Ground Truth Precedent
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="text-right">
+                    <div className="text-[10px] uppercase font-semibold text-slate-400">Ranking Score</div>
+                    <div data-testid="candidate-score" className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
+                      {fmt(row.hybrid_score, 5)}
+                    </div>
+                  </div>
+                  <button
+                    data-testid="view-details-btn"
+                    onClick={() => setExpandedId(isExpanded ? null : row.case_id)}
+                    className="rounded-lg border border-slate-300 dark:border-slate-700 px-2.5 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition"
+                  >
+                    {isExpanded ? "Hide Details" : "View Details"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Snippet Excerpt */}
+              <p className="mt-3 text-xs leading-relaxed text-slate-600 dark:text-slate-300 line-clamp-2">
+                {row.snippet}
+              </p>
+
+              {/* Expandable Case Attributes */}
+              {isExpanded && (
+                <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-xs space-y-3">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <span className="font-semibold text-slate-500">Court / Jurisdiction:</span>
+                      <p className="text-slate-800 dark:text-slate-200 mt-0.5">{row.court || "Supreme Court of India"}</p>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-slate-500">Bench:</span>
+                      <p className="text-slate-800 dark:text-slate-200 mt-0.5">{row.judges?.join(", ") || "Bench details in repository"}</p>
+                    </div>
+                  </div>
+
+                  {row.score_breakdown && (
+                    <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
+                      <span className="font-semibold text-slate-600 dark:text-slate-300 block mb-1">
+                        Weighted Score Contribution Breakdown:
+                      </span>
+                      <div className="grid grid-cols-3 gap-2 text-[11px] font-mono">
+                        <div>TF-IDF: {fmt(row.score_breakdown.tfidf_contrib, 4)}</div>
+                        <div>InLegalBERT: {fmt(row.score_breakdown.dense_contrib, 4)}</div>
+                        <div>Statutes: {fmt(row.score_breakdown.legal_contrib, 4)}</div>
+                      </div>
+                    </div>
+                  )}
+
+                  {row.shared_statutes?.length > 0 && (
+                    <div>
+                      <span className="font-semibold text-slate-500">Shared Statutory Provisions:</span>
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {row.shared_statutes.map((st, i) => (
+                          <Badge key={i} variant="default">{st}</Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </Card>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// 3. DATASET EXPLORER VIEW
+// -----------------------------------------------------------------------------
+function ExplorerView({ dataset }) {
+  const [state, setState] = useState({ rows: [], total: 0, page: 1, page_size: 10, available_fields: [] });
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [selectedDoc, setSelectedDoc] = useState(null);
+
+  const fetchExplorerPage = useCallback((targetPage = 1) => {
+    setLoading(true);
+    setError("");
+    fetch(`/api/explorer?dataset=${dataset}&page=${targetPage}&page_size=10&search=${encodeURIComponent(search)}`)
+      .then(async (r) => {
+        if (!r.ok) {
+          const err = await r.json();
+          throw new Error(err.error || "Failed to load explorer data.");
+        }
+        return r.json();
+      })
+      .then((data) => {
+        setState(data);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, [dataset, search]);
+
+  useEffect(() => {
+    setSearch("");
+    fetchExplorerPage(1);
+  }, [dataset]);
+
+  const inspectDoc = (docId) => {
+    fetch(`/api/explorer/document?dataset=${dataset}&id=${encodeURIComponent(docId)}`)
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => setSelectedDoc(d.document))
+      .catch(() => setError(`Could not retrieve document ${docId}.`));
+  };
+
+  const isJudIpl = dataset === "jud-ipl";
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+            {isJudIpl ? "Jud-IPL Corpus Explorer" : "IL-TUR Candidate Pool Explorer"}
+          </h2>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            {isJudIpl
+              ? "Browse authentic held-out test judgments and rhetorical section metadata."
+              : "Inspect candidate precedent excerpts from the verified 1,727 candidate pool."}
+          </p>
+        </div>
+        <Badge variant={isJudIpl ? "blue" : "emerald"}>
+          Total Records: {state.total.toLocaleString()}
+        </Badge>
+      </div>
+
+      {/* Search Input Bar */}
+      <Card className="p-4">
+        <div className="flex flex-wrap gap-2">
+          <input
+            aria-label="Explorer Search Input"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && fetchExplorerPage(1)}
+            placeholder={isJudIpl ? "Search by Judgment ID, outcome label, bench, or category..." : "Search by candidate Case ID..."}
+            className="min-w-0 flex-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+          <button
+            onClick={() => fetchExplorerPage(1)}
+            disabled={loading}
+            className="rounded-xl bg-blue-600 px-5 py-2 text-sm font-bold text-white hover:bg-blue-700 transition disabled:opacity-50"
+          >
+            {loading ? "Searching..." : "Search"}
+          </button>
+          {search && (
+            <button
+              onClick={() => { setSearch(""); fetchExplorerPage(1); }}
+              className="rounded-xl border border-slate-300 dark:border-slate-700 px-3 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300"
+            >
+              Reset
+            </button>
+          )}
+        </div>
+      </Card>
+
+      {/* Explorer Table Card */}
+      <Card className="p-4 overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs min-w-[700px]">
+            <thead className="border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/40 text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">
+              <tr>
+                {state.available_fields.map((field) => (
+                  <th key={field} className="p-3">
+                    {field.replace(/_/g, " ")}
+                  </th>
+                ))}
+                <th className="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60 font-mono">
+              {state.rows.map((row) => {
+                const docId = row.id || row.candidate_id;
+                return (
+                  <tr key={docId} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+                    {state.available_fields.map((field) => (
+                      <td key={field} className="p-3 max-w-xs truncate">
+                        {field === "label" ? (
+                          <Badge
+                            variant={row[field] === "Accepted" ? "emerald" : row[field] === "Other" ? "amber" : "blue"}
+                            className="font-bold"
+                          >
+                            {row[field]}
+                          </Badge>
+                        ) : (
+                          String(row[field] ?? "—")
+                        )}
+                      </td>
+                    ))}
+                    <td className="p-3 text-right whitespace-nowrap">
+                      <button
+                        onClick={() => inspectDoc(docId)}
+                        className="rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900 px-2 py-1 text-[11px] font-semibold hover:bg-blue-100"
+                      >
+                        Inspect
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        {!loading && state.rows.length === 0 && (
+          <EmptyState icon="▤" title="No Matching Documents" text="Try adjusting your search criteria." />
+        )}
+
+        {/* Pagination Bar */}
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800 pt-3 text-xs text-slate-500">
+          <div>
+            Showing Page <strong>{state.page}</strong> of <strong>{Math.ceil(state.total / state.page_size) || 1}</strong> ({state.total.toLocaleString()} total matches)
+          </div>
+          <div className="flex gap-2">
+            <button
+              disabled={state.page <= 1 || loading}
+              onClick={() => fetchExplorerPage(state.page - 1)}
+              className="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 font-semibold text-slate-700 dark:text-slate-300 disabled:opacity-30"
+            >
+              ← Previous
+            </button>
+            <button
+              disabled={state.page * state.page_size >= state.total || loading}
+              onClick={() => fetchExplorerPage(state.page + 1)}
+              className="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 font-semibold text-slate-700 dark:text-slate-300 disabled:opacity-30"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      </Card>
+
+      {/* Document Inspector Modal */}
+      {selectedDoc && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white dark:bg-[#0c2340] border border-slate-200 dark:border-slate-700 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between p-5 border-b border-slate-200 dark:border-slate-800">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  Document Inspector
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                  Case #{selectedDoc.id || selectedDoc.candidate_id}
+                </h3>
+              </div>
+              <button
+                id="close-doc-modal-btn" aria-label="Close modal" onClick={() => setSelectedDoc(null)}
+                className="h-8 w-8 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold hover:bg-slate-200"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="p-6 overflow-y-auto space-y-4 text-xs">
+              <div className="grid grid-cols-2 gap-3 bg-slate-50 dark:bg-slate-900/60 p-3 rounded-xl">
+                {Object.entries(selectedDoc)
+                  .filter(([k]) => !["full_text", "masked_text", "snippet", "excerpt"].includes(k))
+                  .map(([k, v]) => (
+                    <div key={k}>
+                      <span className="font-semibold text-slate-500 uppercase text-[10px] block">{k.replace(/_/g, " ")}:</span>
+                      <span className="text-slate-800 dark:text-slate-200 font-mono">{String(v || "—")}</span>
+                    </div>
+                  ))}
+              </div>
+
+              <div>
+                <span className="font-bold text-slate-700 dark:text-slate-300 uppercase text-[11px] block mb-1">
+                  Text Excerpt / Masked Body:
+                </span>
+                <p className="font-serif-legal bg-slate-50 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs leading-relaxed max-h-60 overflow-y-auto">
+                  {selectedDoc.masked_text || selectedDoc.full_text || selectedDoc.snippet || selectedDoc.excerpt || "No text available."}
+                </p>
+              </div>
+            </div>
+            <div className="p-4 border-t border-slate-200 dark:border-slate-800 text-right">
+              <button
+                onClick={() => setSelectedDoc(null)}
+                className="rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-4 py-2 font-bold text-xs"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// 4. MODEL EVALUATION VIEW
+// -----------------------------------------------------------------------------
+function EvaluationView({ dataset, metricsJudIpl, metricsIlTur }) {
+  const isJudIpl = dataset === "jud-ipl";
+
+  if (!isJudIpl) {
+    // IL-TUR PCR Evaluation Metrics
+    const modelComp = metricsIlTur?.model_comparison || {};
+    const config = metricsIlTur?.metadata?.dataset_configuration || {};
+
+    return (
+      <div className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">IL-TUR Benchmark Evaluation</h2>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            Verified performance metrics on the held-out IL-TUR PCR test split.
+          </p>
+        </div>
+
+        {/* Configuration Disclosure Card */}
+        <Card className="p-5 text-xs text-slate-600 dark:text-slate-300 space-y-2">
+          <div className="font-bold text-sm text-slate-900 dark:text-white mb-1">PCR Benchmark Test Configuration</div>
+          <div className="grid gap-2 sm:grid-cols-4 font-mono">
+            <div>Total Test Queries: <strong>{config.total_queries || 237}</strong></div>
+            <div>Eligible Queries: <strong>{config.eligible_queries || 234}</strong></div>
+            <div>Zero-Relevance: <strong>{config.zero_relevance_queries?.length || 3}</strong></div>
+            <div>Candidate Pool: <strong>{config.total_unique_candidates || 1727}</strong></div>
+          </div>
+        </Card>
+
+        {/* Model Metrics Table */}
+        <Card className="overflow-hidden">
+          <div className="p-4 border-b border-slate-200 dark:border-slate-800 font-bold text-sm">
+            Model Performance Comparison (Test Split)
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs text-left">
+              <thead className="bg-slate-50 dark:bg-slate-800 font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <tr>
+                  <th className="p-3">Model / Architecture</th>
+                  <th className="p-3 text-right">P@1</th>
+                  <th className="p-3 text-right">P@5</th>
+                  <th className="p-3 text-right">P@10</th>
+                  <th className="p-3 text-right">R@5</th>
+                  <th className="p-3 text-right">R@10</th>
+                  <th className="p-3 text-right">MRR</th>
+                  <th className="p-3 text-right">nDCG@5</th>
+                  <th className="p-3 text-right">nDCG@10</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-mono">
+                {Object.entries(modelComp).map(([mKey, mVal]) => {
+                  const isProduction = mKey === "Weighted_Linear_Fusion";
+                  return (
+                    <tr
+                      key={mKey}
+                      className={isProduction ? "bg-blue-50/50 dark:bg-blue-950/30 font-bold text-blue-900 dark:text-blue-200" : ""}
+                    >
+                      <td className="p-3 font-sans font-semibold">
+                        {mKey.replace(/_/g, " ")} {isProduction && <Badge variant="blue" className="ml-1">Production</Badge>}
+                      </td>
+                      <td className="p-3 text-right">{fmt(mVal["P@1"])}</td>
+                      <td className="p-3 text-right">{fmt(mVal["P@5"])}</td>
+                      <td className="p-3 text-right">{fmt(mVal["P@10"])}</td>
+                      <td className="p-3 text-right">{fmt(mVal["R@5"] || mVal["Recall@5"])}</td>
+                      <td className="p-3 text-right">{fmt(mVal["R@10"] || mVal["Recall@10"])}</td>
+                      <td className="p-3 text-right">{fmt(mVal["MRR"])}</td>
+                      <td className="p-3 text-right">{fmt(mVal["nDCG@5"])}</td>
+                      <td className="p-3 text-right">{fmt(mVal["nDCG@10"])}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+
+        <div className="rounded-xl bg-amber-50 p-4 text-xs text-amber-800 border border-amber-200 dark:bg-amber-950/40 dark:border-amber-800 dark:text-amber-200">
+          <strong>Metric Note:</strong> MAP (Mean Average Precision) was not evaluated during benchmark runs and is therefore not displayed. No simulated values are provided.
+        </div>
+      </div>
+    );
+  }
+
+  // Jud-IPL Model Evaluation View
+  const models = metricsJudIpl?.models?.filter(m => m.model_id) || [];
+  const mcnemarRow = metricsJudIpl?.models?.find(m => m.result_type === "mcnemar") || {};
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Jud-IPL Model Evaluation</h2>
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          Verified Phase 21B-C held-out test evaluation on 6,311 eligible legal judgments.
+        </p>
+      </div>
+
+      {/* Disclosures Card */}
+      <Card className="p-5 text-xs text-slate-600 dark:text-slate-300 space-y-2 border-l-4 border-l-blue-600">
+        <div className="font-bold text-sm text-slate-900 dark:text-white mb-1">
+          Historical Held-Out Test Disclosures
+        </div>
+        <div className="grid gap-2 sm:grid-cols-3 font-mono">
+          <div>Original Test Partition: <strong>6,313</strong></div>
+          <div>Excluded Duplicates: <strong>2 cases</strong></div>
+          <div>Eligible Test Population: <strong>6,311</strong></div>
+        </div>
+        <p className="mt-1">
+          <strong>Prior Exposure Note:</strong> Exactly 812 test judgments (12.87%) share Phase 18 binary classification evaluation history. Neither M4 nor M8 was tuned on test labels.
+        </p>
+      </Card>
+
+      {/* Overall Metric Matrix Table */}
+      <Card className="overflow-hidden">
+        <div className="p-4 border-b border-slate-200 dark:border-slate-800 font-bold text-sm">
+          Corrected Primary Classification Metrics (N = 6,311)
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs text-left min-w-[550px]">
+            <thead className="bg-slate-50 dark:bg-slate-800 font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+              <tr>
+                <th className="p-3">Evaluation Metric</th>
+                <th className="p-3 text-right">Model M4 (Section TF-IDF)</th>
+                <th className="p-3 text-right">Model M8 (Hybrid Fusion)</th>
+                <th className="p-3 text-right">Difference (M8 - M4)</th>
+                <th className="p-3 text-right">Statistical Significance</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-mono">
+              <tr>
+                <td className="p-3 font-sans font-medium">Accuracy</td>
+                <td className="p-3 text-right">58.6595%</td>
+                <td className="p-3 text-right">59.1982%</td>
+                <td className="p-3 text-right text-emerald-600">+0.5387%</td>
+                <td className="p-3 text-right font-sans text-slate-500">Not Significant (p=0.2670)</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-sans font-medium">Balanced Accuracy</td>
+                <td className="p-3 text-right">61.0330%</td>
+                <td className="p-3 text-right">61.2561%</td>
+                <td className="p-3 text-right text-emerald-600">+0.2231%</td>
+                <td className="p-3 text-right font-sans text-slate-500">95% CI [-0.70%, +1.08%]</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-sans font-medium">Macro-F1</td>
+                <td className="p-3 text-right">0.589840</td>
+                <td className="p-3 text-right">0.591910</td>
+                <td className="p-3 text-right text-emerald-600">+0.002070</td>
+                <td className="p-3 text-right font-sans text-slate-500">95% CI [-0.0068, +0.0106]</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-sans font-medium">Weighted-F1</td>
+                <td className="p-3 text-right">0.586385</td>
+                <td className="p-3 text-right">0.592229</td>
+                <td className="p-3 text-right text-emerald-600">+0.005844</td>
+                <td className="p-3 text-right font-sans text-slate-500">Descriptive</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-sans font-medium">Multiclass ROC-AUC (OvR)</td>
+                <td className="p-3 text-right font-bold text-blue-600">0.768505</td>
+                <td className="p-3 text-right">0.765085</td>
+                <td className="p-3 text-right text-rose-500">-0.003420</td>
+                <td className="p-3 text-right font-sans text-slate-500">M4 Superior</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-sans font-medium">Multiclass Log Loss</td>
+                <td className="p-3 text-right font-bold text-blue-600">0.862997</td>
+                <td className="p-3 text-right">0.868916</td>
+                <td className="p-3 text-right text-rose-500">+0.005919</td>
+                <td className="p-3 text-right font-sans text-slate-500">M4 Superior (Lower)</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-sans font-medium">Expected Calibration Error (ECE)</td>
+                <td className="p-3 text-right font-bold text-blue-600">0.027784</td>
+                <td className="p-3 text-right">0.054006</td>
+                <td className="p-3 text-right text-rose-500">+0.026222</td>
+                <td className="p-3 text-right font-sans text-slate-500">M4 Superior (Sharper)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      {/* McNemar Paired Error Comparison */}
+      <Card className="p-5">
+        <h3 className="font-bold text-sm text-slate-900 dark:text-white mb-2">
+          McNemar Paired Statistical Test
+        </h3>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+          Paired classification contingency on identical 6,311 eligible documents:
+        </p>
+        <div className="grid gap-3 sm:grid-cols-4 font-mono text-xs">
+          <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
+            <span className="text-slate-400 text-[10px] block">Both Correct:</span>
+            <strong className="text-slate-800 dark:text-slate-200">3,277 (51.9%)</strong>
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
+            <span className="text-slate-400 text-[10px] block">Both Incorrect:</span>
+            <strong className="text-slate-800 dark:text-slate-200">2,150 (34.1%)</strong>
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
+            <span className="text-slate-400 text-[10px] block">M4 Wrong, M8 Right:</span>
+            <strong className="text-emerald-600">459 (7.3%)</strong>
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
+            <span className="text-slate-400 text-[10px] block">M4 Right, M8 Wrong:</span>
+            <strong className="text-rose-500">425 (6.7%)</strong>
+          </div>
+        </div>
+        <div className="mt-3 text-xs text-slate-600 dark:text-slate-300">
+          Net difference: <strong>+34 cases</strong> | Continuity-corrected χ² = 1.2319 | <strong>p-value = 0.2670</strong> (Null hypothesis of equal error cannot be rejected).
+        </div>
+      </Card>
+
+      {/* Class-Wise Precision / Recall / F1 */}
+      {metricsJudIpl?.classification_report && (
+        <Card className="overflow-hidden">
+          <div className="p-4 border-b border-slate-200 dark:border-slate-800 font-bold text-sm">
+            Per-Class Performance Breakdown
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs text-left font-mono">
+              <thead className="bg-slate-50 dark:bg-slate-800 font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider font-sans">
+                <tr>
+                  <th className="p-3">Model</th>
+                  <th className="p-3">Class</th>
+                  <th className="p-3 text-right">Precision</th>
+                  <th className="p-3 text-right">Recall</th>
+                  <th className="p-3 text-right">F1-Score</th>
+                  <th className="p-3 text-right">Support</th>
+                  <th className="p-3 text-right">False Positives</th>
+                  <th className="p-3 text-right">False Negatives</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                {metricsJudIpl.classification_report.map((r, i) => (
+                  <tr key={i}>
+                    <td className="p-3 font-sans font-bold">{r.model_id}</td>
+                    <td className="p-3 font-sans">
+                      <Badge variant={r.class === "Accepted" ? "emerald" : r.class === "Other" ? "amber" : "blue"}>
+                        {r.class}
+                      </Badge>
+                    </td>
+                    <td className="p-3 text-right">{fmt(r.precision)}</td>
+                    <td className="p-3 text-right">{fmt(r.recall)}</td>
+                    <td className="p-3 text-right font-bold">{fmt(r.f1_score)}</td>
+                    <td className="p-3 text-right">{r.support}</td>
+                    <td className="p-3 text-right text-rose-500">{r.false_positives}</td>
+                    <td className="p-3 text-right text-amber-500">{r.false_negatives}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      )}
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// 5. ANALYSIS HISTORY VIEW
+// -----------------------------------------------------------------------------
+function HistoryView({ rows, setResult, setTab, clear }) {
+  const [filterDataset, setFilterDataset] = useState("all");
+
+  const filtered = useMemo(() => {
+    if (filterDataset === "all") return rows;
+    return rows.filter(r => r.dataset === filterDataset);
+  }, [rows, filterDataset]);
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Analysis History</h2>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            Session logs of judgment classifications and legal precedent queries.
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          {rows.length > 0 && (
+            <button
+              onClick={clear}
+              className="rounded-xl border border-rose-300 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/30 px-3.5 py-1.5 text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-100 transition"
+            >
+              Clear Session
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Filter Tabs */}
+      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2 text-xs font-semibold">
+        <button
+          onClick={() => setFilterDataset("all")}
+          className={`px-3 py-1.5 rounded-lg ${filterDataset === "all" ? "bg-blue-600 text-white" : "text-slate-500 hover:text-slate-800"}`}
+        >
+          All Activity ({rows.length})
+        </button>
+        <button
+          onClick={() => setFilterDataset("jud-ipl")}
+          className={`px-3 py-1.5 rounded-lg ${filterDataset === "jud-ipl" ? "bg-blue-600 text-white" : "text-slate-500 hover:text-slate-800"}`}
+        >
+          Jud-IPL Inferences ({rows.filter(r => r.dataset === "jud-ipl").length})
+        </button>
+        <button
+          onClick={() => setFilterDataset("il-tur")}
+          className={`px-3 py-1.5 rounded-lg ${filterDataset === "il-tur" ? "bg-blue-600 text-white" : "text-slate-500 hover:text-slate-800"}`}
+        >
+          IL-TUR Searches ({rows.filter(r => r.dataset === "il-tur").length})
+        </button>
+      </div>
+
+      {/* History Items */}
+      <Card className="divide-y divide-slate-100 dark:divide-slate-800 p-2">
+        {filtered.length === 0 ? (
+          <EmptyState
+            icon="◷"
+            title="No Session History"
+            text="Run an outcome classification or case retrieval to populate session activity."
+          />
+        ) : (
+          filtered.map((item) => (
+            <div
+              key={item.history_id}
+              className="p-4 flex flex-wrap items-center justify-between gap-3 hover:bg-slate-50 dark:hover:bg-slate-800/40 rounded-xl transition"
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-xl mt-0.5">{item.dataset === "jud-ipl" ? "⚖" : "🔍"}</span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-sm text-slate-900 dark:text-white">{item.summary}</span>
+                    <Badge variant={item.dataset === "jud-ipl" ? "blue" : "emerald"}>
+                      {item.dataset}
+                    </Badge>
+                  </div>
+                  <div className="mt-1 text-xs text-slate-400">
+                    {item.task} · Recorded at {item.created} ({item.date})
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={() => {
+                  setResult(item.raw_result);
+                  setTab("analysis");
+                }}
+                className="rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 px-3 py-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 hover:bg-blue-100"
+              >
+                Reload Results →
+              </button>
+            </div>
+          ))
+        )}
+      </Card>
+
+      <div className="text-center text-xs text-slate-400">
+        Session-only history. Stored in local browser memory; automatically purged on browser tab closure.
+      </div>
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// 6. RESEARCH INFORMATION VIEW
+// -----------------------------------------------------------------------------
+function ResearchInfoView() {
+  return (
+    <div className="max-w-4xl space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Research Architecture & Disclosures</h2>
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          Methodological documentation for the Unified LegalAI Intelligence Platform.
+        </p>
+      </div>
+
+      <Card className="p-6 space-y-4 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white">System Abstract</h3>
+        <p>
+          The Unified LegalAI Intelligence Platform brings together two independent, non-overlapping judicial NLP research systems under a single unified dashboard without mixing pipelines, metrics, or candidate spaces:
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 pt-2">
+          <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+            <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">1. Jud-IPL Outcome Classification</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Evaluates binary and multi-class judgment outcomes (Accepted, Other, Rejected) using rhetorical legal section decomposition (Model M4: Section-Aware TF-IDF) and late probability fusion (Model M8). Evaluated on 6,311 eligible held-out judgments.
+            </p>
+          </div>
+          <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+            <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">2. IL-TUR Precedent Retrieval</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Solves Prior Case Retrieval (PCR) using hybrid weighted fusion across 1,727 precedent candidates. Combines TF-IDF lexical scores (0.65), InLegalBERT dense semantics (0.25), and knowledge graph statutory overlap (0.10).
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      <Card className="p-6 space-y-3 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white">Scientific Isolation & Non-Contamination Guarantee</h3>
+        <p>
+          In accordance with strict experimental integrity guidelines:
+        </p>
+        <ul className="list-disc pl-5 space-y-1.5 text-xs">
+          <li><strong>0% IL-TUR Dependency in Jud-IPL:</strong> No IL-TUR vocabulary, embeddings, queries, or candidates are used in training or evaluating the Jud-IPL models.</li>
+          <li><strong>No Task Bleeding:</strong> Jud-IPL models are outcome classifiers, never retrieval models. IL-TUR retrieval is a candidate ranker, never an outcome classifier.</li>
+          <li><strong>Deterministic Duplicate Purge:</strong> Two cross-partition text hash duplicates (0001116667 and 0001505760) were excluded from the Jud-IPL test set to eliminate cross-split leakages.</li>
+          <li><strong>Prior Exposure Disclosure:</strong> 812 test judgments share Phase 18 binary evaluation history, documented openly without claiming an unexposed blind test.</li>
+        </ul>
+      </Card>
+
+      <Card className="p-6 space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white">Ethical & Legal Disclaimer</h3>
+        <p className="text-xs leading-relaxed">
+          The models and outputs presented in this dashboard are designed strictly for academic evaluation, empirical NLP benchmark comparison, and decision-support exploration. Statistical machine learning algorithms cannot replace judicial human reasoning or certified statutory interpretation. Neither this platform nor its authors assume liability for legal strategies derived from its predictions.
+        </p>
+      </Card>
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// 7. SETTINGS & SYSTEM DIAGNOSTICS VIEW
+// -----------------------------------------------------------------------------
+function SettingsView({
+  dark,
+  setDark,
+  connected,
+  dataset,
+  setDataset,
+  model,
+  setModel,
+  topK,
+  setTopK,
+  pingMs,
+  probeBackend,
+  systemStats
+}) {
+  return (
+    <div className="max-w-3xl space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Settings & Platform Preferences</h2>
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          Manage interface theme, default workspace settings, and system connectivity.
+        </p>
+      </div>
+
+      {/* Theme Preference */}
+      <Card className="p-6 flex items-center justify-between">
+        <div>
+          <div className="font-bold text-sm text-slate-900 dark:text-white">Dark Theme Interface</div>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            Persist dark high-contrast mode in browser localStorage.
+          </p>
+        </div>
+        <button
+          aria-label="Toggle Dark Mode"
+          onClick={() => setDark(v => !v)}
+          className={`h-7 w-12 rounded-full transition-colors duration-200 relative p-0.5 ${
+            dark ? "bg-blue-600" : "bg-slate-300"
+          }`}
+        >
+          <span
+            className={`block h-6 w-6 rounded-full bg-white shadow-md transform transition-transform duration-200 ${
+              dark ? "translate-x-5" : "translate-x-0"
+            }`}
+          />
+        </button>
+      </Card>
+
+      {/* Interface Defaults */}
+      <Card className="p-6 space-y-4">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white">Workspace Preferences</h3>
+        <div className="grid gap-4 sm:grid-cols-3 text-xs">
+          <div>
+            <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1.5">
+              Default Dataset:
+            </label>
+            <select
+              value={dataset}
+              onChange={(e) => setDataset(e.target.value)}
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-2 font-medium"
+            >
+              <option value="jud-ipl">Jud-IPL (Classification)</option>
+              <option value="il-tur">IL-TUR (Case Retrieval)</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1.5">
+              Default Jud-IPL Model:
+            </label>
+            <select
+              value={model}
+              onChange={(e) => {
+                setModel(e.target.value);
+                localStorage.setItem("legalai-pref-model", e.target.value);
+              }}
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-2 font-medium"
+            >
+              <option value="M4">M4: Section-Aware TF-IDF</option>
+              <option value="M8">M8: Hybrid Late Fusion</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1.5">
+              Default PCR Top-K:
+            </label>
+            <select
+              value={topK}
+              onChange={(e) => {
+                const val = parseInt(e.target.value, 10);
+                setTopK(val);
+                localStorage.setItem("legalai-pref-topk", val);
+              }}
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-2 font-medium"
+            >
+              <option value={5}>Top 5</option>
+              <option value={8}>Top 8</option>
+              <option value={10}>Top 10</option>
+              <option value={20}>Top 20</option>
+            </select>
+          </div>
+        </div>
+      </Card>
+
+      {/* Backend Diagnostics Card */}
+      <Card className="p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Backend Health & API Status</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Flask API server endpoints and loaded services.</p>
+          </div>
+          <button
+            onClick={probeBackend}
+            className="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800"
+          >
+            Probe API
+          </button>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 text-xs font-mono bg-slate-50 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+          <div>
+            <span className="text-slate-400 block text-[10px]">API Connection Status:</span>
+            <span className={`font-bold ${connected ? "text-emerald-600" : "text-rose-500"}`}>
+              {connected ? "● Connected (Healthy)" : "○ Offline / Unreachable"}
+            </span>
+          </div>
+          <div>
+            <span className="text-slate-400 block text-[10px]">Ping Latency:</span>
+            <span className="font-bold text-slate-800 dark:text-slate-200">{pingMs !== null ? `${pingMs} ms` : "—"}</span>
+          </div>
+          <div>
+            <span className="text-slate-400 block text-[10px]">IL-TUR Candidate Pool:</span>
+            <span className="font-bold text-slate-800 dark:text-slate-200">{systemStats?.candidate_pool_size?.toLocaleString() || "1,727"} candidates</span>
+          </div>
+          <div>
+            <span className="text-slate-400 block text-[10px]">Frozen Weights Checkpoint:</span>
+            <span className="font-bold text-slate-800 dark:text-slate-200 truncate block">weighted_fusion_weights.json</span>
+          </div>
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+// Mount the React Application
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

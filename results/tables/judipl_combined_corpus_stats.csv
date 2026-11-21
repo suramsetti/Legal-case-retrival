@@ -1,0 +1,4 @@
+corpus,total_documents,mean_char_length,median_char_length,source_breakdown,id_overlap_with_other,new_unique_docs
+IL-TUR only,5825,35017.0,20572.0,IL-TUR,2484,5825
+Jud-IPL only,42006,15727.8,13503.5,Jud-IPL,2484,39522
+Combined (IL-TUR + Jud-IPL),45347,17783.5,13696.0,IL-TUR + Jud-IPL,2484,45347

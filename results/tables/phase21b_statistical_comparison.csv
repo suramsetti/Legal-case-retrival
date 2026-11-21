@@ -1,0 +1,8 @@
+metric,m4_score,m8_score,delta_m8_minus_m4,ci_95_lower,ci_95_upper,p_value,test_type,stat_significant
+Accuracy,0.5866,0.592,0.0054,-0.004,0.0143,0.267038,McNemar Chi2,False
+Macro-F1,0.5898,0.5919,0.0021,-0.0068,0.0106,0.319,Paired Bootstrap (B=1000),False
+Balanced Accuracy,0.6103,0.6126,0.0022,-0.007,0.0108,0.295,Paired Bootstrap (B=1000),False
+Weighted-F1,0.5864,0.5922,0.0058,N/A,N/A,N/A,Descriptive,False
+F1-Accepted,0.5709,0.5823,0.0113,N/A,N/A,N/A,Per-Class Point Diff,False
+F1-Other,0.6055,0.593,-0.0125,N/A,N/A,N/A,Per-Class Point Diff,False
+F1-Rejected,0.5931,0.6005,0.0074,N/A,N/A,N/A,Per-Class Point Diff,False

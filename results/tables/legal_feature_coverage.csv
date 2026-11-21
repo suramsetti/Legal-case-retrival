@@ -1,0 +1,5 @@
+total_documents,statute_coverage_pct,citation_coverage_pct,entity_coverage_pct,avg_statutes_per_doc,median_statutes_per_doc,avg_citations_per_doc,median_citations_per_doc,avg_entities_per_doc,median_entities_per_doc,unique_statute_provisions_count,unique_citations_count,unique_entities_count,split_name,runtime_seconds
+118,77.12,61.86,98.31,22.65,4.0,4.09,2.0,22.95,11.0,425,399,260,dev_queries,11.65
+1023,73.22,62.95,92.18,32.13,3.0,3.14,1.0,21.95,8.0,1873,2380,921,dev_candidates,107.88
+237,73.0,57.38,94.94,19.08,3.0,3.16,1.0,17.37,9.0,601,628,375,test_queries,18.55
+1727,70.41,57.09,90.45,22.3,3.0,3.1,1.0,18.86,8.0,2470,3939,1215,test_candidates,131.6

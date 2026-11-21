@@ -1,0 +1,4 @@
+model,split,aggregation,P@1,MRR,R@10,nDCG@10
+inlegalbert,dev,direct,0.3051,0.3946,0.1989,0.2177
+inlegalbert,test,direct,0.2521,0.3507,0.2062,0.2029
+bert-base-uncased,dev,direct,0.2458,0.3455,0.1827,0.1913

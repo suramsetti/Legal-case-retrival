@@ -1,0 +1,25 @@
+{
+  "iltur_unique_candidates": 5825,
+  "iltur_unique_queries": 1182,
+  "iltur_total_unique": 5825,
+  "judipl_total_unique": 44677,
+  "overlap_total_count": 2504,
+  "overlap_total_pct_of_iltur": 42.99,
+  "overlap_total_pct_of_judipl": 5.6,
+  "overlap_candidates_count": 2504,
+  "overlap_queries_count": 504,
+  "overlap_train_candidates": 1854,
+  "overlap_train_queries": 355,
+  "overlap_dev_candidates": 520,
+  "overlap_dev_queries": 47,
+  "overlap_test_candidates": 785,
+  "overlap_test_queries": 102,
+  "new_unique_judipl_cases": 42173,
+  "combined_corpus_size": 47998,
+  "data_leakage_assessment": {
+    "query_text_overlap": 504,
+    "relevance_annotations_in_judipl": false,
+    "test_label_leakage_risk": "ZERO - Jud-IPL contains standalone judgments and outcome labels (Accepted/Rejected), but NO query-candidate prior case retrieval relevance matrices."
+  },
+  "elapsed_seconds": 42.47
+}

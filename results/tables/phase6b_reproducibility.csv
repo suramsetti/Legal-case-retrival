@@ -1,0 +1,9 @@
+Metric,Reported_Value,Reproduced_Value,Absolute_Difference,Status
+P@1,0.7881,0.7881,0.0,PASSED (Exact)
+P@5,0.4712,0.4712,0.0,PASSED (Exact)
+P@10,0.3212,0.3212,0.0,PASSED (Exact)
+R@5,0.4701,0.4701,0.0,PASSED (Exact)
+R@10,0.577,0.577,0.0,PASSED (Exact)
+MRR,0.8461,0.8461,0.0,PASSED (Exact)
+nDCG@5,0.6543,0.6543,0.0,PASSED (Exact)
+nDCG@10,0.6349,0.6349,0.0,PASSED (Exact)

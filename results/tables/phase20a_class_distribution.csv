@@ -1,0 +1,10 @@
+partition,label,count,percentage_of_partition,total_partition_size
+Train,Rejected,13188,44.86,29395
+Train,Accepted,11669,39.7,29395
+Train,Other,4538,15.44,29395
+Validation,Rejected,2775,44.07,6297
+Validation,Accepted,2555,40.57,6297
+Validation,Other,967,15.36,6297
+Test,Rejected,2873,45.51,6313
+Test,Accepted,2460,38.97,6313
+Test,Other,980,15.52,6313

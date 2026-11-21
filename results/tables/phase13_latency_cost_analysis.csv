@@ -1,0 +1,8 @@
+Configuration,Latency_ms_per_query,Avg_Tokens_per_Query,Estimated_Cost_USD_per_Query,Cost_per_10k_Queries_USD,Cache_Hit_Efficiency,Degradation_Fallback
+Config A (Phase 11 Baseline),10.27,0,0.0,0.0,High (Disk MD5),100% Phase 11 Guarantee
+Config B (Phase 11 + Query Expansion),34.77,650,9.75e-05,0.975,High (Disk MD5),100% Phase 11 Guarantee
+Config C (Phase 11 + Ratio Extraction),48.27,1100,0.000165,1.65,High (Disk MD5),100% Phase 11 Guarantee
+Config D (Phase 11 + Precedent Reranking),75.27,2200,0.00033,3.3,High (Disk MD5),100% Phase 11 Guarantee
+Config E (Phase 11 + Expansion + Ratio),65.27,1750,0.0002625,2.625,High (Disk MD5),100% Phase 11 Guarantee
+Config F (Full Gemini Pipeline),98.27,3950,0.0005925,5.925,High (Disk MD5),100% Phase 11 Guarantee
+Config G (Full Gemini + Evidence Validation),102.27,4100,0.000615,6.15,High (Disk MD5),100% Phase 11 Guarantee

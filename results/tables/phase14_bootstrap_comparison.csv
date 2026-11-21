@@ -1,0 +1,5 @@
+Metric,Phase11_Baseline,Phase14_Best_Hybrid,Mean_Difference,95%_CI_Lower,95%_CI_Upper,p_value,Statistically_Significant
+P@1,0.7966,0.8136,0.0169,0.0,0.0424,0.126,False
+MRR,0.8556,0.864,0.0085,0.0,0.0212,0.1315,False
+nDCG@10,0.6434,0.6456,0.0022,0.0,0.0058,0.1295,False
+Recall@10,0.5874,0.5874,0.0,0.0,0.0,1.0,False

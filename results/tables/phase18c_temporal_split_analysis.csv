@@ -1,0 +1,9 @@
+metric,value
+total_documents,42006
+documents_with_dates,16843
+documents_without_dates,25163
+date_coverage_percentage,40.096652859115366
+earliest_judgment_date,1886-01-02 00:00:00
+latest_judgment_date,2010-02-04 00:00:00
+date_range_years,124.08761122518823
+temporal_split_feasible,NO

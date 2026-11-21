@@ -1,0 +1,267 @@
+{
+  "dataset_statistics": {
+    "train_pairs": 15232,
+    "train_queries": 827,
+    "dev_pairs": 120596,
+    "dev_queries": 118,
+    "dev_positives": 973,
+    "dev_candidates_per_query": 1022
+  },
+  "baselines": {
+    "bm25": {
+      "P@1": 0.4831,
+      "P@5": 0.3169,
+      "P@10": 0.2271,
+      "R@5": 0.2787,
+      "R@10": 0.3841,
+      "MRR": 0.5988,
+      "nDCG@5": 0.3987,
+      "nDCG@10": 0.3963,
+      "evaluated_queries": 118
+    },
+    "tfidf": {
+      "P@1": 0.7881,
+      "P@5": 0.4831,
+      "P@10": 0.3102,
+      "R@5": 0.4773,
+      "R@10": 0.5556,
+      "MRR": 0.8373,
+      "nDCG@5": 0.6597,
+      "nDCG@10": 0.6223,
+      "evaluated_queries": 118
+    },
+    "inlegalbert": {
+      "P@1": 0.3051,
+      "P@5": 0.1763,
+      "P@10": 0.1254,
+      "R@5": 0.1404,
+      "R@10": 0.1989,
+      "MRR": 0.4043,
+      "nDCG@5": 0.2247,
+      "nDCG@10": 0.2177,
+      "evaluated_queries": 118
+    }
+  },
+  "model_a_rrf": {
+    "k_60": {
+      "P@1": 0.5593,
+      "P@5": 0.3508,
+      "P@10": 0.2644,
+      "R@5": 0.3341,
+      "R@10": 0.4906,
+      "MRR": 0.6589,
+      "nDCG@5": 0.4553,
+      "nDCG@10": 0.472,
+      "evaluated_queries": 118
+    },
+    "k_sweep": {
+      "20": {
+        "P@1": 0.6356,
+        "P@5": 0.3983,
+        "P@10": 0.2856,
+        "R@5": 0.3842,
+        "R@10": 0.5166,
+        "MRR": 0.7276,
+        "nDCG@5": 0.5284,
+        "nDCG@10": 0.5284,
+        "evaluated_queries": 118
+      },
+      "60": {
+        "P@1": 0.5593,
+        "P@5": 0.3508,
+        "P@10": 0.2644,
+        "R@5": 0.3341,
+        "R@10": 0.4906,
+        "MRR": 0.6589,
+        "nDCG@5": 0.4553,
+        "nDCG@10": 0.472,
+        "evaluated_queries": 118
+      },
+      "100": {
+        "P@1": 0.5339,
+        "P@5": 0.3339,
+        "P@10": 0.2508,
+        "R@5": 0.3003,
+        "R@10": 0.4644,
+        "MRR": 0.6391,
+        "nDCG@5": 0.4325,
+        "nDCG@10": 0.4505,
+        "evaluated_queries": 118
+      }
+    }
+  },
+  "model_b_weighted_linear_fusion": {
+    "weights": {
+      "bm25": 0.0,
+      "tfidf": 0.65,
+      "inlegalbert": 0.25,
+      "composite_legal": 0.1
+    },
+    "metrics": {
+      "P@1": 0.7881,
+      "P@5": 0.4712,
+      "P@10": 0.3212,
+      "R@5": 0.4701,
+      "R@10": 0.577,
+      "MRR": 0.8461,
+      "nDCG@5": 0.6543,
+      "nDCG@10": 0.6349,
+      "evaluated_queries": 118
+    }
+  },
+  "model_c_lightgbm": {
+    "metrics": {
+      "P@1": 0.3475,
+      "P@5": 0.1881,
+      "P@10": 0.128,
+      "R@5": 0.1755,
+      "R@10": 0.2091,
+      "MRR": 0.4321,
+      "nDCG@5": 0.2627,
+      "nDCG@10": 0.2444,
+      "evaluated_queries": 118
+    },
+    "top_features_gain": {
+      "norm_bm25_rank": 14141.760949015617,
+      "norm_tfidf_rank": 13062.38668179512,
+      "norm_tfidf_score": 2140.0236064195633,
+      "norm_bm25_score": 830.1605883836746,
+      "norm_composite_legal_score": 814.6423186063766,
+      "norm_inlegalbert_rank": 648.0752209424973,
+      "norm_inlegalbert_sim": 430.57135117053986,
+      "norm_rhetorical_ratio_diff": 396.00686979293823,
+      "norm_rhetorical_js_sim": 375.11237955093384,
+      "norm_rhetorical_cosine": 338.5677503347397
+    }
+  },
+  "model_d_xgboost": {
+    "metrics": {
+      "P@1": 0.3305,
+      "P@5": 0.1898,
+      "P@10": 0.1373,
+      "R@5": 0.1662,
+      "R@10": 0.2249,
+      "MRR": 0.4364,
+      "nDCG@5": 0.2638,
+      "nDCG@10": 0.2548,
+      "evaluated_queries": 118
+    },
+    "top_features": {
+      "norm_tfidf_rank": 0.2096564918756485,
+      "norm_bm25_rank": 0.16179245710372925,
+      "norm_tfidf_score": 0.08214712888002396,
+      "norm_citation_jaccard": 0.04729636013507843,
+      "norm_citation_shared_count": 0.03957996517419815,
+      "norm_composite_legal_score": 0.03864511474967003,
+      "norm_inlegalbert_rank": 0.03861987590789795,
+      "norm_bm25_score": 0.037979546934366226,
+      "norm_statute_jaccard": 0.03584790602326393,
+      "norm_court_overlap": 0.033838991075754166
+    }
+  },
+  "model_e_logistic_stacking": {
+    "metrics": {
+      "P@1": 0.6186,
+      "P@5": 0.339,
+      "P@10": 0.2305,
+      "R@5": 0.3315,
+      "R@10": 0.4057,
+      "MRR": 0.7017,
+      "nDCG@5": 0.4867,
+      "nDCG@10": 0.4643,
+      "evaluated_queries": 118
+    },
+    "meta_coefficients": {
+      "lexical_weight": 5.1547,
+      "dense_weight": 0.8961,
+      "legal_weight": 3.0248,
+      "intercept": -5.1686
+    }
+  },
+  "ablation_study": [
+    {
+      "Regime": "1_Lexical_Only",
+      "Num_Features": 4,
+      "P@1": 0.5678,
+      "P@5": 0.3203,
+      "P@10": 0.222,
+      "R@5": 0.3261,
+      "R@10": 0.404,
+      "MRR": 0.6603,
+      "nDCG@5": 0.4559,
+      "nDCG@10": 0.4419
+    },
+    {
+      "Regime": "2_Dense_Only",
+      "Num_Features": 2,
+      "P@1": 0.3051,
+      "P@5": 0.1763,
+      "P@10": 0.1254,
+      "R@5": 0.1404,
+      "R@10": 0.1989,
+      "MRR": 0.4043,
+      "nDCG@5": 0.2247,
+      "nDCG@10": 0.2177
+    },
+    {
+      "Regime": "3_Legal_Only",
+      "Num_Features": 14,
+      "P@1": 0.2542,
+      "P@5": 0.1322,
+      "P@10": 0.0932,
+      "R@5": 0.1014,
+      "R@10": 0.1222,
+      "MRR": 0.3048,
+      "nDCG@5": 0.1769,
+      "nDCG@10": 0.162
+    },
+    {
+      "Regime": "4_Lexical_Dense",
+      "Num_Features": 6,
+      "P@1": 0.5593,
+      "P@5": 0.322,
+      "P@10": 0.2305,
+      "R@5": 0.3245,
+      "R@10": 0.4104,
+      "MRR": 0.6611,
+      "nDCG@5": 0.4579,
+      "nDCG@10": 0.4483
+    },
+    {
+      "Regime": "5_Lexical_Legal",
+      "Num_Features": 18,
+      "P@1": 0.5847,
+      "P@5": 0.3169,
+      "P@10": 0.2195,
+      "R@5": 0.312,
+      "R@10": 0.3933,
+      "MRR": 0.6732,
+      "nDCG@5": 0.4556,
+      "nDCG@10": 0.4395
+    },
+    {
+      "Regime": "6_Dense_Legal",
+      "Num_Features": 16,
+      "P@1": 0.2712,
+      "P@5": 0.1576,
+      "P@10": 0.111,
+      "R@5": 0.1297,
+      "R@10": 0.1571,
+      "MRR": 0.3481,
+      "nDCG@5": 0.2071,
+      "nDCG@10": 0.1947
+    },
+    {
+      "Regime": "7_Full_Hybrid",
+      "Num_Features": 20,
+      "P@1": 0.6017,
+      "P@5": 0.3169,
+      "P@10": 0.222,
+      "R@5": 0.3104,
+      "R@10": 0.3941,
+      "MRR": 0.6834,
+      "nDCG@5": 0.4603,
+      "nDCG@10": 0.4458
+    }
+  ]
+}

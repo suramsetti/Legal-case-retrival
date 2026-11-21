@@ -1,0 +1,1695 @@
+[
+  {
+    "query_id": "0000012637",
+    "total_candidates": 1022,
+    "total_positives": 11,
+    "promoted_positives": [
+      {
+        "candidate_id": "0001043522",
+        "tfidf_rank": 3,
+        "dense_rank": 1,
+        "legal_rank": 30,
+        "hybrid_rank": 2,
+        "rank_improvement": 1,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #1)."
+      },
+      {
+        "candidate_id": "0001441230",
+        "tfidf_rank": 1015,
+        "dense_rank": 990,
+        "legal_rank": 51,
+        "hybrid_rank": 1008,
+        "rank_improvement": 7,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #990) and high legal feature overlap (Legal Rank #51)."
+      },
+      {
+        "candidate_id": "0001627616",
+        "tfidf_rank": 11,
+        "dense_rank": 16,
+        "legal_rank": 831,
+        "hybrid_rank": 10,
+        "rank_improvement": 1,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      }
+    ],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0000676779",
+        "tfidf_rank": 6,
+        "dense_rank": 464,
+        "legal_rank": 37,
+        "hybrid_rank": 8,
+        "rank_drop": 2,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #464) and lack of statutory/citation overlap (Legal Rank #37)."
+      },
+      {
+        "candidate_id": "0000768449",
+        "tfidf_rank": 8,
+        "dense_rank": 448,
+        "legal_rank": 503,
+        "hybrid_rank": 9,
+        "rank_drop": 1,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #448) and lack of statutory/citation overlap (Legal Rank #503)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0001853481",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.8969,
+        "tfidf_rank": 1,
+        "dense_rank": 363,
+        "legal_rank": 134,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001043522",
+        "is_precedent": true,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.8951,
+        "tfidf_rank": 3,
+        "dense_rank": 1,
+        "legal_rank": 30,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0000450105",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.8811,
+        "tfidf_rank": 2,
+        "dense_rank": 334,
+        "legal_rank": 856,
+        "delta_vs_tfidf": -1
+      },
+      {
+        "candidate_id": "0000823444",
+        "is_precedent": true,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.8732,
+        "tfidf_rank": 4,
+        "dense_rank": 7,
+        "legal_rank": 3,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001050499",
+        "is_precedent": true,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.7906,
+        "tfidf_rank": 5,
+        "dense_rank": 5,
+        "legal_rank": 175,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001856511",
+        "is_precedent": false,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.7702,
+        "tfidf_rank": 7,
+        "dense_rank": 46,
+        "legal_rank": 38,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0000791231",
+        "is_precedent": false,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.7525,
+        "tfidf_rank": 9,
+        "dense_rank": 2,
+        "legal_rank": 106,
+        "delta_vs_tfidf": 2
+      },
+      {
+        "candidate_id": "0000676779",
+        "is_precedent": false,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.7453,
+        "tfidf_rank": 6,
+        "dense_rank": 464,
+        "legal_rank": 37,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0000768449",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.7257,
+        "tfidf_rank": 8,
+        "dense_rank": 448,
+        "legal_rank": 503,
+        "delta_vs_tfidf": -1
+      },
+      {
+        "candidate_id": "0001627616",
+        "is_precedent": true,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.7251,
+        "tfidf_rank": 11,
+        "dense_rank": 16,
+        "legal_rank": 831,
+        "delta_vs_tfidf": 1
+      }
+    ]
+  },
+  {
+    "query_id": "0000027891",
+    "total_candidates": 1022,
+    "total_positives": 24,
+    "promoted_positives": [
+      {
+        "candidate_id": "0000214162",
+        "tfidf_rank": 18,
+        "dense_rank": 208,
+        "legal_rank": 300,
+        "hybrid_rank": 16,
+        "rank_improvement": 2,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0000328927",
+        "tfidf_rank": 172,
+        "dense_rank": 169,
+        "legal_rank": 15,
+        "hybrid_rank": 90,
+        "rank_improvement": 82,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #169) and high legal feature overlap (Legal Rank #15)."
+      },
+      {
+        "candidate_id": "0000356592",
+        "tfidf_rank": 335,
+        "dense_rank": 82,
+        "legal_rank": 433,
+        "hybrid_rank": 280,
+        "rank_improvement": 55,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #82)."
+      },
+      {
+        "candidate_id": "0000424370",
+        "tfidf_rank": 63,
+        "dense_rank": 155,
+        "legal_rank": 8,
+        "hybrid_rank": 22,
+        "rank_improvement": 41,
+        "reason": "Promoted due to high legal feature overlap (Legal Rank #8)."
+      },
+      {
+        "candidate_id": "0000538117",
+        "tfidf_rank": 103,
+        "dense_rank": 38,
+        "legal_rank": 184,
+        "hybrid_rank": 74,
+        "rank_improvement": 29,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #38)."
+      },
+      {
+        "candidate_id": "0000664536",
+        "tfidf_rank": 306,
+        "dense_rank": 63,
+        "legal_rank": 512,
+        "hybrid_rank": 246,
+        "rank_improvement": 60,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #63)."
+      },
+      {
+        "candidate_id": "0001297272",
+        "tfidf_rank": 20,
+        "dense_rank": 1,
+        "legal_rank": 11,
+        "hybrid_rank": 6,
+        "rank_improvement": 14,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #1) and high legal feature overlap (Legal Rank #11)."
+      },
+      {
+        "candidate_id": "0001345065",
+        "tfidf_rank": 380,
+        "dense_rank": 78,
+        "legal_rank": 430,
+        "hybrid_rank": 309,
+        "rank_improvement": 71,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #78)."
+      },
+      {
+        "candidate_id": "0001448438",
+        "tfidf_rank": 115,
+        "dense_rank": 207,
+        "legal_rank": 109,
+        "hybrid_rank": 87,
+        "rank_improvement": 28,
+        "reason": "Promoted due to high legal feature overlap (Legal Rank #109)."
+      },
+      {
+        "candidate_id": "0001448611",
+        "tfidf_rank": 25,
+        "dense_rank": 707,
+        "legal_rank": 40,
+        "hybrid_rank": 24,
+        "rank_improvement": 1,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0001546265",
+        "tfidf_rank": 23,
+        "dense_rank": 585,
+        "legal_rank": 57,
+        "hybrid_rank": 20,
+        "rank_improvement": 3,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0001628739",
+        "tfidf_rank": 156,
+        "dense_rank": 46,
+        "legal_rank": 22,
+        "hybrid_rank": 67,
+        "rank_improvement": 89,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #46) and high legal feature overlap (Legal Rank #22)."
+      },
+      {
+        "candidate_id": "0001693454",
+        "tfidf_rank": 180,
+        "dense_rank": 23,
+        "legal_rank": 334,
+        "hybrid_rank": 155,
+        "rank_improvement": 25,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #23)."
+      },
+      {
+        "candidate_id": "0001874054",
+        "tfidf_rank": 110,
+        "dense_rank": 616,
+        "legal_rank": 1,
+        "hybrid_rank": 41,
+        "rank_improvement": 69,
+        "reason": "Promoted due to high legal feature overlap (Legal Rank #1)."
+      },
+      {
+        "candidate_id": "0127302140",
+        "tfidf_rank": 315,
+        "dense_rank": 126,
+        "legal_rank": 21,
+        "hybrid_rank": 160,
+        "rank_improvement": 155,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #126) and high legal feature overlap (Legal Rank #21)."
+      }
+    ],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0000204111",
+        "tfidf_rank": 9,
+        "dense_rank": 747,
+        "legal_rank": 157,
+        "hybrid_rank": 12,
+        "rank_drop": 3,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #747) and lack of statutory/citation overlap (Legal Rank #157)."
+      },
+      {
+        "candidate_id": "0000424874",
+        "tfidf_rank": 5,
+        "dense_rank": 1009,
+        "legal_rank": 16,
+        "hybrid_rank": 11,
+        "rank_drop": 6,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #1009) and lack of statutory/citation overlap (Legal Rank #16)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0000766438",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.9083,
+        "tfidf_rank": 1,
+        "dense_rank": 48,
+        "legal_rank": 592,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000983159",
+        "is_precedent": true,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.8739,
+        "tfidf_rank": 2,
+        "dense_rank": 13,
+        "legal_rank": 638,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001404351",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.8204,
+        "tfidf_rank": 3,
+        "dense_rank": 113,
+        "legal_rank": 83,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0078882931",
+        "is_precedent": false,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.7787,
+        "tfidf_rank": 4,
+        "dense_rank": 381,
+        "legal_rank": 221,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000608874",
+        "is_precedent": false,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.7437,
+        "tfidf_rank": 7,
+        "dense_rank": 80,
+        "legal_rank": 166,
+        "delta_vs_tfidf": 2
+      },
+      {
+        "candidate_id": "0001297272",
+        "is_precedent": true,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.7292,
+        "tfidf_rank": 20,
+        "dense_rank": 1,
+        "legal_rank": 11,
+        "delta_vs_tfidf": 14
+      },
+      {
+        "candidate_id": "0184335016",
+        "is_precedent": false,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.7184,
+        "tfidf_rank": 10,
+        "dense_rank": 277,
+        "legal_rank": 84,
+        "delta_vs_tfidf": 3
+      },
+      {
+        "candidate_id": "0000819589",
+        "is_precedent": true,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.7017,
+        "tfidf_rank": 6,
+        "dense_rank": 533,
+        "legal_rank": 881,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0001291316",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.6957,
+        "tfidf_rank": 13,
+        "dense_rank": 173,
+        "legal_rank": 125,
+        "delta_vs_tfidf": 4
+      },
+      {
+        "candidate_id": "0001649618",
+        "is_precedent": true,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.6948,
+        "tfidf_rank": 8,
+        "dense_rank": 368,
+        "legal_rank": 823,
+        "delta_vs_tfidf": -2
+      }
+    ]
+  },
+  {
+    "query_id": "0000035468",
+    "total_candidates": 1022,
+    "total_positives": 15,
+    "promoted_positives": [
+      {
+        "candidate_id": "0000399102",
+        "tfidf_rank": 19,
+        "dense_rank": 71,
+        "legal_rank": 10,
+        "hybrid_rank": 17,
+        "rank_improvement": 2,
+        "reason": "Promoted due to high legal feature overlap (Legal Rank #10)."
+      },
+      {
+        "candidate_id": "0000667599",
+        "tfidf_rank": 11,
+        "dense_rank": 38,
+        "legal_rank": 4,
+        "hybrid_rank": 7,
+        "rank_improvement": 4,
+        "reason": "Promoted due to high legal feature overlap (Legal Rank #4)."
+      },
+      {
+        "candidate_id": "0000888208",
+        "tfidf_rank": 38,
+        "dense_rank": 1,
+        "legal_rank": 543,
+        "hybrid_rank": 30,
+        "rank_improvement": 8,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #1)."
+      },
+      {
+        "candidate_id": "0001102290",
+        "tfidf_rank": 17,
+        "dense_rank": 2,
+        "legal_rank": 779,
+        "hybrid_rank": 15,
+        "rank_improvement": 2,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #2)."
+      },
+      {
+        "candidate_id": "0001219329",
+        "tfidf_rank": 26,
+        "dense_rank": 20,
+        "legal_rank": 731,
+        "hybrid_rank": 24,
+        "rank_improvement": 2,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #20)."
+      },
+      {
+        "candidate_id": "0001520872",
+        "tfidf_rank": 3,
+        "dense_rank": 4,
+        "legal_rank": 2,
+        "hybrid_rank": 2,
+        "rank_improvement": 1,
+        "reason": "Promoted due to high legal feature overlap (Legal Rank #2)."
+      },
+      {
+        "candidate_id": "0001703849",
+        "tfidf_rank": 21,
+        "dense_rank": 12,
+        "legal_rank": 22,
+        "hybrid_rank": 16,
+        "rank_improvement": 5,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #12)."
+      },
+      {
+        "candidate_id": "0001766429",
+        "tfidf_rank": 4,
+        "dense_rank": 21,
+        "legal_rank": 5,
+        "hybrid_rank": 3,
+        "rank_improvement": 1,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0001789504",
+        "tfidf_rank": 760,
+        "dense_rank": 81,
+        "legal_rank": 992,
+        "hybrid_rank": 524,
+        "rank_improvement": 236,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #81)."
+      },
+      {
+        "candidate_id": "0001811127",
+        "tfidf_rank": 35,
+        "dense_rank": 47,
+        "legal_rank": 20,
+        "hybrid_rank": 27,
+        "rank_improvement": 8,
+        "reason": "Promoted due to high legal feature overlap (Legal Rank #20)."
+      },
+      {
+        "candidate_id": "0001999527",
+        "tfidf_rank": 5,
+        "dense_rank": 7,
+        "legal_rank": 3,
+        "hybrid_rank": 4,
+        "rank_improvement": 1,
+        "reason": "Promoted due to high legal feature overlap (Legal Rank #3)."
+      }
+    ],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0001279840",
+        "tfidf_rank": 10,
+        "dense_rank": 103,
+        "legal_rank": 364,
+        "hybrid_rank": 11,
+        "rank_drop": 1,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #103) and lack of statutory/citation overlap (Legal Rank #364)."
+      },
+      {
+        "candidate_id": "0001918091",
+        "tfidf_rank": 6,
+        "dense_rank": 69,
+        "legal_rank": 87,
+        "hybrid_rank": 8,
+        "rank_drop": 2,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #69) and lack of statutory/citation overlap (Legal Rank #87)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0001114727",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.9996,
+        "tfidf_rank": 1,
+        "dense_rank": 3,
+        "legal_rank": 1,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001520872",
+        "is_precedent": true,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.7231,
+        "tfidf_rank": 3,
+        "dense_rank": 4,
+        "legal_rank": 2,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001766429",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.7109,
+        "tfidf_rank": 4,
+        "dense_rank": 21,
+        "legal_rank": 5,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001999527",
+        "is_precedent": true,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.7094,
+        "tfidf_rank": 5,
+        "dense_rank": 7,
+        "legal_rank": 3,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001040261",
+        "is_precedent": true,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.6789,
+        "tfidf_rank": 2,
+        "dense_rank": 84,
+        "legal_rank": 730,
+        "delta_vs_tfidf": -3
+      },
+      {
+        "candidate_id": "0001554481",
+        "is_precedent": false,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.6534,
+        "tfidf_rank": 7,
+        "dense_rank": 22,
+        "legal_rank": 7,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0000667599",
+        "is_precedent": true,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.636,
+        "tfidf_rank": 11,
+        "dense_rank": 38,
+        "legal_rank": 4,
+        "delta_vs_tfidf": 4
+      },
+      {
+        "candidate_id": "0001918091",
+        "is_precedent": false,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.6328,
+        "tfidf_rank": 6,
+        "dense_rank": 69,
+        "legal_rank": 87,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0000174631",
+        "is_precedent": true,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.632,
+        "tfidf_rank": 9,
+        "dense_rank": 5,
+        "legal_rank": 11,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000201545",
+        "is_precedent": true,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.624,
+        "tfidf_rank": 8,
+        "dense_rank": 85,
+        "legal_rank": 9,
+        "delta_vs_tfidf": -2
+      }
+    ]
+  },
+  {
+    "query_id": "0000046064",
+    "total_candidates": 1022,
+    "total_positives": 9,
+    "promoted_positives": [
+      {
+        "candidate_id": "0001272959",
+        "tfidf_rank": 15,
+        "dense_rank": 108,
+        "legal_rank": 240,
+        "hybrid_rank": 12,
+        "rank_improvement": 3,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0001827392",
+        "tfidf_rank": 4,
+        "dense_rank": 353,
+        "legal_rank": 8,
+        "hybrid_rank": 3,
+        "rank_improvement": 1,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      }
+    ],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0000457764",
+        "tfidf_rank": 9,
+        "dense_rank": 361,
+        "legal_rank": 123,
+        "hybrid_rank": 10,
+        "rank_drop": 1,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #361) and lack of statutory/citation overlap (Legal Rank #123)."
+      },
+      {
+        "candidate_id": "0000796476",
+        "tfidf_rank": 10,
+        "dense_rank": 1005,
+        "legal_rank": 206,
+        "hybrid_rank": 45,
+        "rank_drop": 35,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #1005) and lack of statutory/citation overlap (Legal Rank #206)."
+      },
+      {
+        "candidate_id": "0000966068",
+        "tfidf_rank": 8,
+        "dense_rank": 263,
+        "legal_rank": 75,
+        "hybrid_rank": 9,
+        "rank_drop": 1,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #263) and lack of statutory/citation overlap (Legal Rank #75)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0000466149",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.889,
+        "tfidf_rank": 1,
+        "dense_rank": 306,
+        "legal_rank": 28,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001505286",
+        "is_precedent": true,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.6505,
+        "tfidf_rank": 2,
+        "dense_rank": 45,
+        "legal_rank": 432,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001827392",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.6449,
+        "tfidf_rank": 4,
+        "dense_rank": 353,
+        "legal_rank": 8,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001526873",
+        "is_precedent": true,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.6316,
+        "tfidf_rank": 3,
+        "dense_rank": 450,
+        "legal_rank": 316,
+        "delta_vs_tfidf": -1
+      },
+      {
+        "candidate_id": "0001173575",
+        "is_precedent": true,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.6308,
+        "tfidf_rank": 5,
+        "dense_rank": 28,
+        "legal_rank": 156,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001270973",
+        "is_precedent": true,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.6111,
+        "tfidf_rank": 6,
+        "dense_rank": 51,
+        "legal_rank": 437,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000884541",
+        "is_precedent": false,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.5863,
+        "tfidf_rank": 13,
+        "dense_rank": 14,
+        "legal_rank": 34,
+        "delta_vs_tfidf": 6
+      },
+      {
+        "candidate_id": "0001427781",
+        "is_precedent": false,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.584,
+        "tfidf_rank": 11,
+        "dense_rank": 22,
+        "legal_rank": 121,
+        "delta_vs_tfidf": 3
+      },
+      {
+        "candidate_id": "0000966068",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.5774,
+        "tfidf_rank": 8,
+        "dense_rank": 263,
+        "legal_rank": 75,
+        "delta_vs_tfidf": -1
+      },
+      {
+        "candidate_id": "0000457764",
+        "is_precedent": false,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.5642,
+        "tfidf_rank": 9,
+        "dense_rank": 361,
+        "legal_rank": 123,
+        "delta_vs_tfidf": -1
+      }
+    ]
+  },
+  {
+    "query_id": "0000067667",
+    "total_candidates": 1022,
+    "total_positives": 3,
+    "promoted_positives": [
+      {
+        "candidate_id": "0080456761",
+        "tfidf_rank": 902,
+        "dense_rank": 707,
+        "legal_rank": 345,
+        "hybrid_rank": 886,
+        "rank_improvement": 16,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #707) and high legal feature overlap (Legal Rank #345)."
+      }
+    ],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0000513801",
+        "tfidf_rank": 10,
+        "dense_rank": 1010,
+        "legal_rank": 457,
+        "hybrid_rank": 74,
+        "rank_drop": 64,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #1010) and lack of statutory/citation overlap (Legal Rank #457)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0000653417",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.8897,
+        "tfidf_rank": 1,
+        "dense_rank": 957,
+        "legal_rank": 11,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000426032",
+        "is_precedent": false,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.887,
+        "tfidf_rank": 2,
+        "dense_rank": 57,
+        "legal_rank": 470,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001118349",
+        "is_precedent": false,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.8723,
+        "tfidf_rank": 3,
+        "dense_rank": 95,
+        "legal_rank": 559,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000748977",
+        "is_precedent": false,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.8411,
+        "tfidf_rank": 4,
+        "dense_rank": 684,
+        "legal_rank": 80,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000522930",
+        "is_precedent": false,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.8341,
+        "tfidf_rank": 7,
+        "dense_rank": 230,
+        "legal_rank": 87,
+        "delta_vs_tfidf": 2
+      },
+      {
+        "candidate_id": "0181443842",
+        "is_precedent": false,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.8308,
+        "tfidf_rank": 6,
+        "dense_rank": 180,
+        "legal_rank": 120,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000730804",
+        "is_precedent": true,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.8114,
+        "tfidf_rank": 5,
+        "dense_rank": 659,
+        "legal_rank": 510,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0001152518",
+        "is_precedent": false,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.8108,
+        "tfidf_rank": 8,
+        "dense_rank": 576,
+        "legal_rank": 95,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000859161",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.7791,
+        "tfidf_rank": 9,
+        "dense_rank": 690,
+        "legal_rank": 476,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0181623893",
+        "is_precedent": false,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.7789,
+        "tfidf_rank": 11,
+        "dense_rank": 161,
+        "legal_rank": 346,
+        "delta_vs_tfidf": 1
+      }
+    ]
+  },
+  {
+    "query_id": "0000067739",
+    "total_candidates": 1022,
+    "total_positives": 6,
+    "promoted_positives": [
+      {
+        "candidate_id": "0000841670",
+        "tfidf_rank": 7,
+        "dense_rank": 77,
+        "legal_rank": 370,
+        "hybrid_rank": 6,
+        "rank_improvement": 1,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      }
+    ],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0001089401",
+        "tfidf_rank": 5,
+        "dense_rank": 254,
+        "legal_rank": 761,
+        "hybrid_rank": 7,
+        "rank_drop": 2,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #254) and lack of statutory/citation overlap (Legal Rank #761)."
+      },
+      {
+        "candidate_id": "0001770635",
+        "tfidf_rank": 9,
+        "dense_rank": 10,
+        "legal_rank": 840,
+        "hybrid_rank": 14,
+        "rank_drop": 5,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #10) and lack of statutory/citation overlap (Legal Rank #840)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0000082058",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.9796,
+        "tfidf_rank": 1,
+        "dense_rank": 1,
+        "legal_rank": 71,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001798717",
+        "is_precedent": true,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.8907,
+        "tfidf_rank": 2,
+        "dense_rank": 52,
+        "legal_rank": 778,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000572278",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.8638,
+        "tfidf_rank": 3,
+        "dense_rank": 19,
+        "legal_rank": 128,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000144847",
+        "is_precedent": true,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.8001,
+        "tfidf_rank": 4,
+        "dense_rank": 54,
+        "legal_rank": 717,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001988958",
+        "is_precedent": false,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.7858,
+        "tfidf_rank": 6,
+        "dense_rank": 105,
+        "legal_rank": 187,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0000841670",
+        "is_precedent": true,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.7675,
+        "tfidf_rank": 7,
+        "dense_rank": 77,
+        "legal_rank": 370,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001089401",
+        "is_precedent": false,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.7523,
+        "tfidf_rank": 5,
+        "dense_rank": 254,
+        "legal_rank": 761,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0001733204",
+        "is_precedent": true,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.7444,
+        "tfidf_rank": 8,
+        "dense_rank": 131,
+        "legal_rank": 814,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000442162",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.7058,
+        "tfidf_rank": 12,
+        "dense_rank": 87,
+        "legal_rank": 8,
+        "delta_vs_tfidf": 3
+      },
+      {
+        "candidate_id": "0000054959",
+        "is_precedent": false,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.6934,
+        "tfidf_rank": 10,
+        "dense_rank": 179,
+        "legal_rank": 90,
+        "delta_vs_tfidf": 0
+      }
+    ]
+  },
+  {
+    "query_id": "0000092507",
+    "total_candidates": 1022,
+    "total_positives": 12,
+    "promoted_positives": [
+      {
+        "candidate_id": "0000553711",
+        "tfidf_rank": 164,
+        "dense_rank": 192,
+        "legal_rank": 1007,
+        "hybrid_rank": 163,
+        "rank_improvement": 1,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0000609478",
+        "tfidf_rank": 224,
+        "dense_rank": 136,
+        "legal_rank": 244,
+        "hybrid_rank": 187,
+        "rank_improvement": 37,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #136)."
+      },
+      {
+        "candidate_id": "0001180097",
+        "tfidf_rank": 25,
+        "dense_rank": 191,
+        "legal_rank": 147,
+        "hybrid_rank": 21,
+        "rank_improvement": 4,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0001302865",
+        "tfidf_rank": 77,
+        "dense_rank": 31,
+        "legal_rank": 335,
+        "hybrid_rank": 64,
+        "rank_improvement": 13,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #31)."
+      },
+      {
+        "candidate_id": "0001368176",
+        "tfidf_rank": 156,
+        "dense_rank": 211,
+        "legal_rank": 234,
+        "hybrid_rank": 137,
+        "rank_improvement": 19,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0001544426",
+        "tfidf_rank": 92,
+        "dense_rank": 58,
+        "legal_rank": 350,
+        "hybrid_rank": 78,
+        "rank_improvement": 14,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #58)."
+      },
+      {
+        "candidate_id": "0001567210",
+        "tfidf_rank": 4,
+        "dense_rank": 6,
+        "legal_rank": 209,
+        "hybrid_rank": 3,
+        "rank_improvement": 1,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0001801693",
+        "tfidf_rank": 633,
+        "dense_rank": 187,
+        "legal_rank": 471,
+        "hybrid_rank": 559,
+        "rank_improvement": 74,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #187) and high legal feature overlap (Legal Rank #471)."
+      }
+    ],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0000268805",
+        "tfidf_rank": 7,
+        "dense_rank": 217,
+        "legal_rank": 699,
+        "hybrid_rank": 10,
+        "rank_drop": 3,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #217) and lack of statutory/citation overlap (Legal Rank #699)."
+      },
+      {
+        "candidate_id": "0000270610",
+        "tfidf_rank": 10,
+        "dense_rank": 169,
+        "legal_rank": 376,
+        "hybrid_rank": 12,
+        "rank_drop": 2,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #169) and lack of statutory/citation overlap (Legal Rank #376)."
+      },
+      {
+        "candidate_id": "0001699291",
+        "tfidf_rank": 5,
+        "dense_rank": 685,
+        "legal_rank": 262,
+        "hybrid_rank": 8,
+        "rank_drop": 3,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #685) and lack of statutory/citation overlap (Legal Rank #262)."
+      },
+      {
+        "candidate_id": "0001742802",
+        "tfidf_rank": 9,
+        "dense_rank": 549,
+        "legal_rank": 171,
+        "hybrid_rank": 13,
+        "rank_drop": 4,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #549) and lack of statutory/citation overlap (Legal Rank #171)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0000701162",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.9005,
+        "tfidf_rank": 1,
+        "dense_rank": 27,
+        "legal_rank": 529,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001066060",
+        "is_precedent": false,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.8541,
+        "tfidf_rank": 3,
+        "dense_rank": 3,
+        "legal_rank": 600,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001567210",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.8372,
+        "tfidf_rank": 4,
+        "dense_rank": 6,
+        "legal_rank": 209,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001416283",
+        "is_precedent": true,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.8102,
+        "tfidf_rank": 2,
+        "dense_rank": 609,
+        "legal_rank": 415,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0000018076",
+        "is_precedent": false,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.8098,
+        "tfidf_rank": 6,
+        "dense_rank": 5,
+        "legal_rank": 669,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001747159",
+        "is_precedent": false,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.7785,
+        "tfidf_rank": 8,
+        "dense_rank": 446,
+        "legal_rank": 67,
+        "delta_vs_tfidf": 2
+      },
+      {
+        "candidate_id": "0001881298",
+        "is_precedent": false,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.7763,
+        "tfidf_rank": 11,
+        "dense_rank": 24,
+        "legal_rank": 184,
+        "delta_vs_tfidf": 4
+      },
+      {
+        "candidate_id": "0001699291",
+        "is_precedent": false,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.7654,
+        "tfidf_rank": 5,
+        "dense_rank": 685,
+        "legal_rank": 262,
+        "delta_vs_tfidf": -3
+      },
+      {
+        "candidate_id": "0000478730",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.7646,
+        "tfidf_rank": 14,
+        "dense_rank": 1,
+        "legal_rank": 263,
+        "delta_vs_tfidf": 5
+      },
+      {
+        "candidate_id": "0000268805",
+        "is_precedent": false,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.7643,
+        "tfidf_rank": 7,
+        "dense_rank": 217,
+        "legal_rank": 699,
+        "delta_vs_tfidf": -3
+      }
+    ]
+  },
+  {
+    "query_id": "0000098072",
+    "total_candidates": 1022,
+    "total_positives": 4,
+    "promoted_positives": [],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0000485116",
+        "tfidf_rank": 7,
+        "dense_rank": 247,
+        "legal_rank": 539,
+        "hybrid_rank": 9,
+        "rank_drop": 2,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #247) and lack of statutory/citation overlap (Legal Rank #539)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0057910187",
+        "is_precedent": false,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.9318,
+        "tfidf_rank": 3,
+        "dense_rank": 14,
+        "legal_rank": 80,
+        "delta_vs_tfidf": 2
+      },
+      {
+        "candidate_id": "0172442656",
+        "is_precedent": false,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.9275,
+        "tfidf_rank": 2,
+        "dense_rank": 8,
+        "legal_rank": 338,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000153655",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.9077,
+        "tfidf_rank": 1,
+        "dense_rank": 218,
+        "legal_rank": 410,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0000912111",
+        "is_precedent": true,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.8991,
+        "tfidf_rank": 4,
+        "dense_rank": 10,
+        "legal_rank": 355,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001620184",
+        "is_precedent": false,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.8798,
+        "tfidf_rank": 6,
+        "dense_rank": 17,
+        "legal_rank": 45,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0000037607",
+        "is_precedent": true,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.8593,
+        "tfidf_rank": 5,
+        "dense_rank": 56,
+        "legal_rank": 245,
+        "delta_vs_tfidf": -1
+      },
+      {
+        "candidate_id": "0000968709",
+        "is_precedent": false,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.8302,
+        "tfidf_rank": 8,
+        "dense_rank": 16,
+        "legal_rank": 79,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0001355072",
+        "is_precedent": false,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.8191,
+        "tfidf_rank": 9,
+        "dense_rank": 6,
+        "legal_rank": 248,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0000485116",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.8047,
+        "tfidf_rank": 7,
+        "dense_rank": 247,
+        "legal_rank": 539,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0001057686",
+        "is_precedent": false,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.8037,
+        "tfidf_rank": 10,
+        "dense_rank": 20,
+        "legal_rank": 419,
+        "delta_vs_tfidf": 0
+      }
+    ]
+  },
+  {
+    "query_id": "0000105440",
+    "total_candidates": 1022,
+    "total_positives": 4,
+    "promoted_positives": [],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0001467985",
+        "tfidf_rank": 8,
+        "dense_rank": 165,
+        "legal_rank": 845,
+        "hybrid_rank": 10,
+        "rank_drop": 2,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #165) and lack of statutory/citation overlap (Legal Rank #845)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0000981438",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.9393,
+        "tfidf_rank": 1,
+        "dense_rank": 2,
+        "legal_rank": 156,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001783426",
+        "is_precedent": true,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.9182,
+        "tfidf_rank": 2,
+        "dense_rank": 1,
+        "legal_rank": 648,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000468409",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.8705,
+        "tfidf_rank": 3,
+        "dense_rank": 117,
+        "legal_rank": 677,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001781912",
+        "is_precedent": true,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.855,
+        "tfidf_rank": 4,
+        "dense_rank": 76,
+        "legal_rank": 619,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001986314",
+        "is_precedent": false,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.765,
+        "tfidf_rank": 5,
+        "dense_rank": 263,
+        "legal_rank": 329,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000568978",
+        "is_precedent": false,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.7524,
+        "tfidf_rank": 6,
+        "dense_rank": 99,
+        "legal_rank": 640,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001649618",
+        "is_precedent": false,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.7411,
+        "tfidf_rank": 7,
+        "dense_rank": 91,
+        "legal_rank": 140,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000247666",
+        "is_precedent": false,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.7336,
+        "tfidf_rank": 10,
+        "dense_rank": 22,
+        "legal_rank": 150,
+        "delta_vs_tfidf": 2
+      },
+      {
+        "candidate_id": "0000161423",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.7311,
+        "tfidf_rank": 9,
+        "dense_rank": 94,
+        "legal_rank": 509,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001467985",
+        "is_precedent": false,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.7277,
+        "tfidf_rank": 8,
+        "dense_rank": 165,
+        "legal_rank": 845,
+        "delta_vs_tfidf": -2
+      }
+    ]
+  },
+  {
+    "query_id": "0000125801",
+    "total_candidates": 1022,
+    "total_positives": 8,
+    "promoted_positives": [
+      {
+        "candidate_id": "0000661219",
+        "tfidf_rank": 13,
+        "dense_rank": 67,
+        "legal_rank": 76,
+        "hybrid_rank": 11,
+        "rank_improvement": 2,
+        "reason": "Promoted due to balanced synergistic contribution across modalities."
+      },
+      {
+        "candidate_id": "0001039429",
+        "tfidf_rank": 175,
+        "dense_rank": 76,
+        "legal_rank": 412,
+        "hybrid_rank": 97,
+        "rank_improvement": 78,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #76)."
+      },
+      {
+        "candidate_id": "0001282179",
+        "tfidf_rank": 10,
+        "dense_rank": 6,
+        "legal_rank": 99,
+        "hybrid_rank": 7,
+        "rank_improvement": 3,
+        "reason": "Promoted due to strong dense semantic alignment (Dense Rank #6)."
+      }
+    ],
+    "demoted_false_positives": [
+      {
+        "candidate_id": "0000859960",
+        "tfidf_rank": 5,
+        "dense_rank": 2,
+        "legal_rank": 552,
+        "hybrid_rank": 6,
+        "rank_drop": 1,
+        "reason": "Correctly demoted due to lack of statutory/citation overlap (Legal Rank #552)."
+      },
+      {
+        "candidate_id": "0001281733",
+        "tfidf_rank": 9,
+        "dense_rank": 22,
+        "legal_rank": 791,
+        "hybrid_rank": 10,
+        "rank_drop": 1,
+        "reason": "Correctly demoted due to poor semantic similarity (Dense Rank #22) and lack of statutory/citation overlap (Legal Rank #791)."
+      },
+      {
+        "candidate_id": "0001453391",
+        "tfidf_rank": 7,
+        "dense_rank": 3,
+        "legal_rank": 908,
+        "hybrid_rank": 9,
+        "rank_drop": 2,
+        "reason": "Correctly demoted due to lack of statutory/citation overlap (Legal Rank #908)."
+      }
+    ],
+    "top_10_hybrid_candidates": [
+      {
+        "candidate_id": "0001776507",
+        "is_precedent": true,
+        "hybrid_rank": 1,
+        "hybrid_score": 0.9227,
+        "tfidf_rank": 1,
+        "dense_rank": 12,
+        "legal_rank": 699,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000068208",
+        "is_precedent": false,
+        "hybrid_rank": 2,
+        "hybrid_score": 0.8986,
+        "tfidf_rank": 2,
+        "dense_rank": 16,
+        "legal_rank": 371,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001435406",
+        "is_precedent": true,
+        "hybrid_rank": 3,
+        "hybrid_score": 0.8848,
+        "tfidf_rank": 3,
+        "dense_rank": 39,
+        "legal_rank": 366,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001363770",
+        "is_precedent": false,
+        "hybrid_rank": 4,
+        "hybrid_score": 0.872,
+        "tfidf_rank": 4,
+        "dense_rank": 10,
+        "legal_rank": 916,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0000791009",
+        "is_precedent": false,
+        "hybrid_rank": 5,
+        "hybrid_score": 0.8596,
+        "tfidf_rank": 6,
+        "dense_rank": 1,
+        "legal_rank": 450,
+        "delta_vs_tfidf": 1
+      },
+      {
+        "candidate_id": "0000859960",
+        "is_precedent": false,
+        "hybrid_rank": 6,
+        "hybrid_score": 0.8561,
+        "tfidf_rank": 5,
+        "dense_rank": 2,
+        "legal_rank": 552,
+        "delta_vs_tfidf": -1
+      },
+      {
+        "candidate_id": "0001282179",
+        "is_precedent": true,
+        "hybrid_rank": 7,
+        "hybrid_score": 0.8401,
+        "tfidf_rank": 10,
+        "dense_rank": 6,
+        "legal_rank": 99,
+        "delta_vs_tfidf": 3
+      },
+      {
+        "candidate_id": "0001706390",
+        "is_precedent": false,
+        "hybrid_rank": 8,
+        "hybrid_score": 0.8373,
+        "tfidf_rank": 8,
+        "dense_rank": 55,
+        "legal_rank": 110,
+        "delta_vs_tfidf": 0
+      },
+      {
+        "candidate_id": "0001453391",
+        "is_precedent": false,
+        "hybrid_rank": 9,
+        "hybrid_score": 0.8333,
+        "tfidf_rank": 7,
+        "dense_rank": 3,
+        "legal_rank": 908,
+        "delta_vs_tfidf": -2
+      },
+      {
+        "candidate_id": "0001281733",
+        "is_precedent": false,
+        "hybrid_rank": 10,
+        "hybrid_score": 0.8094,
+        "tfidf_rank": 9,
+        "dense_rank": 22,
+        "legal_rank": 791,
+        "delta_vs_tfidf": -1
+      }
+    ]
+  }
+]

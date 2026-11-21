@@ -1,0 +1,19 @@
+Split,Comparison,Metric,Baseline_Mean,Phase16_Mean,Mean_Difference,CI_95_Lower,CI_95_Upper,p_value,Statistically_Significant
+Development Split (118 queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,P@1,0.8136,0.7966,-0.0169,-0.0424,0.0,0.1285,False
+Development Split (118 queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,MRR,0.864,0.847,-0.017,-0.0328,-0.004,0.0005,True
+Development Split (118 queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,nDCG@5,0.6679,0.654,-0.0139,-0.0291,-0.0,0.025,True
+Development Split (118 queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,nDCG@10,0.6456,0.6368,-0.0088,-0.0181,-0.0004,0.021,True
+Development Split (118 queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,Recall@5,0.4803,0.4699,-0.0104,-0.033,0.0084,0.1875,False
+Development Split (118 queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,Recall@10,0.5874,0.584,-0.0034,-0.0126,0.0049,0.224,False
+"Test Split (Exploratory, 234 queries)",Phase 16 Adaptive Fusion vs Phase 14 Baseline,P@1,0.6624,0.6624,0.0,-0.0214,0.0214,0.5865,False
+"Test Split (Exploratory, 234 queries)",Phase 16 Adaptive Fusion vs Phase 14 Baseline,MRR,0.766,0.7588,-0.0072,-0.0186,0.0043,0.106,False
+"Test Split (Exploratory, 234 queries)",Phase 16 Adaptive Fusion vs Phase 14 Baseline,nDCG@5,0.6121,0.6089,-0.0031,-0.0123,0.0064,0.253,False
+"Test Split (Exploratory, 234 queries)",Phase 16 Adaptive Fusion vs Phase 14 Baseline,nDCG@10,0.5904,0.589,-0.0013,-0.0088,0.0063,0.374,False
+"Test Split (Exploratory, 234 queries)",Phase 16 Adaptive Fusion vs Phase 14 Baseline,Recall@5,0.4555,0.4492,-0.0063,-0.021,0.0056,0.1675,False
+"Test Split (Exploratory, 234 queries)",Phase 16 Adaptive Fusion vs Phase 14 Baseline,Recall@10,0.5583,0.5568,-0.0015,-0.0179,0.0133,0.43,False
+Independent Held-Out (117 unseen queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,P@1,0.6325,0.6239,-0.0085,-0.0427,0.0171,0.39,False
+Independent Held-Out (117 unseen queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,MRR,0.7222,0.7097,-0.0125,-0.0286,0.0021,0.0445,False
+Independent Held-Out (117 unseen queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,nDCG@5,0.5537,0.5456,-0.0081,-0.0239,0.0067,0.1345,False
+Independent Held-Out (117 unseen queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,nDCG@10,0.5383,0.535,-0.0032,-0.0173,0.011,0.32,False
+Independent Held-Out (117 unseen queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,Recall@5,0.4281,0.4102,-0.0179,-0.0472,0.0033,0.0615,False
+Independent Held-Out (117 unseen queries),Phase 16 Adaptive Fusion vs Phase 14 Baseline,Recall@10,0.5272,0.5223,-0.0049,-0.0372,0.0246,0.392,False
