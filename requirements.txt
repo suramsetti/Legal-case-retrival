@@ -24,3 +24,5 @@ pydantic
 
 # Testing & Code Quality
 pytest
+
+gunicorn
