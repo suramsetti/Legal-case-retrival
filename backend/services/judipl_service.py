@@ -10,6 +10,8 @@ import joblib
 import numpy as np
 import pandas as pd
 
+from huggingface_hub import hf_hub_download
+
 from src.models.phase20_multiclass_models import CANONICAL_CLASSES
 
 
@@ -20,7 +22,11 @@ class JudIPLService:
         self.project_root = project_root
         self.checkpoint_dir = project_root / "models" / "checkpoints" / "phase20"
         self.correction_dir = project_root / "results" / "phase21b_correction"
-        self.data_path = project_root / "data" / "processed" / "judipl" / "phase18c" / "three_class" / "test_masked.parquet"
+        self.data_path = hf_hub_download(
+    repo_id="suramsetti88/legal-case-retrieval-data",
+    filename="test_masked.parquet",
+    repo_type="dataset"
+)
         self._models: Dict[str, Any] = {}
         self._metadata = self._load_metadata()
 
@@ -70,7 +76,7 @@ class JudIPLService:
 
     def explorer(self, page: int = 1, page_size: int = 20, search: str = "") -> Dict[str, Any]:
         """Return a bounded, read-only view of the existing Jud-IPL test metadata."""
-        data = pd.read_parquet(self.data_path)
+        data = self._data.copy()
         if search:
             needle = search.casefold()
             mask = data.astype(str).apply(

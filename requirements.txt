@@ -27,3 +27,4 @@ pytest
 
 gunicorn
 pypdf
+huggingface_hub
